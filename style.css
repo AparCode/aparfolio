@@ -82,6 +82,10 @@ h1{
     inset 5px 5px 10px #4f5054;
 }
 
+.pad:hover{
+    background-color: #4f5054;
+}
+
 .top-controls {
     grid-area: top;
     display: grid;
@@ -103,6 +107,10 @@ h1{
     -1px -1px 3px #1c1a1a,
     inset -1px -1px 3px #1c1a1a,
     inset -1px -1px 3px #6f6f6f;
+}
+
+.button:hover{
+    background-color: #6f6f6f;
 }
 
 .led-pads{
