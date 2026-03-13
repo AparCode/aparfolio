@@ -103,6 +103,10 @@ h1{
     background-color: #4f5054;
 }
 
+.pad.active:hover{
+    filter: brightness(1.25);
+}
+
 .pad.active{
     transform: translateY(-1px);
     filter: brightness(1.05);
