@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+:root {
+    --pad-off-bg: #333333;
+    --pad-off-ring: #4f5054;
+}
+
 html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
@@ -82,17 +87,84 @@ h1{
     padding:clamp(0.45rem, 1.2vmin, 1rem);
     border: 1px solid black;
     border-radius: 10px;
-    background-color: #333333;
+    background-color: var(--pad-off-bg);
     text-align: center;
     box-shadow: 
     -5px -5px 10px #28292b,
     5px 5px 10px #1c1a1a,
     inset -5px -5px 10px #1c1a1a,
     inset 5px 5px 10px #4f5054;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.pad:hover{
+.pad:not(.active):hover{
     background-color: #4f5054;
+}
+
+.pad.active{
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+/* Scene colors */
+.pad.scene-linkedin {
+    background-color: #0077b5;
+    box-shadow:
+    -5px -5px 10px #203c4a,
+    5px 5px 10px #004471,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-github {
+    background-color: #FFFFFF;
+    box-shadow:
+    -5px -5px 10px #1c1a1a,
+    5px 5px 10px #6f6f6f,
+    inset -5px -5px 10px #6f6f6f,
+    inset 5px 5px 10px #1c1a1a;
+}
+
+.pad.scene-resume {
+    background-color: #f90000;
+    box-shadow: 
+    -5px -5px 10px #380202,
+    5px 5px 10px #a90606,
+    inset -5px -5px 10px #ec4141,
+    inset 5px 5px 10px #fda8a8;
+}
+
+.pad.scene-contact {
+    background-color: #00ff11;
+    box-shadow:
+    -5px -5px 10px #234a20,
+    5px 5px 10px #157100,
+    inset -5px -5px 10px #64e34e,
+    inset 5px 5px 10px #9fffaa;
+}
+
+.pad.is-clearing {
+    animation: padFadeOut 160ms ease forwards;
+}
+
+@keyframes padFadeOut{
+    from {filter: brightness(1.05);}
+    to {
+        background-color: var(--pad-off-bg);
+        box-shadow: none;
+        filter: brightness(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .pad {
+        transition: none;
+    }
+    .pad.is-clearing {
+        animation: none;
+    }
 }
 
 .top-label{
@@ -140,12 +212,14 @@ h1{
 }
 
 .button{
+    display: inline-block;
     width: clamp(30px, 3.2vmin, 70px);
     height: clamp(30px, 3.2vmin, 70px);
     aspect-ratio: 1/1;
     border-radius: 50%;
     background-color: transparent;
     border: 0.5px solid #828181;
+    text-decoration: none;
     cursor: pointer;
     box-shadow: -1px -1px 3px #6f6f6f,
     -1px -1px 3px #1c1a1a,
