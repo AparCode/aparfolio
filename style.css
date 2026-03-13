@@ -145,6 +145,249 @@ h1{
     inset 5px 5px 10px #9fffaa;
 }
 
+.pad.scene-about {
+    background-color: #e45474;
+    box-shadow:
+    -5px -5px 10px #4a202d,
+    5px 5px 10px #710015,
+    inset -5px -5px 10px #e34e82,
+    inset 5px 5px 10px #ff9fba;
+}
+
+.pad.scene-skills {
+    background-color: #ff8c00;
+    box-shadow:
+    -5px -5px 10px #4a2a00,
+    5px 5px 10px #713800,
+    inset -5px -5px 10px #ff9f3f,
+    inset 5px 5px 10px #ffcba8;
+}
+
+.pad.scene-kitware {
+    background-color: #3daf4a;
+    box-shadow:
+    -5px -5px 10px #1c3a20,
+    5px 5px 10px #0b6e00,
+    inset -5px -5px 10px #64e34e,
+    inset 5px 5px 10px #9fffaa;
+}
+
+.pad.scene-griffiss {
+    background-color: #007a9b;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-northeastern {
+    background-color: #c8102e;
+    box-shadow:
+    -5px -5px 10px #4a1c20,
+    5px 5px 10px #710000,
+    inset -5px -5px 10px #e34e4e,
+    inset 5px 5px 10px #ff9f9f;
+}
+
+.pad.scene-mitbeaverworks {
+    background-color: #a31f34;
+    box-shadow:
+    -5px -5px 10px #4a1c20,
+    5px 5px 10px #710000,
+    inset -5px -5px 10px #e34e4e,
+    inset 5px 5px 10px #ff9f9f;
+}
+
+.pad.scene-wic {
+    background-color: #784c9c;
+    box-shadow:
+    -5px -5px 10px #3a1c4a,
+    5px 5px 10px #4b0071,
+    inset -5px -5px 10px #b064e3,
+    inset 5px 5px 10px #d89fff;
+}
+
+.pad.scene-coms {
+    background-color: #21bde5;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-ai {
+    background-color: #e66709;
+    box-shadow:
+    -5px -5px 10px #4a2a00,
+    5px 5px 10px #713800,
+    inset -5px -5px 10px #ff9f3f,
+    inset 5px 5px 10px #ffcba8;
+}
+
+.pad.scene-sigma {
+    background-color: #6b47d6;
+    box-shadow:
+    -5px -5px 10px #3a1c4a,
+    5px 5px 10px #4b0071,
+    inset -5px -5px 10px #b064e3,
+    inset 5px 5px 10px #d89fff;
+}
+
+.pad.scene-gso {
+    background-color: #ffff00;
+    box-shadow:
+    -5px -5px 10px #4a4a1c,
+    5px 5px 10px #717100,
+    inset -5px -5px 10px #ffff64,
+    inset 5px 5px 10px #ffff9f;
+}
+
+.pad.scene-orderup{
+    background-color: #f6d5ff;
+    box-shadow:
+    -5px -5px 10px #4a1c4a,
+    5px 5px 10px #710071,
+    inset -5px -5px 10px #e34ee3,
+    inset 5px 5px 10px #ff9fe1;
+}
+
+.pad.scene-resopulse {
+    background-color: #653c3c;
+    box-shadow:
+    -5px -5px 10px #321c1c,
+    5px 5px 10px #4b0000,
+    inset -5px -5px 10px #9f6464,
+    inset 5px 5px 10px #d89f9f;
+}
+
+.pad.scene-underthesea {
+    background-color: #249c92;
+    box-shadow:
+    -5px -5px 10px #1c4a47,
+    5px 5px 10px #004b46,
+    inset -5px -5px 10px #64e3dc,
+    inset 5px 5px 10px #9fffe0;
+}
+
+.pad.scene-virtualcloset {
+    background-color: #72d2fe;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-visualdove{
+    background-color: #e552fa;
+    box-shadow:
+    -5px -5px 10px #4a1c4a,
+    5px 5px 10px #710071,
+    inset -5px -5px 10px #e34ee3,
+    inset 5px 5px 10px #ff9fe1;
+}
+
+.pad.scene-virtualkaraoke{
+    background-color: #3330c1;
+    box-shadow:
+    -5px -5px 10px #1c1a4a,
+    5px 5px 10px #000071,
+    inset -5px -5px 10px #4e4ee3,
+    inset 5px 5px 10px #9f9fe1;
+}
+
+.pad.scene-myergbuddy{
+    background-color: #21ff45;
+    box-shadow:
+    -5px -5px 10px #1c4a20,
+    5px 5px 10px #004b00,
+    inset -5px -5px 10px #64e34e,
+    inset 5px 5px 10px #9fffaa;
+}
+
+.pad.scene-brickstein{
+    background-color: #ff5758;
+    box-shadow:
+    -5px -5px 10px #4a1c1c,
+    5px 5px 10px #710000,
+    inset -5px -5px 10px #e34e4e,
+    inset 5px 5px 10px #ff9f9f;
+}
+
+.pad.scene-securecheckup{
+    background-color: #04b4fc;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-acertainconvexhull{
+    background-color: #bbc7fe;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-echoflower{
+    background-color: #41abc9;
+    box-shadow:
+    -5px -5px 10px #1c2f4a,
+    5px 5px 10px #003d71,
+    inset -5px -5px 10px #4ea7e3,
+    inset 5px 5px 10px #9fe1ff;
+}
+
+.pad.scene-spotiphy{
+    background-color: #d7896d;
+    box-shadow:
+    -5px -5px 10px #4a1c1c,
+    5px 5px 10px #710000,
+    inset -5px -5px 10px #e34e4e,
+    inset 5px 5px 10px #ff9f9f;
+}
+
+.pad.scene-fibonacci{
+    background-color: #48ce85;
+    box-shadow:
+    -5px -5px 10px #1c4a20,
+    5px 5px 10px #004b00,
+    inset -5px -5px 10px #64e34e,
+    inset 5px 5px 10px #9fffaa;
+}
+
+.pad.scene-areyousocialdistancing{
+    background-color: #1b2ffd;
+    box-shadow:
+    -5px -5px 10px #1c1a4a,
+    5px 5px 10px #000071,
+    inset -5px -5px 10px #4e4ee3,
+    inset 5px 5px 10px #9f9fe1;
+}
+
+.pad.scene-music1{
+    background-color: #ed6ab9;
+    box-shadow:
+    -5px -5px 10px #4a1c4a,
+    5px 5px 10px #710071,
+    inset -5px -5px 10px #e34ee3,
+    inset 5px 5px 10px #ff9fe1;
+}
+
+.pad.scene-music2{
+    background-color: #f0307d;
+    box-shadow:
+    -5px -5px 10px #4a1c4a,
+    5px 5px 10px #710071,
+    inset -5px -5px 10px #e34ee3,
+    inset 5px 5px 10px #ff9fe1;
+}
+
 .pad.is-clearing {
     animation: padFadeOut 160ms ease forwards;
 }
