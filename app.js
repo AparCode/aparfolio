@@ -7,6 +7,10 @@ const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","sce
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
     "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2"];
 
+const CONTACT_COMPOSE_URL =
+    "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
+    "&body=Dear%20Aparnaa%2C%20I%20wanted%20to%20connect%20with%20you.";
+
 // ===================
 // Scene Definitions
 // ===================
@@ -246,6 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (contactButton) {
+        contactButton.href = CONTACT_COMPOSE_URL;
         contactButton.addEventListener("click", () => {
             applyScene("contact");
         });
@@ -313,10 +318,8 @@ const sceneDialogMap = {
     },
     "scene-contact": {
         title: "Contact",
-        message: "Open email compose?",
-        href:
-            "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
-            "&body=Dear%20Aparnaa%2C%20I%20wanted%20to%20connect%20with%20you."
+        message: "Compose an email?",
+        href: CONTACT_COMPOSE_URL
     },
     "scene-about": {
         title: "About",
@@ -328,32 +331,208 @@ const sceneDialogMap = {
             "learning systems and am currently seeking full-time Software Engineer, Machine Learning Engineer, or AI Engineer roles.",
         href: ""
     },
-    "scene-skills": { title: "Skills", message: "Skills section.", href: "" },
-    "scene-kitware": { title: "Kitware", message: "Kitware experience.", href: "" },
-    "scene-griffiss": { title: "Griffiss", message: "Griffiss experience.", href: "" },
-    "scene-northeastern": { title: "Northeastern", message: "Northeastern experience.", href: "" },
-    "scene-mitbeaverworks": { title: "MIT Beaver Works", message: "MIT Beaver Works experience.", href: "" },
-    "scene-wic": { title: "WIC", message: "Women in Computing.", href: "" },
-    "scene-coms": { title: "COMS", message: "COMS experience.", href: "" },
-    "scene-ai": { title: "AI", message: "AI experience.", href: "" },
-    "scene-sigma": { title: "Sigma", message: "Sigma experience.", href: "" },
-    "scene-gso": { title: "GSO", message: "GSO experience.", href: "" },
-    "scene-orderup": { title: "OrderUp", message: "OrderUp project.", href: "" },
-    "scene-resopulse": { title: "ResoPulse", message: "ResoPulse project.", href: "" },
-    "scene-underthesea": { title: "Under the Sea", message: "Under the Sea project.", href: "" },
-    "scene-virtualcloset": { title: "Virtual Closet", message: "Virtual Closet project.", href: "" },
-    "scene-visualdove": { title: "VisualDove", message: "VisualDove project.", href: "" },
-    "scene-virtualkaraoke": { title: "Virtual Karaoke", message: "Virtual Karaoke project.", href: "" },
-    "scene-myergbuddy": { title: "MyErgBuddy", message: "MyErgBuddy project.", href: "" },
-    "scene-brickstein": { title: "Brickstein", message: "Brickstein project.", href: "" },
-    "scene-securecheckup": { title: "SecureCheckup", message: "SecureCheckup project.", href: "" },
-    "scene-acertainconvexhull": { title: "A Certain Convex Hull", message: "A Certain Convex Hull project.", href: "" },
-    "scene-echoflower": { title: "EchoFlower", message: "EchoFlower project.", href: "" },
-    "scene-spotiphy": { title: "Spotiphy", message: "Spotiphy project.", href: "" },
-    "scene-fibonacci": { title: "Fibonacci", message: "Fibonacci project.", href: "" },
-    "scene-areyousocialdistancing": { title: "Are You Social Distancing?", message: "Social distancing project.", href: "" },
-    "scene-music1": { title: "Music", message: "Music section.", href: "" },
-    "scene-music2": { title: "Music", message: "Music section.", href: "" }
+    "scene-skills": {
+        title: "Skills",
+        message:
+            "Languages: Python, SQL, Java, JavaScript \n Backend & Infrastructure: FastAPI, REST APIs, Slurm, " +
+            "GitLab, CI/CD, Linux, Perforce \n Data & Real-Time Systems: PyTorch, OpenCV, MediaPipe, Pandas, " +
+            "NumPy \n Tools: Unreal Engine, TouchDesigner, Docker, Git",
+        href: ""
+    },
+    "scene-kitware": {
+        title: "Kitware: Computer Vision Intern",
+        message:
+            "Throughout the summer of 2024, I worked as a research engineering intern for the Computer Vision team. " +
+            "I helped develop cutting-edge object detection systems for customers in the DoD and IC. I researched " +
+            "small object detection and created datasets and validation pipelines to test small object model " +
+            "performance. I also trained a SOTA real-time, transformer-based architecture on COCO (RT-DETR).",
+        href: ""
+    },
+    "scene-griffiss": {
+        title: "Griffiss Institute: Artificial Intelligence Research Intern",
+        message:
+            "Throughout the majority of the summer and fall of 2023, I did a co-op at the Griffiss Institute RI " +
+            "branch where I polished my artificial intelligence skills, developed methods for adversarial attacks, " +
+            "and explored vulnerabilities within foundational models.",
+        href: ""
+    },
+    "scene-northeastern": {
+        title: "Northeastern University: Research Student Internship",
+        message:
+            "Throughout my three-year research program in high school, I got the opportunity to work with my mentor " +
+            "Dr. Sarah Ostadabbas to conduct research in machine learning. Because of the coronavirus outbreak and a " +
+            "limited number of resources available due to that, we ended up deciding to improve on the mask recognition " +
+            "program that I did over the summer by finding and applying new ways to recognize faces and masks.\n\n" +
+            "In the end, I presented our research findings to NYC-based research competitions and I was recognized as " +
+            "a semifinalist in the 2021 Junior Science and Humanities Symposium. I was able to learn a lot of new " +
+            "skills in machine learning and research, which helped me understand and know what area of research that " +
+            "I want to pursue with my skills.",
+        href: ""
+    },
+    "scene-mitbeaverworks": {
+        title: "MIT Beaver*Works Summer Institute: Cog*Works",
+        message:
+            "Throughout the summer of 2020, I got the opportunity to participate in the MIT BWSI Cog*Works program. " +
+            "I learned and applied cognitive science skills to machine learning. I also gained a lot of team " +
+            "experience as we split up into teams to work on a couple of projects that involves recognition of certain " +
+            "items such as songs.",
+        href: ""
+    },
+    "scene-wic": {
+        title: "Women in Computing: Graduate Coordinator",
+        message:
+            "Organized graduate-level technical and networking events to drive community engagement and membership growth" +
+            "\n\nMentored elementary and middle school students in JavaScript and object-oriented programming fundamentals",
+        href: ""
+    },
+    "scene-coms": {
+        title: "Computing Organization for Multicultural Students: Public Relations Chair",
+        message:
+            "Led communication and outreach initiatives, coordinating content across cross-functional teams" +
+            "\n\nTranslated technical and event-related information into clear, user-friendly messaging for diverse audiences",
+        href: ""
+    },
+    "scene-ai": {
+        title: "RIT AI Club: Events Coordinator",
+        message:
+            "Planned and coordinated company visits to expand student exposure to Artificial Intelligence.\n" +
+            "Captured photos and videos of events to help create recap posts and reels to support the club.",
+        href: ""
+    },
+    "scene-sigma": {
+        title: "Sigma Sigma Sigma Sorority: Alumni Relations Chair",
+        message: "Networked with and designed monthly newsletters to send to the alumni.",
+        href: ""
+    },
+    "scene-gso": {
+        title: "Game Symphony Orchestra",
+        message: "-",
+        href: ""
+    },
+    "scene-orderup": {
+        title: "OrderUp",
+        message:
+            "OrderUp is a restaurant simulator game in which users decide the best strategy for improving " +
+            "their restaurant into a five-star " +
+            "establishment through customizing their menu, analyzing their financial metrics, and making critical business decisions. My " +
+            "contributions involve setting up and integrating the Gemini API into the Java-powered user interface.",
+        href: ""
+    },
+    "scene-resopulse": {
+        title: "ResoPulse",
+        message:
+            "ResoPulse is an interactive music visualizer made with Three.js and HTML. It responds to audio amplitude peaks given the " +
+            "song, conducting high-intensity visual effects. I worked on " +
+            "architecting the particle system such that the particles explode " +
+            "out of the object per frequency peak.",
+        href: ""
+    },
+    "scene-underthesea": {
+        title: "XRLive: Under the Sea -- Interactive Water Effects",
+        message:
+            "Prototyped an interactive motion-responsive fabric simulation effect on TouchDesigner using Azure Kinect and body-tracking " +
+            "data. Leveraged TouchDesigner's computer vision and GPU-accelerated tools to build responsive, immersive visuals for live " +
+            "projection. Composed original soundtrack and sound effects on Ableton to enhance the demo's atmosphere and overall " +
+            "immersion.",
+        href: ""
+    },
+    "scene-virtualcloset": {
+        title: "VirtualCloset",
+        message:
+            "VirtualCloset is an AI-powered clothes tracker that helps users organize their wardrobes and receive personalized outfit " +
+            "suggestions by using Google's Gemini API, Pandas, JavaFX, and FastAPI. My main contribution was developing the frontend of " +
+            "the application and connecting it to the backend using JavaFX.",
+        href: ""
+    },
+    "scene-visualdove": {
+        title: "VisualDove",
+        message:
+            "An interactive audio-visual engine developed in Python. Utilizes Librosa for real-time frequency analysis and PyGame to " +
+            "render dynamic, synchronized graphics based on audio input.",
+        href: ""
+    },
+    "scene-virtualkaraoke": {
+        title: "Virtual Karaoke",
+        message:
+            "Engineered functionality for the virtual avatar's thirty morph targets and motion capture using Unreal Engine and RADICAL " +
+            "Motion. Identified two bugs with facial animations in motion capture " +
+            "when retargeting avatars. Modeled the user interface to " +
+            "switch between six avatars by pressing the spacebar.",
+        href: ""
+    },
+    "scene-myergbuddy": {
+        title: "MyErgBuddy",
+        message:
+            "Developed as a team project for WiCHacks '25, MyErgBuddy is an analytical program that uses computer vision to analyze a " +
+            "rower's posture and provide feedback for the rower. We created a pose estimation model to detect and measure landmarks to " +
+            "determine the correct postures. My contributions involve developing functions that measure and compare each of the body " +
+            "landmarks' positions using math. I also worked on developing parts of the OpenCV fancam model such as getting the program " +
+            "to print statements.",
+        href: ""
+    },
+    "scene-brickstein": {
+        title: "BrickStein",
+        message:
+            "BrickStein is a chatbot that assists students with math homework struggles. Created as a team project for BrickHack 11, " +
+            "BrickStein uses a LangChain-powered GPT agent, APIs, and AI-focused Python libraries such as OpenCV and Manim to provide " +
+            "ease-of-use features and visualizations for better guidance. Some of the features that BrickStein can use are taking " +
+            "screenshots with a simple button press and providing suggestions from those, and creating a video incorporating diagrams " +
+            "and audio to elaborate on the context.",
+        href: ""
+    },
+    "scene-securecheckup": {
+        title: "SecureCheckup",
+        message:
+            "A website/database display program that my team coded during HACK.COMS of 2024. The program aims to secure and display " +
+            "hospital data to better represent underrepresented communities. I contributed to the project by finding ways to connect " +
+            "the database back-end to the Python front-end using REST API.",
+        href: ""
+    },
+    "scene-acertainconvexhull": {
+        title: "A Certain Convex Hull",
+        message:
+            "A website and an interactive program that started out as a team project for our Computational Geometry class. The program " +
+            "allows users to input points on the input space and manipulate the accompanying matrix to create a convex hull. It can " +
+            "be used as a pedagogical aid to help professors, students, and teachers understand the functionality of a convex hull, " +
+            "including Jarvis's March algorithm that we used to create the program. Some of my major contributions involve working on " +
+            "parts of the functionality towards creating the program's user input aspect, and developing much of the website surrounding " +
+            "the program.",
+        href: ""
+    },
+    "scene-echoflower": {
+        title: "Undertale Echo Flower Scene Recreation",
+        message: "A 3D replica of the Echo Flower scene in Undertale's Waterfall area",
+        href: ""
+    },
+    "scene-spotiphy": {
+        title: "Spotiphy",
+        message:
+            "A database command system which was my group project for the class \"Principles of Data Management\". I learned a lot " +
+            "about SQL and how to develop a very efficient database system that handles a specific domain. My major contributions to " +
+            "this project were writing and debugging SQL statements for some of our database functions such as the login and the top " +
+            "artists by most plays functions.",
+        href: ""
+    },
+    "scene-fibonacci": {
+        title: "Fibonacci",
+        message:
+            "A watch e-store that was developed as a team project for the class \"Intro to Software Engineering\". I learned how to " +
+            "use programming languages and development programs like JSON, HTML, and Angular while working on the project. My main " +
+            "contributions to this project were working on the front-end web design and developing parts of the back-end such as watch " +
+            "classes and their relationships with the store. In the end, I enjoyed being able to get the opportunity to be familiar with " +
+            "front-end development and how much freedom I got with using visual elements to make our e-store website pop!",
+        href: ""
+    },
+    "scene-areyousocialdistancing": {
+        title: "Are You Social Distancing?",
+        message:
+            "Are You Social Distancing is a mask-recognition program that my group did during the MIT Beaver*Works Summer Institute. " +
+            "It uses CNN models and an ML algorithm to identify faces and masks. My main contributions to this project are creating " +
+            "the mask and no mask datasets as well as working on face/mask identification using a video/webcam using Python libraries.",
+        href: ""
+    },
+    "scene-music1": { title: "Music", message: "-", href: "" },
+    "scene-music2": { title: "Music", message: "-", href: "" }
 };
 
 let dialogHref = "";
@@ -364,6 +543,8 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
         if (!pad) return;
 
         const sceneClass = Array.from(pad.classList).find((cls) => cls.startsWith("scene-"));
+        if (!sceneClass) return;
+
         const allPads = Array.from(padsContainer.querySelectorAll(".pad"));
         const padNumber = allPads.indexOf(pad) + 1;
 
