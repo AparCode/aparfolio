@@ -1,9 +1,15 @@
+// ===================
+// Constants
+// ===================
 const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","scene-contact", "scene-about", "scene-skills", 
     "scene-kitware", "scene-griffiss", "scene-northeastern", "scene-mitbeaverworks", "scene-wic", "scene-coms", "scene-ai", 
     "scene-sigma", "scene-gso", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
     "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2"];
 
+// ===================
+// Scene Definitions
+// ===================
 const scenes = {
     resume: {
         colorClass: "scene-resume",
@@ -161,6 +167,9 @@ const scenes = {
     }
 };
 
+// ===================
+// Helper Functions
+// ===================
 function getAllIndexes(pads) {
     return Array.from({ length: pads.length }, (_, i) => i);
 }
@@ -204,6 +213,9 @@ function applyScene(sceneName, options) {
     applyScenes([sceneName], options);
 }
 
+// =========================
+// Button Event Listeners
+// =========================
 document.addEventListener("DOMContentLoaded", () => {
     const linkedinButton = document.querySelector(".top-controls a[aria-label='LinkedIn']");
     const githubButton = document.querySelector(".top-controls a[aria-label='GitHub']");
@@ -272,3 +284,113 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// ===================
+// Pad Dialog
+// ===================
+const padDialog = document.getElementById("padDialog");
+const padDialogTitle = document.getElementById("padDialogTitle");
+const padDialogMessage = document.getElementById("padDialogMessage");
+const padDialogClose = document.getElementById("padDialogClose");
+const padDialogOpen = document.getElementById("padDialogOpen");
+const padsContainer = document.querySelector(".led-pads");
+
+const sceneDialogMap = {
+    "scene-linkedin": {
+        title: "LinkedIn",
+        message: "Open LinkedIn profile?",
+        href: "https://www.linkedin.com/in/aparnaain/"
+    },
+    "scene-github": {
+        title: "GitHub",
+        message: "Open GitHub profile?",
+        href: "https://github.com/AparCode"
+    },
+    "scene-resume": {
+        title: "Resume",
+        message: "Download resume?",
+        href: "./resume.pdf"
+    },
+    "scene-contact": {
+        title: "Contact",
+        message: "Open email compose?",
+        href:
+            "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
+            "&body=Dear%20Aparnaa%2C%20I%20wanted%20to%20connect%20with%20you."
+    },
+    "scene-about": {
+        title: "About",
+        message:
+            "Hi, I'm Aparnaa! I'm a fifth-year Computer Science B.S./M.S. student at RIT with hands-on experience in software " +
+            "engineering, AI, and computer vision. I've worked on object detection systems using PyTorch and transformer-based " +
+            "models such as RT-DETR at Kitware. I've also conducted AI research on model robustness and limitations in pre-training " +
+            "techniques such as CLIP at the Griffiss Institute.\n\nI'm passionate about building practical, real-world machine " +
+            "learning systems and am currently seeking full-time Software Engineer, Machine Learning Engineer, or AI Engineer roles.",
+        href: ""
+    },
+    "scene-skills": { title: "Skills", message: "Skills section.", href: "" },
+    "scene-kitware": { title: "Kitware", message: "Kitware experience.", href: "" },
+    "scene-griffiss": { title: "Griffiss", message: "Griffiss experience.", href: "" },
+    "scene-northeastern": { title: "Northeastern", message: "Northeastern experience.", href: "" },
+    "scene-mitbeaverworks": { title: "MIT Beaver Works", message: "MIT Beaver Works experience.", href: "" },
+    "scene-wic": { title: "WIC", message: "Women in Computing.", href: "" },
+    "scene-coms": { title: "COMS", message: "COMS experience.", href: "" },
+    "scene-ai": { title: "AI", message: "AI experience.", href: "" },
+    "scene-sigma": { title: "Sigma", message: "Sigma experience.", href: "" },
+    "scene-gso": { title: "GSO", message: "GSO experience.", href: "" },
+    "scene-orderup": { title: "OrderUp", message: "OrderUp project.", href: "" },
+    "scene-resopulse": { title: "ResoPulse", message: "ResoPulse project.", href: "" },
+    "scene-underthesea": { title: "Under the Sea", message: "Under the Sea project.", href: "" },
+    "scene-virtualcloset": { title: "Virtual Closet", message: "Virtual Closet project.", href: "" },
+    "scene-visualdove": { title: "VisualDove", message: "VisualDove project.", href: "" },
+    "scene-virtualkaraoke": { title: "Virtual Karaoke", message: "Virtual Karaoke project.", href: "" },
+    "scene-myergbuddy": { title: "MyErgBuddy", message: "MyErgBuddy project.", href: "" },
+    "scene-brickstein": { title: "Brickstein", message: "Brickstein project.", href: "" },
+    "scene-securecheckup": { title: "SecureCheckup", message: "SecureCheckup project.", href: "" },
+    "scene-acertainconvexhull": { title: "A Certain Convex Hull", message: "A Certain Convex Hull project.", href: "" },
+    "scene-echoflower": { title: "EchoFlower", message: "EchoFlower project.", href: "" },
+    "scene-spotiphy": { title: "Spotiphy", message: "Spotiphy project.", href: "" },
+    "scene-fibonacci": { title: "Fibonacci", message: "Fibonacci project.", href: "" },
+    "scene-areyousocialdistancing": { title: "Are You Social Distancing?", message: "Social distancing project.", href: "" },
+    "scene-music1": { title: "Music", message: "Music section.", href: "" },
+    "scene-music2": { title: "Music", message: "Music section.", href: "" }
+};
+
+let dialogHref = "";
+
+if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDialogOpen && padsContainer) {
+    padsContainer.addEventListener("click", (event) => {
+        const pad = event.target.closest(".pad");
+        if (!pad) return;
+
+        const sceneClass = Array.from(pad.classList).find((cls) => cls.startsWith("scene-"));
+        const allPads = Array.from(padsContainer.querySelectorAll(".pad"));
+        const padNumber = allPads.indexOf(pad) + 1;
+
+        const info = sceneDialogMap[sceneClass] || {
+            title: "Pad " + padNumber,
+            message: sceneClass
+                ? "No dialog metadata yet for " + sceneClass + "."
+                : "This pad has no scene assigned yet.",
+            href: ""
+        };
+
+        dialogHref = info.href || "";
+        padDialogTitle.textContent = info.title;
+        padDialogMessage.textContent = info.message;
+        padDialogOpen.disabled = !dialogHref;
+
+        padDialog.showModal();
+    });
+
+    padDialogClose.addEventListener("click", () => {
+        padDialog.close();
+    });
+
+    padDialogOpen.addEventListener("click", () => {
+        if (dialogHref) {
+            window.open(dialogHref, "_blank", "noopener,noreferrer");
+        }
+        padDialog.close();
+    });
+}

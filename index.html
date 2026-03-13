@@ -13,6 +13,10 @@
     <main>
         <div class="container-frame">
             <div class="container">
+
+                <!-- ============ -->
+                <!-- Top Controls -->
+                <!-- ============ -->
                 <div class="top-controls-wrap">
                     <div class="top-controls">
                         <div class="top-control-item">
@@ -33,12 +37,18 @@
                         </div>
                     </div>
                 </div>
+                <!-- ============= -->
+                <!-- Clear Control -->
+                <!-- ============= -->
                 <div class="clear-control">
                     <div class="top-control-item">
                         <button class="button" aria-label="Clear"></button>
                         <span class="top-label">Clear</span>
                     </div>
                 </div>
+                <!-- ============= -->
+                <!-- Side Controls -->
+                <!-- ============= -->
                 <div class="side-controls">
                     <div class="side-control-row">
                         <button class="button" aria-label="About"></button>
@@ -57,6 +67,9 @@
                         <span class="side-label">Music</span>
                     </div>
                 </div>
+                <!-- ============ -->
+                <!-- LED Pad Grid -->
+                <!-- ============ -->
                 <div class="led-pads">
                     <div class="pad">
                     </div>
@@ -94,6 +107,20 @@
             </div>
         </div>
     </main>
+    <!-- ========== -->
+    <!-- Pad Dialog  -->
+    <!-- ========== -->
+    <dialog id="padDialog" aria-labelledby="padDialogTitle">
+        <h2 id="padDialogTitle">Pad</h2>
+        <p id="padDialogMessage"></p>
+        <div class="dialog-actions">
+            <button id="padDialogClose" type="button">Close</button>
+            <button id="padDialogOpen" type="button">Open</button>
+        </div>
+    </dialog>
+    <!-- ======= -->
+    <!-- Scripts -->
+    <!-- ======= -->
     <script src="./app.js" defer></script>
 </body>
 </html>

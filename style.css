@@ -1,3 +1,6 @@
+/* ====================== */
+/* Reset + Theme Tokens */
+/* ====================== */
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +10,10 @@
     --pad-off-bg: #333333;
     --pad-off-ring: #4f5054;
 }
+
+/* ================== */
+/* Global Page Shell */
+/* ================== */
 
 html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -35,6 +42,10 @@ h1{
     margin: 30px 0;
     font-size: clamp(0.7rem, 1.4vmin, 1.1rem);
 }
+
+/* ===================== */
+/* Layout: Frame + Grid */
+/* ===================== */
 
 .container-frame{
     width: min(94vmin, 1100px);
@@ -78,6 +89,81 @@ h1{
     min-height:0;
 }
 
+/* =========================== */
+/*    Modal and Dialog Popups  */
+/* =========================== */
+
+.modal{
+    max-width: 50ch;
+
+    & > *{
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    margin: 0;
+    background-color: black;
+    color: white;
+    border-color: #cc66ff;
+    border-width: 1px;
+    width: clamp(400px, 90vw, 800px);
+    height: clamp(300px, 90vh, 600px);
+    border-radius: 5%;
+}
+
+#padDialog {
+    padding: 1rem 1.25rem;
+}
+
+#padDialog[open] {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.75rem;
+    animation: padDialogIn 180ms ease;
+}
+
+#padDialogTitle {
+    font-size: 2rem;
+    margin: 0;
+}
+
+#padDialogMessage {
+    margin: 0;
+    white-space: pre-line;
+    align-self: top;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    margin: 0;
+}
+
+@keyframes padDialogIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =================== */
+/* Pad: Base + States */
+/* =================== */
+
 .pad{
     box-sizing: border-box;
     min-width: 0;
@@ -112,7 +198,9 @@ h1{
     filter: brightness(1.05);
 }
 
-/* Scene colors */
+/* ================= */
+/* Pad Scene Colors */
+/* ================= */
 .pad.scene-linkedin {
     background-color: #0077b5;
     box-shadow:
@@ -392,6 +480,10 @@ h1{
     inset 5px 5px 10px #ff9fe1;
 }
 
+/* ================================ */
+/* Pad Clear Animation + A11y Motion */
+/* ================================ */
+
 .pad.is-clearing {
     animation: padFadeOut 160ms ease forwards;
 }
@@ -413,6 +505,10 @@ h1{
         animation: none;
     }
 }
+
+/* ==================== */
+/* Top Controls + Text */
+/* ==================== */
 
 .top-label{
     font-size: clamp(0.58rem, 1.1vmin, 0.82rem);
@@ -458,6 +554,10 @@ h1{
     min-width: 0;
 }
 
+/* ================ */
+/* Button Controls */
+/* ================ */
+
 .button{
     display: inline-block;
     width: clamp(30px, 3.2vmin, 70px);
@@ -477,6 +577,10 @@ h1{
 .button:hover{
     background-color: #6f6f6f;
 }
+
+/* ========================== */
+/* Pad Matrix + Side Controls */
+/* ========================== */
 
 .led-pads{
     grid-area: pads;
