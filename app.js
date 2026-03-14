@@ -531,8 +531,8 @@ const sceneDialogMap = {
             "the mask and no mask datasets as well as working on face/mask identification using a video/webcam using Python libraries.",
         href: ""
     },
-    "scene-music1": { title: "Music", message: "-", href: "" },
-    "scene-music2": { title: "Music", message: "-", href: "" }
+    "scene-music1": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-music2": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" }
 };
 
 let dialogHref = "";
