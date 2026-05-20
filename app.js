@@ -5,7 +5,7 @@ const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","sce
     "scene-kitware", "scene-griffiss", "scene-northeastern", "scene-mitbeaverworks", "scene-wic", "scene-coms", "scene-ai", 
     "scene-sigma", "scene-gso", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
-    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2"];
+    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint"];
 
 const CONTACT_COMPOSE_URL =
     "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
@@ -90,74 +90,84 @@ const scenes = {
         indexes: [15]
     },
 
+    moody: {
+        colorClass: "scene-moody",
+        indexes: [0]
+    },
+
+    frequencyprint: {
+        colorClass: "scene-frequencyprint",
+        indexes: [1]
+    },
+
     orderup: {
         colorClass: "scene-orderup",
-        indexes: [0]
+        indexes: [2]
     },
 
     resopulse: {
         colorClass: "scene-resopulse",
-        indexes: [1]
+        indexes: [3]
     },
 
     underthesea: {
         colorClass: "scene-underthesea",
-        indexes: [2]
+        indexes: [4]
     },
 
     virtualcloset: {
         colorClass: "scene-virtualcloset",
-        indexes: [3]
+        indexes: [5]
     },
 
     visualdove: {
         colorClass: "scene-visualdove",
-        indexes: [4]
+        indexes: [6]
     },
 
     virtualkaraoke: {
         colorClass: "scene-virtualkaraoke",
-        indexes: [5]
+        indexes: [7]
     },
 
     myergbuddy: {
         colorClass: "scene-myergbuddy",
-        indexes: [6]
+        indexes: [8]
     },
 
     brickstein: {
         colorClass: "scene-brickstein",
-        indexes: [7]
+        indexes: [9]
     },
 
     securecheckup: {
         colorClass: "scene-securecheckup",
-        indexes: [8]
+        indexes: [10]
     },
 
     acertainconvexhull: {
         colorClass: "scene-acertainconvexhull",
-        indexes: [9]
+        indexes: [11]
     },
 
     echoflower: {
         colorClass: "scene-echoflower",
-        indexes: [10]
+        indexes: [12]
     },
 
     spotiphy: {
         colorClass: "scene-spotiphy",
-        indexes: [11]
+        indexes: [13]
     },
 
     fibonacci: {
         colorClass: "scene-fibonacci",
-        indexes: [12]
+        indexes: [14]
     },
 
     areyousocialdistancing: {
         colorClass: "scene-areyousocialdistancing",
-        indexes: [13]
+        indexes: [15]
     },
 
     music1: {
@@ -270,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if(projectsButton) {
         projectsButton.addEventListener("click", () => {
-            applyScenes(["orderup", "resopulse", "underthesea", "virtualcloset", "visualdove", "virtualkaraoke", 
+            applyScenes(["moody","frequencyprint", "orderup", "resopulse", "underthesea", "virtualcloset", "visualdove", "virtualkaraoke", 
                 "myergbuddy", "brickstein", "securecheckup", "acertainconvexhull", "echoflower", "spotiphy", 
                 "fibonacci", "areyousocialdistancing"]);
         });

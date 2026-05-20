@@ -183,6 +183,11 @@ dialog {
     transition:
         background-color 0.2s ease,
         box-shadow 0.2s ease;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
 .pad:not(.active):hover{
@@ -334,6 +339,33 @@ dialog {
     5px 5px 10px #717100,
     inset -5px -5px 10px #ffff64,
     inset 5px 5px 10px #ffff9f;
+}
+
+.pad.scene-maara{
+    background-color: #696969;
+    box-shadow:
+    -5px -5px 10px #9c9c9c,
+    5px 5px 10px #1b1b1b,
+    inset -5px -5px 10px #ffffff,
+    inset 5px 5px 10px #000000;
+}
+
+.pad.scene-moody{
+    background-color: #26c7f8;
+    box-shadow:
+    -5px -5px 10px #00303f,
+    5px 5px 10px #004251,
+    inset -5px -5px 10px #43bee3,
+    inset 5px 5px 10px #93e3fb;
+}
+
+.pad.scene-frequencyprint{
+    background-color: #184105;
+    box-shadow:
+    -5px -5px 10px #0f2c01,
+    5px 5px 10px #145614,
+    inset -5px -5px 10px #4cbb17,
+    inset 5px 5px 10px #adfb8a;
 }
 
 .pad.scene-orderup{
