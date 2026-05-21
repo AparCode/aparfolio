@@ -586,9 +586,11 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
     });
 }
 
-// Inject logos into pads when the projects button is toggled
+// Inject logos into pads when the buttons are toggled
+// Projects
 (function () {
     const projectsBtn = document.querySelector('button[aria-label="Projects"]');
+    // if another button is selected the images go away
     if (!projectsBtn) return;
     const proj_targets = [
         { scene: 'areyousocialdistancing', logo: 'images/logo/areyousocialdistancing-logo.png', alt: 'Are You Social Distancing logo' },
