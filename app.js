@@ -585,3 +585,72 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
         padDialog.close();
     });
 }
+
+// Inject logos into pads when the projects button is toggled
+(function () {
+    const projectsBtn = document.querySelector('button[aria-label="Projects"]');
+    if (!projectsBtn) return;
+    const proj_targets = [
+        { scene: 'areyousocialdistancing', logo: 'images/logo/areyousocialdistancing-logo.png', alt: 'Are You Social Distancing logo' },
+        { scene: 'fibonacci', logo: 'images/logo/fibonacci-logo.png', alt: 'Fibonacci logo' },
+        { scene: 'spotiphy', logo: 'images/logo/spotiphy-logo.png', alt: 'Spotiphy logo' },
+        { scene: 'echoflower', logo: 'images/logo/echoflower-logo.png', alt: 'Echo Flower logo' },
+        { scene: 'acertainconvexhull', logo: 'images/logo/acertainconvexhull-logo.png', alt: 'A Certain Convex Hull logo' },
+        { scene: 'securecheckup', logo: 'images/logo/securecheckup-logo.png', alt: 'Secure Check-up logo' },
+        { scene: 'brickstein', logo: 'images/logo/brickstein-logo.png', alt: 'Brickstein logo' },
+        { scene: 'myergbuddy', logo: 'images/logo/myergbuddy-logo.png', alt: 'MyERGBuddy logo' },
+        { scene: 'virtualkaraoke', logo: 'images/logo/virtualkaraoke-logo.png', alt: 'Virtual Karaoke logo' },
+        { scene: 'visualdove', logo: 'images/logo/visualdove-logo.png', alt: 'Visual Dove logo' },
+        { scene: 'virtualcloset', logo: 'images/logo/virtualcloset-logo.png', alt: 'Virtual Closet logo' },
+        { scene: 'underthesea', logo: 'images/logo/underthesea-logo.png', alt: 'Under the Sea logo' },
+        { scene: 'resopulse', logo: 'images/logo/resopulse-logo.png', alt: 'Reso Pulse logo' },
+        { scene: 'orderup', logo: 'images/logo/orderup-logo.png', alt: 'OrderUp logo' },
+        { scene: 'frequencyprint', logo: 'images/logo/frequencyprint-logo.png', alt: 'FrequencyPrint logo' },
+        { scene: 'moody', logo: 'images/logo/moody-logo.png', alt: 'Moody logo' },
+    ];
+
+    function addLogoToPad(pad, meta) {
+        if (!pad || pad.querySelector('.pad-logo')) return;
+        const img = document.createElement('img');
+        img.className = 'pad-logo';
+        img.src = meta.logo;
+        if (meta.srcset) img.srcset = meta.srcset;
+        img.sizes = '(max-width:400px) 60px, 120px';
+        img.alt = meta.alt || '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        pad.appendChild(img);
+    }
+
+    function removeLogoFromPad(pad) {
+        const el = pad && pad.querySelector('.pad-logo');
+        if (el) el.remove();
+    }
+
+    let visible = false;
+    projectsBtn.addEventListener('click', () => {
+        visible = !visible;
+        const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
+
+        proj_targets.forEach((t) => {
+            const sceneKey = t.scene;
+            const sceneObj = scenes[sceneKey];
+            let indexes = [];
+
+            if (sceneObj) {
+                indexes = resolveIndexes(sceneObj, pads);
+            } else {
+                // fallback: find pad by class name
+                const padByClass = document.querySelector(`.led-pads .pad.scene-${sceneKey}`);
+                if (padByClass) indexes = [pads.indexOf(padByClass)];
+            }
+
+            indexes.forEach((i) => {
+                const pad = pads[i];
+                if (!pad) return;
+                if (visible) addLogoToPad(pad, t);
+                else removeLogoFromPad(pad);
+            });
+        });
+    });
+})();
