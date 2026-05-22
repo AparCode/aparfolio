@@ -542,7 +542,12 @@ const sceneDialogMap = {
         href: ""
     },
     "scene-music1": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-music2": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" }
+    "scene-music2": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-moody": { title: "Moody", message: "Moody is an end-to-end machine learning application that analyzes a user's " +
+        "voice recording, detects the underlying emotion, and recommends songs that match the detected mood.", href: "" },
+    "scene-frequencyprint": { title: "FrequencyPrint", message: "FrequencyPrint is a tool that analyzes given audio files and " +
+        "identifies whether the file is deepfake-generated. This can range from full-on generated audio to AI covers" + 
+        "(those that have real instrumentals but are sung by an AI).", href: "" }
 };
 
 let dialogHref = "";
@@ -587,6 +592,69 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
 }
 
 // Inject logos into pads when the buttons are toggled
+// Experience
+(function () {
+    const experienceBtn = document.querySelector('button[aria-label="Experience"]');
+    // if another button is selected the images go away
+    if (!experienceBtn) return;
+    const exp_targets = [
+        { scene: 'kitware', logo: 'images/logo/kitware-logo.png', alt: 'Kitware logo' },
+        { scene: 'griffiss', logo: 'images/logo/griffiss-logo.png', alt: 'Griffiss Institute logo' },
+        { scene: 'northeastern', logo: 'images/logo/northeastern-logo.png', alt: 'Northeastern University logo' },
+        { scene: 'mitbeaverworks', logo: 'images/logo/mit-logo.png', alt: 'MIT BeaverWorks logo' },
+        { scene: 'wic', logo: 'images/logo/wic-logo.png', alt: 'Women in Computing logo' },
+        { scene: 'coms', logo: 'images/logo/coms-logo.png', alt: 'Computing Organization for Multicultural Students logo' },
+        { scene: 'ai', logo: 'images/logo/ai-logo.png', alt: 'RIT AI Club logo' },
+        { scene: 'sigma', logo: 'images/logo/sigma-logo.png', alt: 'Sigma Sigma Sigma logo' },
+        { scene: 'gso', logo: 'images/logo/gso-logo.png', alt: 'Game Symphony Orchestra logo' },
+    ];
+
+    function addLogoToPad(pad, meta) {
+        if (!pad || pad.querySelector('.pad-logo')) return;
+        const img = document.createElement('img');
+        img.className = 'pad-logo';
+        img.src = meta.logo;
+        if (meta.srcset) img.srcset = meta.srcset;
+        img.sizes = '(max-width:800px) 60px, 120px';
+        img.alt = meta.alt || '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        pad.appendChild(img);
+    }
+
+    function removeLogoFromPad(pad) {
+        const el = pad && pad.querySelector('.pad-logo');
+        if (el) el.remove();
+    }
+
+    let visible = false;
+    experienceBtn.addEventListener('click', () => {
+        visible = !visible;
+        const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
+    
+        exp_targets.forEach((t) => {
+            const sceneKey = t.scene;
+            const sceneObj = scenes[sceneKey];
+            let indexes = [];
+
+            if (sceneObj) {
+                indexes = resolveIndexes(sceneObj, pads);
+            } else {
+                // fallback: find pad by class name
+                const padByClass = document.querySelector(`.led-pads .pad.scene-${sceneKey}`);
+                if (padByClass) indexes = [pads.indexOf(padByClass)];
+            }
+
+            indexes.forEach((i) => {
+                const pad = pads[i];
+                if (!pad) return;
+                if (visible) addLogoToPad(pad, t);
+                else removeLogoFromPad(pad);
+            });
+        });
+    });
+})();
+
 // Projects
 (function () {
     const projectsBtn = document.querySelector('button[aria-label="Projects"]');
