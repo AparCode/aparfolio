@@ -325,10 +325,30 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===================
 const padDialog = document.getElementById("padDialog");
 const padDialogTitle = document.getElementById("padDialogTitle");
+const padDialogImage = document.getElementById("padDialogImage");
 const padDialogMessage = document.getElementById("padDialogMessage");
 const padDialogClose = document.getElementById("padDialogClose");
 const padDialogOpen = document.getElementById("padDialogOpen");
 const padsContainer = document.querySelector(".led-pads");
+
+function updatePadDialogImageSize() {
+    padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
+
+    if (!padDialogImage.src || !padDialogImage.naturalWidth || !padDialogImage.naturalHeight) {
+        return;
+    }
+
+    const aspectRatio = padDialogImage.naturalWidth / padDialogImage.naturalHeight;
+
+    if (Math.abs(aspectRatio - 1) < 0.15) {
+        padDialogImage.classList.add("is-square");
+    } else {
+        padDialogImage.classList.add("is-rectangle");
+        padDialogImage.classList.add(aspectRatio > 1 ? "is-landscape" : "is-portrait");
+    }
+}
+
+padDialogImage.addEventListener("load", updatePadDialogImageSize);
 
 const sceneDialogMap = {
     "scene-linkedin": {
@@ -353,6 +373,7 @@ const sceneDialogMap = {
     },
     "scene-about": {
         title: "About",
+        image: "images/headshot.jpg",
         message:
             "Hi, I'm Aparnaa! I'm a fifth-year Computer Science B.S./M.S. student at RIT with hands-on experience in software " +
             "engineering, AI, and computer vision. I've worked on object detection systems using PyTorch and transformer-based " +
@@ -371,6 +392,7 @@ const sceneDialogMap = {
     },
     "scene-kitware": {
         title: "Kitware: Computer Vision Intern",
+        image: "images/logo/kitware-logo.png",
         message:
             "Throughout the summer of 2024, I worked as a research engineering intern for the Computer Vision team. " +
             "I helped develop cutting-edge object detection systems for customers in the DoD and IC. I researched " +
@@ -380,6 +402,7 @@ const sceneDialogMap = {
     },
     "scene-griffiss": {
         title: "Griffiss Institute: Artificial Intelligence Research Intern",
+        image: "images/logo/griffiss-logo.png",
         message:
             "Throughout the majority of the summer and fall of 2023, I did a co-op at the Griffiss Institute RI " +
             "branch where I polished my artificial intelligence skills, developed methods for adversarial attacks, " +
@@ -388,6 +411,7 @@ const sceneDialogMap = {
     },
     "scene-northeastern": {
         title: "Northeastern University: Research Student Internship",
+        image: "images/logo/northeastern-logo.png",
         message:
             "Throughout my three-year research program in high school, I got the opportunity to work with my mentor " +
             "Dr. Sarah Ostadabbas to conduct research in machine learning. Because of the coronavirus outbreak and a " +
@@ -401,6 +425,7 @@ const sceneDialogMap = {
     },
     "scene-mitbeaverworks": {
         title: "MIT Beaver*Works Summer Institute: Cog*Works",
+        image: "images/logo/mit-logo.png",
         message:
             "Throughout the summer of 2020, I got the opportunity to participate in the MIT BWSI Cog*Works program. " +
             "I learned and applied cognitive science skills to machine learning. I also gained a lot of team " +
@@ -410,6 +435,7 @@ const sceneDialogMap = {
     },
     "scene-wic": {
         title: "Women in Computing: Graduate Coordinator",
+        image: "images/logo/wic-logo.png",
         message:
             "Organized graduate-level technical and networking events to drive community engagement and membership growth" +
             "\n\nMentored elementary and middle school students in JavaScript and object-oriented programming fundamentals",
@@ -417,6 +443,7 @@ const sceneDialogMap = {
     },
     "scene-coms": {
         title: "Computing Organization for Multicultural Students: Public Relations Chair",
+        image: "images/logo/coms-logo.png",
         message:
             "Led communication and outreach initiatives, coordinating content across cross-functional teams" +
             "\n\nTranslated technical and event-related information into clear, user-friendly messaging for diverse audiences",
@@ -424,6 +451,7 @@ const sceneDialogMap = {
     },
     "scene-ai": {
         title: "RIT AI Club: Events Coordinator",
+        image: "images/logo/ai-logo.png",
         message:
             "Planned and coordinated company visits to expand student exposure to Artificial Intelligence.\n" +
             "Captured photos and videos of events to help create recap posts and reels to support the club.",
@@ -431,16 +459,19 @@ const sceneDialogMap = {
     },
     "scene-sigma": {
         title: "Sigma Sigma Sigma Sorority: Alumni Relations Chair",
+        image: "images/logo/sigma-logo.png",
         message: "Networked with and designed monthly newsletters to send to the alumni.",
         href: ""
     },
     "scene-gso": {
         title: "Game Symphony Orchestra",
+        image: "images/logo/gso-logo.png",
         message: "-",
         href: ""
     },
     "scene-orderup": {
         title: "OrderUp",
+        image: "images/logo/orderup-logo.png",
         message:
             "OrderUp is a restaurant simulator game in which users decide the best strategy for improving " +
             "their restaurant into a five-star " +
@@ -450,6 +481,7 @@ const sceneDialogMap = {
     },
     "scene-resopulse": {
         title: "ResoPulse",
+        image: "images/logo/resopulse-logo.png",
         message:
             "ResoPulse is an interactive music visualizer made with Three.js and HTML. It responds to audio amplitude peaks given the " +
             "song, conducting high-intensity visual effects. I worked on " +
@@ -459,6 +491,7 @@ const sceneDialogMap = {
     },
     "scene-underthesea": {
         title: "XRLive: Under the Sea -- Interactive Water Effects",
+        image: "images/logo/underthesea-logo.png",
         message:
             "Prototyped an interactive motion-responsive fabric simulation effect on TouchDesigner using Azure Kinect and body-tracking " +
             "data. Leveraged TouchDesigner's computer vision and GPU-accelerated tools to build responsive, immersive visuals for live " +
@@ -468,6 +501,7 @@ const sceneDialogMap = {
     },
     "scene-virtualcloset": {
         title: "VirtualCloset",
+        image: "images/logo/virtualcloset-logo.png",
         message:
             "VirtualCloset is an AI-powered clothes tracker that helps users organize their wardrobes and receive personalized outfit " +
             "suggestions by using Google's Gemini API, Pandas, JavaFX, and FastAPI. My main contribution was developing the frontend of " +
@@ -476,6 +510,7 @@ const sceneDialogMap = {
     },
     "scene-visualdove": {
         title: "VisualDove",
+        image: "images/logo/visualdove-logo.png",
         message:
             "An interactive audio-visual engine developed in Python. Utilizes Librosa for real-time frequency analysis and PyGame to " +
             "render dynamic, synchronized graphics based on audio input.",
@@ -483,6 +518,7 @@ const sceneDialogMap = {
     },
     "scene-virtualkaraoke": {
         title: "Virtual Karaoke",
+        image: "images/logo/virtualkaraoke-logo.png",
         message:
             "Engineered functionality for the virtual avatar's thirty morph targets and motion capture using Unreal Engine and RADICAL " +
             "Motion. Identified two bugs with facial animations in motion capture " +
@@ -492,6 +528,7 @@ const sceneDialogMap = {
     },
     "scene-myergbuddy": {
         title: "MyErgBuddy",
+        image: "images/logo/myergbuddy-logo.png",
         message:
             "Developed as a team project for WiCHacks '25, MyErgBuddy is an analytical program that uses computer vision to analyze a " +
             "rower's posture and provide feedback for the rower. We created a pose estimation model to detect and measure landmarks to " +
@@ -502,6 +539,7 @@ const sceneDialogMap = {
     },
     "scene-brickstein": {
         title: "BrickStein",
+        image: "images/logo/brickstein-logo.png",
         message:
             "BrickStein is a chatbot that assists students with math homework struggles. Created as a team project for BrickHack 11, " +
             "BrickStein uses a LangChain-powered GPT agent, APIs, and AI-focused Python libraries such as OpenCV and Manim to provide " +
@@ -512,6 +550,7 @@ const sceneDialogMap = {
     },
     "scene-securecheckup": {
         title: "SecureCheckup",
+        image: "images/logo/securecheckup-logo.png",
         message:
             "A website/database display program that my team coded during HACK.COMS of 2024. The program aims to secure and display " +
             "hospital data to better represent underrepresented communities. I contributed to the project by finding ways to connect " +
@@ -520,6 +559,7 @@ const sceneDialogMap = {
     },
     "scene-acertainconvexhull": {
         title: "A Certain Convex Hull",
+        image: "images/logo/acertainconvexhull-logo.png",
         message:
             "A website and an interactive program that started out as a team project for our Computational Geometry class. The program " +
             "allows users to input points on the input space and manipulate the accompanying matrix to create a convex hull. It can " +
@@ -531,11 +571,13 @@ const sceneDialogMap = {
     },
     "scene-echoflower": {
         title: "Undertale Echo Flower Scene Recreation",
+        image: "images/logo/echoflower-logo.png",
         message: "A 3D replica of the Echo Flower scene in Undertale's Waterfall area",
         href: ""
     },
     "scene-spotiphy": {
         title: "Spotiphy",
+        image: "images/logo/spotiphy-logo.png",
         message:
             "A database command system which was my group project for the class \"Principles of Data Management\". I learned a lot " +
             "about SQL and how to develop a very efficient database system that handles a specific domain. My major contributions to " +
@@ -545,6 +587,7 @@ const sceneDialogMap = {
     },
     "scene-fibonacci": {
         title: "Fibonacci",
+        image: "images/logo/fibonacci-logo.png",
         message:
             "A watch e-store that was developed as a team project for the class \"Intro to Software Engineering\". I learned how to " +
             "use programming languages and development programs like JSON, HTML, and Angular while working on the project. My main " +
@@ -555,17 +598,18 @@ const sceneDialogMap = {
     },
     "scene-areyousocialdistancing": {
         title: "Are You Social Distancing?",
+        image: "images/logo/areyousocialdistancing-logo.png",
         message:
             "Are You Social Distancing is a mask-recognition program that my group did during the MIT Beaver*Works Summer Institute. " +
             "It uses CNN models and an ML algorithm to identify faces and masks. My main contributions to this project are creating " +
             "the mask and no mask datasets as well as working on face/mask identification using a video/webcam using Python libraries.",
         href: ""
     },
-    "scene-music1": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-music2": { title: "Music", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-moody": { title: "Moody", message: "Moody is an end-to-end machine learning application that analyzes a user's " +
+    "scene-music1": { title: "Music", image: "images/logo/music-logo.png", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-music2": { title: "Music", image: "images/logo/music-logo.png", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-moody": { title: "Moody", image: "images/logo/moody-logo.png", message: "Moody is an end-to-end machine learning application that analyzes a user's " +
         "voice recording, detects the underlying emotion, and recommends songs that match the detected mood.", href: "" },
-    "scene-frequencyprint": { title: "FrequencyPrint", message: "FrequencyPrint is a tool that analyzes given audio files and " +
+    "scene-frequencyprint": { title: "FrequencyPrint", image: "images/logo/frequencyprint-logo.png", message: "FrequencyPrint is a tool that analyzes given audio files and " +
         "identifies whether the file is deepfake-generated. This can range from full-on generated audio to AI covers" + 
         "(those that have real instrumentals but are sung by an AI).", href: "" }
 };
@@ -585,6 +629,7 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
 
         const info = sceneDialogMap[sceneClass] || {
             title: "Pad " + padNumber,
+            image: "",
             message: sceneClass
                 ? "No dialog metadata yet for " + sceneClass + "."
                 : "This pad has no scene assigned yet.",
@@ -593,6 +638,17 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
 
         dialogHref = info.href || "";
         padDialogTitle.textContent = info.title;
+        if (info.image) {
+            padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
+            padDialogImage.src = info.image;
+            padDialogImage.alt = info.title + " image";
+            padDialogImage.sizes = '(max-width:800px) 60px, 120px'
+            padDialogImage.style.display = "block";
+        } else {
+            padDialogImage.removeAttribute("src");
+            padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
+            padDialogImage.style.display = "none";
+        }
         padDialogMessage.textContent = info.message;
         padDialogOpen.disabled = !dialogHref;
 
