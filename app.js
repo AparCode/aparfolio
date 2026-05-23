@@ -200,6 +200,24 @@ function clearPads(pads) {
     });
 }
 
+function clearAllPadLogos() {
+    document.querySelectorAll(".pad-logo").forEach((logo) => {
+        logo.remove();
+    });
+}
+
+let activeLogoGroup = null;
+
+function startLogoGroup(groupName) {
+    if (activeLogoGroup === groupName) {
+        return false;
+    }
+
+    activeLogoGroup = groupName;
+    clearAllPadLogos();
+    return true;
+}
+
 function applyScenes(sceneNames, { clearFirst = true } = {}) {
     const pads = Array.from(document.querySelectorAll(".pad"));
     if (clearFirst) {
@@ -295,6 +313,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (clearButton) {
         clearButton.addEventListener("click", () => {
             const pads = Array.from(document.querySelectorAll(".pad"));
+            activeLogoGroup = null;
+            clearAllPadLogos();
             clearPads(pads);
         });
     }
@@ -592,6 +612,61 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
 }
 
 // Inject logos into pads when the buttons are toggled
+// About
+(function () {
+    const aboutBtn = document.querySelector('button[aria-label="About"]');
+    // if another button is selected the images go away
+    if (!aboutBtn) return;
+    const about_targets = [
+        { scene: 'about', logo: 'images/logo/about-logo.png', alt: 'About logo' },
+        { scene: 'skills', logo: 'images/logo/skills-logo.png', alt: 'Skills logo' },
+    ];  
+
+    function addLogoToPad(pad, meta) {
+        if (!pad || pad.querySelector('.pad-logo')) return;
+        const img = document.createElement('img');
+        img.className = 'pad-logo';
+        img.src = meta.logo;
+
+        if (meta.srcset) img.srcset = meta.srcset;
+        img.sizes = '(max-width:800px) 60px, 120px';
+        img.alt = meta.alt || '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        pad.appendChild(img);
+    }
+
+    function removeLogoFromPad(pad) {
+        const el = pad && pad.querySelector('.pad-logo');
+        if (el) el.remove();
+    }
+
+    aboutBtn.addEventListener('click', () => {
+        if (!startLogoGroup("about")) return;
+        const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
+        about_targets.forEach((t) => {
+            const sceneKey = t.scene;
+            const sceneObj = scenes[sceneKey];
+            let indexes = [];
+
+            if (sceneObj) {
+                indexes = resolveIndexes(sceneObj, pads);
+            }
+            else {
+                // fallback: find pad by class name
+                const padByClass = document.querySelector(`.led-pads .pad.scene-${sceneKey}`);
+                if (padByClass) indexes = [pads.indexOf(padByClass)];
+            }
+
+            indexes.forEach((i) => {
+                const pad = pads[i];
+                if (!pad) return;
+                addLogoToPad(pad, t);
+            });
+        });
+    });
+})();
+
 // Experience
 (function () {
     const experienceBtn = document.querySelector('button[aria-label="Experience"]');
@@ -627,9 +702,8 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
         if (el) el.remove();
     }
 
-    let visible = false;
     experienceBtn.addEventListener('click', () => {
-        visible = !visible;
+        if (!startLogoGroup("experience")) return;
         const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
     
         exp_targets.forEach((t) => {
@@ -648,8 +722,7 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
             indexes.forEach((i) => {
                 const pad = pads[i];
                 if (!pad) return;
-                if (visible) addLogoToPad(pad, t);
-                else removeLogoFromPad(pad);
+                addLogoToPad(pad, t);
             });
         });
     });
@@ -697,9 +770,8 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
         if (el) el.remove();
     }
 
-    let visible = false;
     projectsBtn.addEventListener('click', () => {
-        visible = !visible;
+        if (!startLogoGroup("projects")) return;
         const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
 
         proj_targets.forEach((t) => {
@@ -718,9 +790,62 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
             indexes.forEach((i) => {
                 const pad = pads[i];
                 if (!pad) return;
-                if (visible) addLogoToPad(pad, t);
-                else removeLogoFromPad(pad);
+                addLogoToPad(pad, t);
             });
         });
     });
 })();
+
+// Music
+(function () {
+    const musicBtn = document.querySelector('button[aria-label="Music"]');
+    if (!musicBtn) return;
+    const music_targets = [
+        { scene: 'music1', logo: 'images/logo/music-logo.png', alt: 'Music logo' },
+        { scene: 'music2', logo: 'images/logo/music-logo.png', alt: 'Music logo' },
+    ];
+
+    function addLogoToPad(pad, meta) {
+        if (!pad || pad.querySelector('.pad-logo')) return;
+        const img = document.createElement('img');
+        img.className = 'pad-logo';
+        img.src = meta.logo;
+        if (meta.srcset) img.srcset = meta.srcset;
+        img.sizes = '(max-width:400px) 60px, 120px';
+        img.alt = meta.alt || '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        pad.appendChild(img);
+    }
+
+    function removeLogoFromPad(pad) {
+        const el = pad && pad.querySelector('.pad-logo');
+        if (el) el.remove();
+    }
+
+    musicBtn.addEventListener('click', () => {
+        if (!startLogoGroup("music")) return;
+        const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
+
+        music_targets.forEach((t) => {
+            const sceneKey = t.scene;
+            const sceneObj = scenes[sceneKey];
+            let indexes = [];
+
+            if (sceneObj) {
+                indexes = resolveIndexes(sceneObj, pads);
+            } else {
+                // fallback: find pad by class name
+                const padByClass = document.querySelector(`.led-pads .pad.scene-${sceneKey}`);
+                if (padByClass) indexes = [pads.indexOf(padByClass)];
+            }
+
+            indexes.forEach((i) => {
+                const pad = pads[i];
+                if (!pad) return;
+                addLogoToPad(pad, t);
+            });
+        });
+    });
+})();
+
