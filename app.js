@@ -667,6 +667,20 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogClose && padDial
     });
 }
 
+// Standalone upper-right button behavior (not part of the launchpad)
+const upperActionButton = document.getElementById("upperActionButton");
+if (upperActionButton && padDialog) {
+    upperActionButton.addEventListener("click", () => {
+        // Show the existing pad dialog as a small info modal
+        padDialogTitle.textContent = "Instructions";
+        padDialogImage.style.display = "none";
+        padDialogMessage.textContent = "My portfolio is an entire launchpad inspired by Ableton's Launchpads! " +
+         "To navigate through the launchpad, click on the buttons on the side to switch between sections. For example, the About section is about myself and my skills. ";
+        padDialogOpen.disabled = true;
+        padDialog.showModal();
+    });
+}
+
 // Inject logos into pads when the buttons are toggled
 // About
 (function () {

@@ -38,6 +38,7 @@ main{
     padding: clamp(6px, 1.5vmin, 16px);
 }
 
+
 h1{
     margin: 30px 0;
     font-size: clamp(0.7rem, 1.4vmin, 1.1rem);
@@ -46,6 +47,21 @@ h1{
 /* ===================== */
 /* Layout: Frame + Grid */
 /* ===================== */
+/* Standalone upper-right button (outside launchpad) */
+.upper-right-control {
+    position: fixed;
+    top: 0.8rem;
+    right: 0.8rem;
+    z-index: 20;
+}
+
+.upper-right-button {
+    width: clamp(36px, 3.2vmin, 70px);
+    height: clamp(36px, 3.2vmin, 70px);
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+}
 
 .container-frame{
     width: min(94vmin, 1100px);
@@ -619,6 +635,7 @@ dialog {
     display: grid;
     gap: clamp(4px, 0.8vmin, 10px);
 }
+
 
 .clear-control{
     grid-area: clear;
