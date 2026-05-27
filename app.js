@@ -375,8 +375,8 @@ const sceneDialogMap = {
         title: "About",
         image: "images/headshot.jpg",
         message:
-            "Hi, I'm Aparnaa! I'm a fifth-year Computer Science B.S./M.S. student at RIT with hands-on experience in software " +
-            "engineering, AI, and computer vision. I've worked on object detection systems using PyTorch and transformer-based " +
+            "Hi, I'm Aparnaa! I'm an aspiring software engineer with hands-on experience in artificial" +
+            "intelligence and computer vision. I've worked on object detection systems using PyTorch and transformer-based " +
             "models such as RT-DETR at Kitware. I've also conducted AI research on model robustness and limitations in pre-training " +
             "techniques such as CLIP at the Griffiss Institute.\n\nI'm passionate about building practical, real-world machine " +
             "learning systems and am currently seeking full-time Software Engineer, Machine Learning Engineer, or AI Engineer roles.",
@@ -385,9 +385,12 @@ const sceneDialogMap = {
     "scene-skills": {
         title: "Skills",
         message:
-            "Languages: Python, SQL, Java, JavaScript \n Backend & Infrastructure: FastAPI, REST APIs, Slurm, " +
-            "GitLab, CI/CD, Linux, Perforce \n Data & Real-Time Systems: PyTorch, OpenCV, MediaPipe, Pandas, " +
-            "NumPy \n Tools: Unreal Engine, TouchDesigner, Docker, Git",
+            "Languages: Java, JavaScript, Python, SQL, HTML, CSS \n" +
+            "Backend & Infrastructure: FastAPI, REST APIs, Slurm, GitLab, CI/CD, Linux, Perforce, React, Node.js, " +
+            "JSON, API Testing, Object-Oriented Programming, Product-Facing Web Applications\n" +
+            "Database Systems and Tools: MySQL, Relational Database Fundamentals, Data Processing, Data Validation, Git, Docker, " +
+            "Linux, Slurm\n" +
+            "AI and Machine Learning: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
         href: ""
     },
     "scene-kitware": {

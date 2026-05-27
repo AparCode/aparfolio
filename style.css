@@ -184,6 +184,7 @@ dialog {
     white-space: pre-line;
     align-self: top;
     flex: 1;
+    font-size: clamp(1.4rem, 1.8vmin, 1.9rem);
 }
 
 .dialog-actions {
