@@ -391,9 +391,9 @@ const sceneDialogMap = {
         title: "Skills",
         message:
             "Languages: Java, JavaScript, Python, SQL, HTML, CSS\n" +
-            "Backend & infra: FastAPI, REST APIs, Slurm, GitLab CI/CD, Linux, React, Node.js\n" +
-            "Databases & tools: MySQL, Docker, Git, data processing and validation\n" +
-            "AI & ML: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
+            "Backend & Infrastructure: FastAPI, REST APIs, Slurm, GitLab CI/CD, Linux, React, Node.js\n" +
+            "Databases & Tools: MySQL, Docker, Git, data processing and validation\n" +
+            "AI & Machine Learning: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
         href: ""
     },
     "scene-kitware": {
@@ -649,7 +649,7 @@ if (upperActionButton && padDialog) {
         padDialogTitle.textContent = "Instructions";
         padDialogImage.style.display = "none";
         padDialogMessage.textContent = "This portfolio is a launchpad inspired by Ableton. Use the side buttons to navigate sections — for example, ‘About’ shows my bio and skills. " + 
-        "By pressing a side button, the pad will light up in different colors, each representing a different project, experience, or aspect of my background. Click the lit-up pads to learn more about each one!" +
+        "By pressing a side button, the pad will light up in different colors, each representing a different project, experience, or aspect of my background. Click the lit-up pads to learn more about each one! " +
         "You can also click the top buttons to either view my LinkedIn and GitHub profiles, download my resume, or contact me via email.";
         padDialogOpen.disabled = true;
         padDialog.showModal();
