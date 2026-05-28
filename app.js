@@ -320,6 +320,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Title card logic: show on load then fade to reveal the launchpad
+document.addEventListener('DOMContentLoaded', () => {
+    const titleCard = document.getElementById('titleCard');
+    const main = document.querySelector('main');
+    if (!titleCard) return;
+
+    // Hide main from assistive tech while the title card is shown
+    if (main) main.setAttribute('aria-hidden', 'true');
+
+    // Duration the title card remains visible before starting fade (ms)
+    const visibleDuration = 6000;
+
+    // Start fade after the visible duration
+    setTimeout(() => {
+        titleCard.classList.add('fade-out');
+    }, visibleDuration);
+
+    // Remove the element after animation completes and restore main
+    titleCard.addEventListener('animationend', () => {
+        try { titleCard.remove(); } catch (e) { titleCard.style.display = 'none'; }
+        if (main) main.removeAttribute('aria-hidden');
+    });
+});
+
 // ===================
 // Pad Dialog
 // ===================
@@ -351,46 +375,25 @@ function updatePadDialogImageSize() {
 padDialogImage.addEventListener("load", updatePadDialogImageSize);
 
 const sceneDialogMap = {
-    "scene-linkedin": {
-        title: "LinkedIn",
-        message: "Open LinkedIn profile?",
-        href: "https://www.linkedin.com/in/aparnaain/"
-    },
-    "scene-github": {
-        title: "GitHub",
-        message: "Open GitHub profile?",
-        href: "https://github.com/AparCode"
-    },
-    "scene-resume": {
-        title: "Resume",
-        message: "Download resume?",
-        href: "./resume.pdf"
-    },
-    "scene-contact": {
-        title: "Contact",
-        message: "Compose an email?",
-        href: CONTACT_COMPOSE_URL
-    },
+    "scene-linkedin": { title: "LinkedIn", message: "Open LinkedIn profile?", href: "https://www.linkedin.com/in/aparnaain/" },
+    "scene-github": { title: "GitHub", message: "Open GitHub profile?", href: "https://github.com/AparCode" },
+    "scene-resume": { title: "Resume", message: "Download resume?", href: "./resume.pdf" },
+    "scene-contact": { title: "Contact", message: "Compose an email?", href: CONTACT_COMPOSE_URL },
     "scene-about": {
         title: "About",
         image: "images/headshot.jpg",
         message:
-            "Hi, I'm Aparnaa! I'm an aspiring software engineer with hands-on experience in artificial" +
-            "intelligence and computer vision. I've worked on object detection systems using PyTorch and transformer-based " +
-            "models such as RT-DETR at Kitware. I've also conducted AI research on model robustness and limitations in pre-training " +
-            "techniques such as CLIP at the Griffiss Institute.\n\nI'm passionate about building practical, real-world machine " +
-            "learning systems and am currently seeking full-time Software Engineer, Machine Learning Engineer, or AI Engineer roles.",
+            "Hello! I'm Aparnaa Senthilnathan, an aspiring software engineer specializing in AI and computer vision who just recently graduated from the Rochester Institute of Technology with both a Bachelor's and Master's degree in Computer Science. I have built object detection systems with PyTorch and trained transformer-based models (RT-DETR) at Kitware. I have also researched model robustness and pretraining limitations (e.g., CLIP) at the Griffiss Institute.\n\n" +
+            "I enjoy building practical machine learning systems and am seeking full-time roles in Software Engineering, Machine Learning Engineering, or AI Engineering.",
         href: ""
     },
     "scene-skills": {
         title: "Skills",
         message:
-            "Languages: Java, JavaScript, Python, SQL, HTML, CSS \n" +
-            "Backend & Infrastructure: FastAPI, REST APIs, Slurm, GitLab, CI/CD, Linux, Perforce, React, Node.js, " +
-            "JSON, API Testing, Object-Oriented Programming, Product-Facing Web Applications\n" +
-            "Database Systems and Tools: MySQL, Relational Database Fundamentals, Data Processing, Data Validation, Git, Docker, " +
-            "Linux, Slurm\n" +
-            "AI and Machine Learning: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
+            "Languages: Java, JavaScript, Python, SQL, HTML, CSS\n" +
+            "Backend & infra: FastAPI, REST APIs, Slurm, GitLab CI/CD, Linux, React, Node.js\n" +
+            "Databases & tools: MySQL, Docker, Git, data processing and validation\n" +
+            "AI & ML: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
         href: ""
     },
     "scene-kitware": {
@@ -440,181 +443,149 @@ const sceneDialogMap = {
         title: "Women in Computing: Graduate Coordinator",
         image: "images/logo/wic-logo.png",
         message:
-            "Organized graduate-level technical and networking events to drive community engagement and membership growth" +
-            "\n\nMentored elementary and middle school students in JavaScript and object-oriented programming fundamentals",
+            "Women in Computing is an organization that promotes women and gender minorities in technology. I have been active in Women in Computing since starting college. I organized technical and networking events to boost community engagement and membership, and I mentored elementary and middle school students in JavaScript and OOP fundamentals.",
         href: ""
     },
     "scene-coms": {
         title: "Computing Organization for Multicultural Students: Public Relations Chair",
         image: "images/logo/coms-logo.png",
         message:
-            "Led communication and outreach initiatives, coordinating content across cross-functional teams" +
-            "\n\nTranslated technical and event-related information into clear, user-friendly messaging for diverse audiences",
+            "Over the past two years, I've been involved in the Computing Organization for Multicultural Students. More recently, I was the " +
+            "Public Relations Chair, where I led communication and outreach initiatives, coordinating content across cross-functional teams. " +
+            "In addition, I translated technical and event-related information into clear, user-friendly messaging for diverse audiences.",
         href: ""
     },
     "scene-ai": {
         title: "RIT AI Club: Events Coordinator",
         image: "images/logo/ai-logo.png",
         message:
-            "Planned and coordinated company visits to expand student exposure to Artificial Intelligence.\n" +
-            "Captured photos and videos of events to help create recap posts and reels to support the club.",
+            "For a year, I coordinated events with the Rochester Institute of Technology's Artificial Intelligence Club as the Events Coordinator. I planned and " +
+            "coordinated company visits to expand student exposure to Artificial Intelligence. In addition, I captured photos and videos of events to help create recap posts and reels to support the club.",
         href: ""
     },
     "scene-sigma": {
-        title: "Sigma Sigma Sigma Sorority: Alumni Relations Chair",
+        title: "Sigma Sigma Sigma: Alumni Relations Chair",
         image: "images/logo/sigma-logo.png",
-        message: "Networked with and designed monthly newsletters to send to the alumni.",
+        message: "I volunteered at events like Daffodil Day and park clean-ups. As Alumni Relations Chair, I networked with alumni and designed monthly newsletters.",
         href: ""
     },
     "scene-gso": {
         title: "Game Symphony Orchestra",
         image: "images/logo/gso-logo.png",
-        message: "-",
+        message: "I performed with the Game Symphony Orchestra throughout college, playing piano in every concert and helping bring orchestral arrangements of video-game music to life.",
         href: ""
     },
     "scene-orderup": {
         title: "OrderUp",
         image: "images/logo/orderup-logo.png",
         message:
-            "OrderUp is a restaurant simulator game in which users decide the best strategy for improving " +
-            "their restaurant into a five-star " +
-            "establishment through customizing their menu, analyzing their financial metrics, and making critical business decisions. My " +
-            "contributions involve setting up and integrating the Gemini API into the Java-powered user interface.",
+            "OrderUp is a restaurant simulator created at WiCHacks '26. Players customize menus, analyze financial metrics, and make business decisions to grow their restaurant. I helped integrate the Gemini API into the Java-based UI.",
         href: ""
     },
     "scene-resopulse": {
         title: "ResoPulse",
         image: "images/logo/resopulse-logo.png",
         message:
-            "ResoPulse is an interactive music visualizer made with Three.js and HTML. It responds to audio amplitude peaks given the " +
-            "song, conducting high-intensity visual effects. I worked on " +
-            "architecting the particle system such that the particles explode " +
-            "out of the object per frequency peak.",
+            "ResoPulse is a Three.js music visualizer built for a Computer Animation course. It reacts to audio peaks with high-intensity effects. I architected the particle system so particles explode from objects at frequency peaks.",
         href: ""
     },
     "scene-underthesea": {
-        title: "XRLive: Under the Sea -- Interactive Water Effects",
+        title: "XRLive: Under the Sea",
         image: "images/logo/underthesea-logo.png",
         message:
-            "Prototyped an interactive motion-responsive fabric simulation effect on TouchDesigner using Azure Kinect and body-tracking " +
-            "data. Leveraged TouchDesigner's computer vision and GPU-accelerated tools to build responsive, immersive visuals for live " +
-            "projection. Composed original soundtrack and sound effects on Ableton to enhance the demo's atmosphere and overall " +
-            "immersion.",
+            "For XRLive (Fall 2025) our team built an interactive, motion-responsive fabric simulation in TouchDesigner using Azure Kinect body-tracking. I used TouchDesigner’s CV and GPU tools to produce immersive visuals and composed the soundtrack and sound effects in Ableton.",
         href: ""
     },
     "scene-virtualcloset": {
         title: "VirtualCloset",
         image: "images/logo/virtualcloset-logo.png",
         message:
-            "VirtualCloset is an AI-powered clothes tracker that helps users organize their wardrobes and receive personalized outfit " +
-            "suggestions by using Google's Gemini API, Pandas, JavaFX, and FastAPI. My main contribution was developing the frontend of " +
-            "the application and connecting it to the backend using JavaFX.",
+            "VirtualCloset is an AI-powered wardrobe assistant built at HACK.COMS '25. It suggests outfits using Gemini, Pandas, JavaFX, and FastAPI. I developed the frontend and integrated it with the backend.",
         href: ""
     },
     "scene-visualdove": {
         title: "VisualDove",
         image: "images/logo/visualdove-logo.png",
         message:
-            "An interactive audio-visual engine developed in Python. Utilizes Librosa for real-time frequency analysis and PyGame to " +
-            "render dynamic, synchronized graphics based on audio input.",
+            "For my Global Illumination class final project I built an interactive audio-visual engine in Python. Using Librosa for frequency analysis and PyGame for rendering, the system creates dynamic visuals synchronized to audio.",
         href: ""
     },
     "scene-virtualkaraoke": {
         title: "Virtual Karaoke",
         image: "images/logo/virtualkaraoke-logo.png",
         message:
-            "Engineered functionality for the virtual avatar's thirty morph targets and motion capture using Unreal Engine and RADICAL " +
-            "Motion. Identified two bugs with facial animations in motion capture " +
-            "when retargeting avatars. Modeled the user interface to " +
-            "switch between six avatars by pressing the spacebar.",
+            "At ImagineRIT 2025, my team built a Virtual Karaoke system using real-time motion-capture avatars. I worked on avatar morph targets and motion capture integration with Unreal Engine and RADICAL Motion, fixed facial animation bugs, and modeled the UI to switch between six avatars using the spacebar.",
         href: ""
     },
     "scene-myergbuddy": {
         title: "MyErgBuddy",
         image: "images/logo/myergbuddy-logo.png",
         message:
-            "Developed as a team project for WiCHacks '25, MyErgBuddy is an analytical program that uses computer vision to analyze a " +
-            "rower's posture and provide feedback for the rower. We created a pose estimation model to detect and measure landmarks to " +
-            "determine the correct postures. My contributions involve developing functions that measure and compare each of the body " +
-            "landmarks' positions using math. I also worked on developing parts of the OpenCV fancam model such as getting the program " +
-            "to print statements.",
+            "MyErgBuddy (WiCHacks '25) analyzes a rower's posture using computer vision and provides corrective feedback. We built a pose-estimation model to measure landmarks and evaluate form; I implemented the landmark comparison functions and contributed to the OpenCV components.",
         href: ""
     },
     "scene-brickstein": {
         title: "BrickStein",
         image: "images/logo/brickstein-logo.png",
         message:
-            "BrickStein is a chatbot that assists students with math homework struggles. Created as a team project for BrickHack 11, " +
-            "BrickStein uses a LangChain-powered GPT agent, APIs, and AI-focused Python libraries such as OpenCV and Manim to provide " +
-            "ease-of-use features and visualizations for better guidance. Some of the features that BrickStein can use are taking " +
-            "screenshots with a simple button press and providing suggestions from those, and creating a video incorporating diagrams " +
-            "and audio to elaborate on the context.",
+            "BrickStein is a math-help chatbot built at BrickHack 11. It combines a LangChain GPT agent with tools like OpenCV and Manim to offer visual guidance. Features include screenshot-based suggestions and autogenerated videos with diagrams and audio for explanations.",
         href: ""
     },
     "scene-securecheckup": {
         title: "SecureCheckup",
         image: "images/logo/securecheckup-logo.png",
         message:
-            "A website/database display program that my team coded during HACK.COMS of 2024. The program aims to secure and display " +
-            "hospital data to better represent underrepresented communities. I contributed to the project by finding ways to connect " +
-            "the database back-end to the Python front-end using REST API.",
+            "SecureCheckup (HACK.COMS 2024) is a web app that displays and secures hospital data to better represent underrepresented communities. I worked on connecting the database backend to the Python frontend via REST APIs.",
         href: ""
     },
     "scene-acertainconvexhull": {
         title: "A Certain Convex Hull",
         image: "images/logo/acertainconvexhull-logo.png",
         message:
-            "A website and an interactive program that started out as a team project for our Computational Geometry class. The program " +
-            "allows users to input points on the input space and manipulate the accompanying matrix to create a convex hull. It can " +
-            "be used as a pedagogical aid to help professors, students, and teachers understand the functionality of a convex hull, " +
-            "including Jarvis's March algorithm that we used to create the program. Some of my major contributions involve working on " +
-            "parts of the functionality towards creating the program's user input aspect, and developing much of the website surrounding " +
-            "the program.",
+            "A Certain Convex Hull is an interactive site built for a Computational Geometry class. Users add points and manipulate matrices to form convex hulls (e.g., Jarvis’s March). I implemented user-input features and much of the surrounding website.",
         href: ""
     },
     "scene-echoflower": {
-        title: "Undertale Echo Flower Scene Recreation",
+        title: "Undertale Echo Flower Recreation",
         image: "images/logo/echoflower-logo.png",
-        message: "A 3D replica of the Echo Flower scene in Undertale's Waterfall area",
+        message: "For my Computer Graphics final I recreated the Echo Flower scene from Undertale using WebGPU and JavaScript, building the environment, flowers, grass, and player.",
         href: ""
     },
     "scene-spotiphy": {
         title: "Spotiphy",
         image: "images/logo/spotiphy-logo.png",
         message:
-            "A database command system which was my group project for the class \"Principles of Data Management\". I learned a lot " +
-            "about SQL and how to develop a very efficient database system that handles a specific domain. My major contributions to " +
-            "this project were writing and debugging SQL statements for some of our database functions such as the login and the top " +
-            "artists by most plays functions.",
+            "Spotiphy is a database project for Principles of Data Management where I focused on SQL and efficient database design. I wrote and debugged SQL for features like login and top-artist queries.",
         href: ""
     },
     "scene-fibonacci": {
         title: "Fibonacci",
         image: "images/logo/fibonacci-logo.png",
         message:
-            "A watch e-store that was developed as a team project for the class \"Intro to Software Engineering\". I learned how to " +
-            "use programming languages and development programs like JSON, HTML, and Angular while working on the project. My main " +
-            "contributions to this project were working on the front-end web design and developing parts of the back-end such as watch " +
-            "classes and their relationships with the store. In the end, I enjoyed being able to get the opportunity to be familiar with " +
-            "front-end development and how much freedom I got with using visual elements to make our e-store website pop!",
+            "Fibonacci is a watch e-store built for Intro to Software Engineering. I worked on frontend design and backend models for products and their relationships, gaining hands-on experience with JSON, HTML, and Angular.",
         href: ""
     },
     "scene-areyousocialdistancing": {
         title: "Are You Social Distancing?",
         image: "images/logo/areyousocialdistancing-logo.png",
         message:
-            "Are You Social Distancing is a mask-recognition program that my group did during the MIT Beaver*Works Summer Institute. " +
-            "It uses CNN models and an ML algorithm to identify faces and masks. My main contributions to this project are creating " +
-            "the mask and no mask datasets as well as working on face/mask identification using a video/webcam using Python libraries.",
+            "Are You Social Distancing? is a mask-recognition project from MIT BeaverWorks that uses CNNs to detect faces and masks. I created mask/no-mask datasets and implemented webcam-based identification with Python libraries.",
         href: ""
     },
-    "scene-music1": { title: "Music", image: "images/logo/music-logo.png", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-music2": { title: "Music", image: "images/logo/music-logo.png", message: "Open My Music YouTube Channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-moody": { title: "Moody", image: "images/logo/moody-logo.png", message: "Moody is an end-to-end machine learning application that analyzes a user's " +
-        "voice recording, detects the underlying emotion, and recommends songs that match the detected mood.", href: "" },
-    "scene-frequencyprint": { title: "FrequencyPrint", image: "images/logo/frequencyprint-logo.png", message: "FrequencyPrint is a tool that analyzes given audio files and " +
-        "identifies whether the file is deepfake-generated. This can range from full-on generated audio to AI covers" + 
-        "(those that have real instrumentals but are sung by an AI).", href: "" }
+    "scene-music1": { title: "Music", image: "images/logo/music-logo.png", message: "Open my music YouTube channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-music2": { title: "Music", image: "images/logo/music-logo.png", message: "Open my music YouTube channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-moody": {
+        title: "Moody",
+        image: "images/logo/moody-logo.png",
+        message: "Moody is an end-to-end ML app (course final) that analyzes voice recordings to detect emotion and recommends songs that match the detected mood.",
+        href: ""
+    },
+    "scene-frequencyprint": {
+        title: "FrequencyPrint",
+        image: "images/logo/frequencyprint-logo.png",
+        message: "FrequencyPrint (capstone) analyzes audio to detect deepfakes and AI-generated vocals, distinguishing full synthetic audio and AI covers.",
+        href: ""
+    }
 };
 
 let dialogHref = "";
@@ -677,8 +648,9 @@ if (upperActionButton && padDialog) {
         // Show the existing pad dialog as a small info modal
         padDialogTitle.textContent = "Instructions";
         padDialogImage.style.display = "none";
-        padDialogMessage.textContent = "My portfolio is an entire launchpad inspired by Ableton's Launchpads! " +
-         "To navigate through the launchpad, click on the buttons on the side to switch between sections. For example, the About section is about myself and my skills. ";
+        padDialogMessage.textContent = "This portfolio is a launchpad inspired by Ableton. Use the side buttons to navigate sections — for example, ‘About’ shows my bio and skills. " + 
+        "By pressing a side button, the pad will light up in different colors, each representing a different project, experience, or aspect of my background. Click the lit-up pads to learn more about each one!" +
+        "You can also click the top buttons to either view my LinkedIn and GitHub profiles, download my resume, or contact me via email.";
         padDialogOpen.disabled = true;
         padDialog.showModal();
     });

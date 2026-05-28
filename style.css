@@ -16,7 +16,7 @@
 /* ================== */
 
 html{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter';
     color: white;
     background-color: black;
     text-align: center;
@@ -28,6 +28,48 @@ body{
     margin: 0;
     min-height: 100vh;
     min-height: 100dvh;
+    font-family: "Inter";
+}
+
+/* ====================== */
+/* Title Card (initial)   */
+/* ====================== */
+.title-card {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9));
+    z-index: 60;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.title-card-content h1{
+    font-size: clamp(1.6rem, 6vmin, 4rem);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.title-card .subtitle{
+    opacity: 0.9;
+    font-size: clamp(0.9rem, 2.4vmin, 1.2rem);
+}
+
+.title-card.fade-out{
+    animation: titleFadeOut 700ms ease forwards;
+}
+
+@keyframes titleFadeOut{
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.98); visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .title-card, .title-card.fade-out { transition: none; animation: none; }
 }
 
 main{
