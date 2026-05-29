@@ -37,47 +37,47 @@ const scenes = {
 
     about: {
         colorClass: "scene-about",
-        indexes: [0, 1, 2, 3, 4, 5, 6, 8, 9, 12]
+        indexes: [5]
     },
 
     skills: {
         colorClass: "scene-skills",
-        indexes: [7, 10, 11, 13, 14, 15]
+        indexes: [10]
     },
 
     kitware: {
         colorClass: "scene-kitware",
-        indexes: [0, 1]
+        indexes: [1]
     },
 
     griffiss: {
         colorClass: "scene-griffiss",
-        indexes: [4, 5]
+        indexes: [5]
     },
 
     northeastern: {
         colorClass: "scene-northeastern",
-        indexes: [8, 9]
+        indexes: [9]
     },
 
     mitbeaverworks: {
         colorClass: "scene-mitbeaverworks",
-        indexes: [12, 13]
+        indexes: [13]
     },
 
     wic: {
         colorClass: "scene-wic",
-        indexes: [2, 3]
+        indexes: [2]
     },
 
     coms: {
         colorClass: "scene-coms",
-        indexes: [6, 7]
+        indexes: [6]
     },
 
     ai: {
         colorClass: "scene-ai",
-        indexes: [10, 11]
+        indexes: [10]
     },
 
     sigma: {
@@ -172,12 +172,12 @@ const scenes = {
 
     music1: {
         colorClass: "scene-music1",
-        indexes: [5,6,9,10]
+        indexes: [0]
     },
 
     music2: {
         colorClass: "scene-music2",
-        indexes: [0, 1, 2, 3, 4, 7, 8, 11, 12, 13, 14, 15]
+        indexes: []
     }
 };
 
@@ -383,7 +383,7 @@ const sceneDialogMap = {
         title: "About",
         image: "images/headshot.jpg",
         message:
-            "Hello! I'm Aparnaa Senthilnathan, an aspiring software engineer specializing in AI and computer vision who just recently graduated from the Rochester Institute of Technology with both a Bachelor's and Master's degree in Computer Science. I have built object detection systems with PyTorch and trained transformer-based models (RT-DETR) at Kitware. I have also researched model robustness and pretraining limitations (e.g., CLIP) at the Griffiss Institute.\n\n" +
+            "Hello! I'm Aparnaa Senthilnathan, an aspiring software engineer specializing in AI and computer vision. I recently graduated from the Rochester Institute of Technology with both a Bachelor's and Master's degree in Computer Science. I have built object detection systems with PyTorch and trained transformer-based models (RT-DETR) at Kitware. I have also researched model robustness and pretraining limitations (e.g., CLIP) at the Griffiss Institute.\n\n" +
             "I enjoy building practical machine learning systems and am seeking full-time roles in Software Engineering, Machine Learning Engineering, or AI Engineering.",
         href: ""
     },
