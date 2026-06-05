@@ -3,7 +3,7 @@
 // ===================
 const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","scene-contact", "scene-about", "scene-skills", 
     "scene-kitware", "scene-griffiss", "scene-northeastern", "scene-mitbeaverworks", "scene-wic", "scene-coms", "scene-ai", 
-    "scene-sigma", "scene-gso", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
+    "scene-sigma", "scene-gso", "scene-csh", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
     "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint"];
 
@@ -88,6 +88,11 @@ const scenes = {
     gso: {
         colorClass: "scene-gso",
         indexes: [15]
+    },
+
+    csh: {
+        colorClass: "scene-csh",
+        indexes: [3]
     },
 
     moody: {
@@ -292,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(experienceButton) {
         experienceButton.addEventListener("click", () => {
-            applyScenes(["kitware", "griffiss", "northeastern", "mitbeaverworks", "wic", "coms", "ai", "sigma", "gso"]);
+            applyScenes(["kitware", "griffiss", "northeastern", "mitbeaverworks", "wic", "coms", "ai", "sigma", "gso", "csh"]);
         });
     }
     
@@ -473,6 +478,12 @@ const sceneDialogMap = {
         title: "Game Symphony Orchestra",
         image: "images/logo/gso-logo.png",
         message: "I performed with the Game Symphony Orchestra throughout college, playing piano in every concert and helping bring orchestral arrangements of video-game music to life.",
+        href: ""
+    },
+    "scene-csh": {
+        title: "Computer Science House",
+        image: "images/logo/csh-logo.png",
+        message: "I was an active member of the Computer Science House (Special Interest House) for my first two years of college. I helped make the organization's very first yearbook as a member of Yearbook Committee, and I've participated in various events that showcase my versatility such as Music Jam.",
         href: ""
     },
     "scene-orderup": {
@@ -727,6 +738,7 @@ if (upperActionButton && padDialog) {
         { scene: 'ai', logo: 'images/logo/ai-logo.png', alt: 'RIT AI Club logo' },
         { scene: 'sigma', logo: 'images/logo/sigma-logo.png', alt: 'Sigma Sigma Sigma logo' },
         { scene: 'gso', logo: 'images/logo/gso-logo.png', alt: 'Game Symphony Orchestra logo' },
+        { scene: 'csh', logo: 'images/logo/csh-logo.png', alt: 'Computer Science House logo' },
     ];
 
     function addLogoToPad(pad, meta) {

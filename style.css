@@ -451,6 +451,15 @@ dialog {
     inset 5px 5px 10px #ffff9f;
 }
 
+.pad.scene-csh{
+    background-color: #ff0080;
+    box-shadow:
+    -5px -5px 10px #b30059,
+    5px 5px 10px #800040,
+    inset -5px -5px 10px #ff4da6,
+    inset 5px 5px 10px #ffd6ec;
+}
+
 .pad.scene-maara{
     background-color: #696969;
     box-shadow:
