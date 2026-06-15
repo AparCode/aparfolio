@@ -397,7 +397,7 @@ const sceneDialogMap = {
         message:
             "Languages: Java, JavaScript, Python, SQL, HTML, CSS\n" +
             "Backend & Infrastructure: FastAPI, REST APIs, Slurm, GitLab CI/CD, Linux, React, Node.js\n" +
-            "Databases & Tools: MySQL, Docker, Git, data processing and validation\n" +
+            "Databases & Tools: MySQL, Docker, Git, Data Processing and Validation\n" +
             "AI & Machine Learning: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
         href: ""
     },
