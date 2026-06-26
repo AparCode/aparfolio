@@ -40,7 +40,7 @@ const scenes = {
         indexes: [5]
     },
 
-    Skills Used: {
+    skills: {
         colorClass: "scene-skills",
         indexes: [10]
     },
