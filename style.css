@@ -324,6 +324,55 @@ dialog {
     filter: brightness(1.05);
 }
 
+.pad.active[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+    border: 1px solid #666;
+}
+
+.pad.active:hover[data-tooltip]::after {
+    opacity: 1;
+}
+
+.pad.active[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.pad.active:hover[data-tooltip]::before {
+    opacity: 1;
+}
+
+.pad.active {
+    position: relative;
+}
+
 /* ================= */
 /* Pad Scene Colors */
 /* ================= */

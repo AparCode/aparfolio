@@ -202,6 +202,7 @@ function resolveIndexes(scene, pads) {
 function clearPads(pads) {
     pads.forEach((pad) => {
         pad.classList.remove("active", ...PAD_COLOR_CLASSES);
+        pad.removeAttribute("data-tooltip");
     });
 }
 
@@ -241,6 +242,10 @@ function applyScenes(sceneNames, { clearFirst = true } = {}) {
             pad.classList.add("active");
             if (scene.colorClass) {
                 pad.classList.add(scene.colorClass);
+            }
+            const dialogInfo = sceneDialogMap[scene.colorClass];
+            if (dialogInfo && dialogInfo.title) {
+                pad.setAttribute("data-tooltip", dialogInfo.title);
             }
         });
     });
