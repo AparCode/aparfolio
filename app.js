@@ -401,10 +401,11 @@ const sceneDialogMap = {
     "scene-skills": {
         title: "Skills",
         message:
-            "Languages: Java, JavaScript, Python, SQL, HTML, CSS\n" +
-            "Backend & Infrastructure: FastAPI, REST APIs, Slurm, GitLab CI/CD, Linux, React, Node.js\n" +
-            "Databases & Tools: MySQL, Docker, Git, Data Processing and Validation\n" +
-            "AI & Machine Learning: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, RAG, ChromaDB, Qdrant",
+            "Languages: Python, Java, JavaScript/TypeScript, SQL, HTML, CSS\n" +
+            "Web & App Development: FastAPI, React, Node.js, JavaFX, Streamlit, REST API design\n" +
+            "AI/ML & Data: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, pandas, NumPy, model evaluation\n" +
+            "Graphics, Audio & Interactive Systems: Three.js, WebGL, WebGPU, TouchDesigner, Unreal Engine, Ableton\n" +
+            "Tools & Platforms: Git/GitHub, Docker, Linux, MySQL/SQLite, Maven, CI/CD workflows",
         href: ""
     },
     "scene-kitware": {
