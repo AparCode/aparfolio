@@ -402,8 +402,8 @@ const sceneDialogMap = {
         title: "Skills",
         message:
             "Languages: Python, Java, JavaScript/TypeScript, SQL, HTML, CSS\n" +
-            "Web & App Development: FastAPI, React, Node.js, JavaFX, Streamlit, REST API design\n" +
-            "AI/ML & Data: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, pandas, NumPy, model evaluation\n" +
+            "Web & App Development: FastAPI, React, Node.js, JavaFX, Streamlit, REST API\n" +
+            "AI/ML & Data: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, pandas, NumPy, Model Evaluation\n" +
             "Graphics, Audio & Interactive Systems: Three.js, WebGL, WebGPU, TouchDesigner, Unreal Engine, Ableton\n" +
             "Tools & Platforms: Git/GitHub, Docker, Linux, MySQL/SQLite, Maven, CI/CD workflows",
         href: ""
