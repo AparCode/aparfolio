@@ -855,6 +855,51 @@ dialog {
     width: 100%;
 }
 
+/* Scroll wrapper and buttons for larger pad sets */
+.pads-area{
+    position: relative;
+    grid-area: pads;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+}
+
+.pads-scroll-wrapper{
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+.pads-scroll-btn{
+    width: clamp(36px, 3.2vmin, 48px);
+    height: clamp(36px, 3.2vmin, 48px);
+    display: grid;
+    place-items: center;
+    opacity: 0.95;
+}
+
+.pads-scroll-btn.up{ }
+
+.pads-scroll-btn.down{ }
+
+/* When arrows are placed in the side controls, lay them out vertically */
+.side-control-row.arrows-row .side-control-arrows{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vmin, 10px);
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.side-control-row.arrows-row .pads-scroll-btn{
+    position: static;
+    transform: none;
+    left: auto;
+}
+
 .side-controls{
     grid-area: side;
     display: grid;
@@ -865,6 +910,33 @@ dialog {
     height: 100%;
     justify-self: stretch;
     align-items: stretch;
+    position: relative;
+}
+
+.side-control-row.arrows-row{
+    position: absolute; /* remove from normal flow so it doesn't change grid sizing */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* allow clicks to pass through except for the buttons */
+    z-index: 20;
+}
+
+.side-control-row.arrows-row .side-control-arrows{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vmin, 10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.side-control-row.arrows-row .side-label { display: none; }
+
+.side-control-row.arrows-row .pads-scroll-btn{
+    pointer-events: auto; /* buttons remain interactive */
 }
 
 .side-control-row{

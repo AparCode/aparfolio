@@ -328,6 +328,25 @@ document.addEventListener("DOMContentLoaded", () => {
             clearPads(pads);
         });
     }
+
+    // Pad scroll buttons (if present)
+    const padsScrollWrapper = document.querySelector('.pads-scroll-wrapper');
+    const padsScrollUp = document.querySelector('.pads-scroll-btn.up');
+    const padsScrollDown = document.querySelector('.pads-scroll-btn.down');
+
+    if (padsScrollUp && padsScrollWrapper) {
+        padsScrollUp.addEventListener('click', () => {
+            const scrollAmount = Math.max(padsScrollWrapper.clientHeight * 0.5, 120);
+            padsScrollWrapper.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    if (padsScrollDown && padsScrollWrapper) {
+        padsScrollDown.addEventListener('click', () => {
+            const scrollAmount = Math.max(padsScrollWrapper.clientHeight * 0.5, 120);
+            padsScrollWrapper.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+        });
+    }
 });
 
 // Title card logic: show on load then fade to reveal the launchpad
