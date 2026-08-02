@@ -359,12 +359,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===================
 const padDialog = document.getElementById("padDialog");
 const padDialogTitle = document.getElementById("padDialogTitle");
+const padDialogMedia = document.getElementById("padDialogMedia");
 const padDialogImage = document.getElementById("padDialogImage");
+const padDialogVideo = document.getElementById("padDialogVideo");
+const padDialogMediaControls = document.getElementById("padDialogMediaControls");
+const padDialogPrevMedia = document.getElementById("padDialogPrevMedia");
+const padDialogNextMedia = document.getElementById("padDialogNextMedia");
+const padDialogMediaCounter = document.getElementById("padDialogMediaCounter");
 const padDialogMessage = document.getElementById("padDialogMessage");
 const padDialogSkills = document.getElementById("padDialogSkills");
 const padDialogClose = document.getElementById("padDialogClose");
 const padDialogOpen = document.getElementById("padDialogOpen");
 const padsContainer = document.querySelector(".led-pads");
+
+let dialogMediaItems = [];
+let dialogMediaIndex = 0;
 
 function updatePadDialogImageSize() {
     padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
@@ -383,7 +392,103 @@ function updatePadDialogImageSize() {
     }
 }
 
-padDialogImage.addEventListener("load", updatePadDialogImageSize);
+if (padDialogImage) {
+    padDialogImage.addEventListener("load", updatePadDialogImageSize);
+}
+
+function updatePadDialogMediaControls() {
+    const hasMultiple = dialogMediaItems.length > 1;
+
+    if (padDialogMediaControls) {
+        padDialogMediaControls.hidden = !hasMultiple;
+    }
+
+    if (padDialogPrevMedia) {
+        padDialogPrevMedia.disabled = !hasMultiple || dialogMediaIndex === 0;
+    }
+
+    if (padDialogNextMedia) {
+        padDialogNextMedia.disabled = !hasMultiple || dialogMediaIndex >= dialogMediaItems.length - 1;
+    }
+
+    if (padDialogMediaCounter) {
+        padDialogMediaCounter.textContent = hasMultiple ? `${dialogMediaIndex + 1} / ${dialogMediaItems.length}` : "1 / 1";
+    }
+}
+
+function updatePadDialogMediaDisplay() {
+    const item = dialogMediaItems[dialogMediaIndex];
+    const hasMedia = Boolean(item);
+
+    if (padDialogImage) {
+        if (item && item.type === "image") {
+            padDialogImage.hidden = false;
+            padDialogImage.src = item.src;
+            padDialogImage.alt = item.alt || "Pad Image";
+            padDialogImage.sizes = '(max-width:800px) 60px, 120px';
+        } else {
+            padDialogImage.hidden = true;
+            padDialogImage.removeAttribute("src");
+            padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
+        }
+    }
+
+    if (padDialogVideo) {
+        if (item && item.type === "video") {
+            padDialogVideo.hidden = false;
+            padDialogVideo.src = item.src;
+            padDialogVideo.poster = item.poster || "";
+            padDialogVideo.load();
+        } else {
+            padDialogVideo.hidden = true;
+            padDialogVideo.pause();
+            padDialogVideo.removeAttribute("src");
+            padDialogVideo.removeAttribute("poster");
+            padDialogVideo.load();
+        }
+    }
+
+    if (padDialogMedia) {
+        padDialogMedia.hidden = !hasMedia;
+    }
+
+    updatePadDialogMediaControls();
+}
+
+function renderPadDialogMedia(info) {
+    dialogMediaItems = [];
+    dialogMediaIndex = 0;
+
+    if (Array.isArray(info.media) && info.media.length) {
+        dialogMediaItems = info.media.map((item) => ({
+            type: item.type || (item.video ? "video" : "image"),
+            src: item.src || item.image || item.video || "",
+            alt: item.alt || info.title + " image",
+            poster: item.poster || ""
+        }));
+    } else if (info.media) {
+        dialogMediaItems = [{
+            type: info.media.type || "image",
+            src: info.media.src || info.media.image || info.media.video || "",
+            alt: info.media.alt || info.title + " image",
+            poster: info.media.poster || ""
+        }];
+    } else if (info.video) {
+        dialogMediaItems = [{ type: "video", src: info.video, poster: info.poster || "", alt: info.title + " video" }];
+    } else if (info.image) {
+        dialogMediaItems = [{ type: "image", src: info.image, alt: info.title + " image" }];
+    }
+
+    updatePadDialogMediaDisplay();
+}
+
+function showPadDialogMedia(index) {
+    if (!dialogMediaItems.length) return;
+
+    const nextIndex = Math.max(0, Math.min(index, dialogMediaItems.length - 1));
+    dialogMediaIndex = nextIndex;
+    updatePadDialogMediaDisplay();
+}
 
 const sceneDialogMap = {
     "scene-linkedin": { title: "LinkedIn", message: "Open LinkedIn profile?", href: "https://www.linkedin.com/in/aparnaain/" },
@@ -394,8 +499,8 @@ const sceneDialogMap = {
         title: "About",
         image: "images/headshot.jpg",
         message:
-            "Hello! I'm Aparnaa Senthilnathan, an aspiring software engineer specializing in AI and computer vision. I recently graduated from the Rochester Institute of Technology with both a Bachelor's and Master's degree in Computer Science. I have built object detection systems with PyTorch and trained transformer-based models (RT-DETR) at Kitware. I have also researched model robustness and pretraining limitations (e.g., CLIP) at the Griffiss Institute.\n\n" +
-            "I enjoy building practical machine learning systems and am seeking full-time roles in Software Engineering, Machine Learning Engineering, or AI Engineering.",
+            "Hello! I'm Aparnaa, a Computer Science BS/MS graduate from the Rochester Institute of Technology, passionate about using creative technology and artificial intelligence to build projects that feel both technical and expressive.\n\n" +
+            "Outside of software, I'm enthusiastic about music and have been involved in music production. My work in music can be found on my YouTube channel Illumidove.",
         href: ""
     },
     "scene-skills": {
@@ -495,7 +600,10 @@ const sceneDialogMap = {
     },
     "scene-orderup": {
         title: "OrderUp",
-        image: "images/logo/orderup-logo.png",
+        media: [
+            { type: "image", src: "images/logo/orderup-logo.png", alt: "OrderUp logo" },
+            { type: "image", src: "images/orderup_demo.jpg", alt: "OrderUp demo" }
+        ],
         message:
             "OrderUp is a restaurant simulator created at WiCHacks '26. Players customize menus, analyze financial metrics, and make business decisions to grow their restaurant. I helped integrate the Gemini API into the Java-based UI.",
         skillsSentence: "Skills Used: Java, JavaFX, Maven, Google Gemini API, XML, JSON",
@@ -511,7 +619,10 @@ const sceneDialogMap = {
     },
     "scene-underthesea": {
         title: "XRLive: Under the Sea",
-        image: "images/logo/underthesea-logo.png",
+        media: [
+            { type: "image", src: "images/logo/underthesea-logo.png", alt: "Under the Sea logo" },
+            { type: "image", src: "images/frameless.gif", alt: "Under the Sea frameless GIF" }
+        ],
         message:
             "For XRLive (Fall 2025) our team built an interactive, motion-responsive fabric simulation in TouchDesigner using Azure Kinect body-tracking. I used TouchDesigner’s CV and GPU tools to produce immersive visuals and composed the soundtrack and sound effects in Ableton.",
         skillsSentence: "Skills Used: TouchDesigner, MediaPipe, Azure Kinect, Ableton",
@@ -604,8 +715,21 @@ const sceneDialogMap = {
         skillsSentence: "Skills Used: Python, OpenCV, NumPy, Pyaudio, PyTorch, Noggin",
         href: "https://github.com/AparCode/mask_identifier"
     },
-    "scene-music1": { title: "Music", image: "images/logo/music-logo.png", message: "Open my music YouTube channel?", href: "https://www.youtube.com/@illumidove" },
-    "scene-music2": { title: "Music", image: "images/logo/music-logo.png", message: "Open my music YouTube channel?", href: "https://www.youtube.com/@illumidove" },
+    "scene-music1": {
+        title: "Music",
+        image: "images/logo/music-logo.png",
+        message: "Open my music YouTube channel?",
+        href: "https://www.youtube.com/@illumidove"
+    },
+    "scene-music2": {
+        title: "Music",
+        media: [
+            { type: "image", src: "images/logo/music-logo.png", alt: "Music logo" },
+            { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", poster: "images/logo/music-logo.png" }
+        ],
+        message: "Open my music YouTube channel?",
+        href: "https://www.youtube.com/@illumidove"
+    },
     "scene-moody": {
         title: "Moody",
         image: "images/logo/moody-logo.png",
@@ -615,7 +739,10 @@ const sceneDialogMap = {
     },
     "scene-frequencyprint": {
         title: "FrequencyPrint",
-        image: "images/logo/frequencyprint-logo.png",
+        media: [
+            { type: "image", src: "images/logo/frequencyprint-logo.png", alt: "FrequencyPrint logo" },
+            { type: "image", src: "images/frequencyprint_demo.png", alt: "FrequencyPrint demo" }
+        ],
         message: "FrequencyPrint (capstone) analyzes audio to detect deepfakes and AI-generated vocals, distinguishing full synthetic audio and AI covers.",
         skillsSentence: "Skills Used: Python, FastAPI, PyTorch, Numpy, Pandas, HTML, CSS, JavaScript",
         href: "https://github.com/AparCode/frequency-print"
@@ -646,17 +773,7 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDia
 
         dialogHref = info.href || "";
         padDialogTitle.textContent = info.title;
-        if (info.image) {
-            padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
-            padDialogImage.src = info.image;
-            padDialogImage.alt = info.title + " image";
-            padDialogImage.sizes = '(max-width:800px) 60px, 120px'
-            padDialogImage.style.display = "block";
-        } else {
-            padDialogImage.removeAttribute("src");
-            padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
-            padDialogImage.style.display = "none";
-        }
+        renderPadDialogMedia(info);
         padDialogMessage.textContent = info.message;
         padDialogSkills.textContent = info.skillsSentence || "";
         padDialogSkills.hidden = !info.skillsSentence;
@@ -664,6 +781,18 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDia
 
         padDialog.showModal();
     });
+
+    if (padDialogPrevMedia) {
+        padDialogPrevMedia.addEventListener("click", () => {
+            showPadDialogMedia(dialogMediaIndex - 1);
+        });
+    }
+
+    if (padDialogNextMedia) {
+        padDialogNextMedia.addEventListener("click", () => {
+            showPadDialogMedia(dialogMediaIndex + 1);
+        });
+    }
 
     padDialogClose.addEventListener("click", () => {
         padDialog.close();
@@ -683,7 +812,7 @@ if (upperActionButton && padDialog) {
     upperActionButton.addEventListener("click", () => {
         // Show the existing pad dialog as a small info modal
         padDialogTitle.textContent = "Instructions";
-        padDialogImage.style.display = "none";
+        renderPadDialogMedia({});
         padDialogMessage.textContent = "This portfolio is a launchpad inspired by Ableton. Use the side buttons to navigate sections — for example, ‘About’ shows my bio and skills. " + 
         "By pressing a side button, the pad will light up in different colors, each representing a different project, experience, or aspect of my background. Click the lit-up pads to learn more about each one! " +
         "You can also click the top buttons to either view my LinkedIn and GitHub profiles, download my resume, or contact me via email.";

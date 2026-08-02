@@ -195,13 +195,62 @@ dialog {
     margin: 0;
 }
 
-#padDialogImage {
-    width: clamp(200px, 10vmin, 400px);
-    height: clamp(208.6px, 10vmin, 413.2px);
+#padDialogMedia {
+    display: grid;
+    place-items: center;
+    min-height: clamp(140px, 24vh, 240px);
+}
+
+.pad-dialog-media-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: -0.1rem;
+    font-size: 0.95rem;
+}
+
+.pad-dialog-media-controls button {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #828181;
+    border-radius: 999px;
+    background-color: #111;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+.pad-dialog-media-controls button:hover:not(:disabled) {
+    background-color: #262626;
+}
+
+.pad-dialog-media-controls button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#padDialogImage,
+#padDialogVideo {
     border-radius: 8px;
     justify-self: center;
     align-self: center;
     object-fit: contain;
+}
+
+#padDialogImage {
+    width: clamp(200px, 10vmin, 400px);
+    height: clamp(208.6px, 10vmin, 413.2px);
+}
+
+#padDialogVideo {
+    width: min(100%, 480px);
+    max-height: 32vh;
+    background-color: #000;
+}
+
+#padDialogImage[hidden],
+#padDialogVideo[hidden] {
+    display: none !important;
 }
 
 #padDialogImage.is-square {

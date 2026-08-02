@@ -151,7 +151,15 @@
     <!-- ========== -->
     <dialog id="padDialog" aria-labelledby="padDialogTitle">
         <h2 id="padDialogTitle">Pad</h2>
-        <img id="padDialogImage" src="" alt="Pad Image" style="display: none;" sizes="(max-width:800px) 60px, 120px">
+        <div id="padDialogMedia" class="pad-dialog-media">
+            <img id="padDialogImage" src="" alt="Pad Image" hidden sizes="(max-width:800px) 60px, 120px">
+            <video id="padDialogVideo" controls playsinline preload="metadata" hidden></video>
+        </div>
+        <div id="padDialogMediaControls" class="pad-dialog-media-controls" hidden>
+            <button id="padDialogPrevMedia" type="button">← Prev</button>
+            <span id="padDialogMediaCounter">1 / 1</span>
+            <button id="padDialogNextMedia" type="button">Next →</button>
+        </div>
         <p id="padDialogMessage"></p>
         <p id="padDialogSkills"></p>
         <div class="dialog-actions">
