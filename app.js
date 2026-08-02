@@ -801,6 +801,74 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDia
         padDialog.showModal();
     });
 
+    // Floating tooltip element (appended to body) to avoid overflow clipping
+    let floatingTooltip = null;
+
+    function ensureFloatingTooltip() {
+        if (!floatingTooltip) {
+            floatingTooltip = document.createElement('div');
+            floatingTooltip.className = 'floating-tooltip';
+            floatingTooltip.style.opacity = '0';
+            floatingTooltip.style.transition = 'opacity 160ms ease, transform 160ms ease';
+            document.body.appendChild(floatingTooltip);
+        }
+        return floatingTooltip;
+    }
+
+    function showFloatingTooltipForPad(pad) {
+        const text = pad.getAttribute('data-tooltip');
+        if (!text) return;
+        const tip = ensureFloatingTooltip();
+        tip.textContent = text;
+        tip.style.opacity = '0';
+
+        // Allow DOM to update sizes
+        requestAnimationFrame(() => {
+            const rect = pad.getBoundingClientRect();
+            const tipRect = tip.getBoundingClientRect();
+            const spaceBelow = window.innerHeight - rect.bottom;
+            let top, left;
+            // prefer below, otherwise place above
+            if (spaceBelow > tipRect.height + 12) {
+                top = rect.bottom + 8;
+            } else {
+                top = rect.top - tipRect.height - 8;
+            }
+            left = rect.left + rect.width / 2 - tipRect.width / 2;
+            // clamp within viewport
+            left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
+            tip.style.top = Math.round(top) + 'px';
+            tip.style.left = Math.round(left) + 'px';
+            tip.style.opacity = '1';
+            tip.style.transform = 'translateY(0)';
+        });
+    }
+
+    function hideFloatingTooltip() {
+        if (!floatingTooltip) return;
+        floatingTooltip.style.opacity = '0';
+    }
+
+    // Attach pointer listeners to pads to show/hide floating tooltip
+    const padElems = Array.from(padsContainer.querySelectorAll('.pad'));
+    padElems.forEach((pad) => {
+        pad.addEventListener('pointerenter', (e) => {
+            // only show tooltip for active pads
+            if (!pad.classList.contains('active')) return;
+            showFloatingTooltipForPad(pad);
+        });
+        pad.addEventListener('pointerleave', () => {
+            hideFloatingTooltip();
+        });
+    });
+
+    // hide tooltip on scroll or resize
+    const padsScrollWrapper = document.querySelector('.pads-scroll-wrapper');
+    if (padsScrollWrapper) {
+        padsScrollWrapper.addEventListener('scroll', () => hideFloatingTooltip(), { passive: true });
+    }
+    window.addEventListener('resize', hideFloatingTooltip);
+
     if (padDialogPrevMedia) {
         padDialogPrevMedia.addEventListener("click", () => {
             showPadDialogMedia(dialogMediaIndex - 1);
