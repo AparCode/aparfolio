@@ -381,6 +381,7 @@ const padDialogTitle = document.getElementById("padDialogTitle");
 const padDialogMedia = document.getElementById("padDialogMedia");
 const padDialogImage = document.getElementById("padDialogImage");
 const padDialogVideo = document.getElementById("padDialogVideo");
+const padDialogEmbed = document.getElementById("padDialogEmbed");
 const padDialogMediaControls = document.getElementById("padDialogMediaControls");
 const padDialogPrevMedia = document.getElementById("padDialogPrevMedia");
 const padDialogNextMedia = document.getElementById("padDialogNextMedia");
@@ -467,6 +468,17 @@ function updatePadDialogMediaDisplay() {
         }
     }
 
+    if (padDialogEmbed) {
+        if (item && item.type === "embed") {
+            padDialogEmbed.hidden = false;
+            // normalize common watch URLs to embed URLs
+            padDialogEmbed.src = normalizeEmbedUrl(item.src || item.embed || "");
+        } else {
+            padDialogEmbed.hidden = true;
+            padDialogEmbed.removeAttribute('src');
+        }
+    }
+
     if (padDialogMedia) {
         padDialogMedia.hidden = !hasMedia;
     }
@@ -480,15 +492,15 @@ function renderPadDialogMedia(info) {
 
     if (Array.isArray(info.media) && info.media.length) {
         dialogMediaItems = info.media.map((item) => ({
-            type: item.type || (item.video ? "video" : "image"),
-            src: item.src || item.image || item.video || "",
+            type: item.type || (item.embed ? 'embed' : (item.video ? "video" : "image")),
+            src: item.src || item.image || item.video || item.embed || "",
             alt: item.alt || info.title + " image",
             poster: item.poster || ""
         }));
     } else if (info.media) {
         dialogMediaItems = [{
-            type: info.media.type || "image",
-            src: info.media.src || info.media.image || info.media.video || "",
+            type: info.media.type || (info.media.embed ? 'embed' : 'image'),
+            src: info.media.src || info.media.image || info.media.video || info.media.embed || "",
             alt: info.media.alt || info.title + " image",
             poster: info.media.poster || ""
         }];
@@ -507,6 +519,37 @@ function showPadDialogMedia(index) {
     const nextIndex = Math.max(0, Math.min(index, dialogMediaItems.length - 1));
     dialogMediaIndex = nextIndex;
     updatePadDialogMediaDisplay();
+}
+
+function normalizeEmbedUrl(url) {
+    if (!url) return '';
+    try {
+        const u = new URL(url, window.location.href);
+        const host = u.hostname.toLowerCase();
+        // YouTube (watch / short / embed)
+        if (host.includes('youtube.com')) {
+            // watch?v=ID
+            const v = u.searchParams.get('v');
+            if (v) return `https://www.youtube.com/embed/${v}`;
+            // youtu.be may not hit here
+            if (u.pathname.startsWith('/embed/')) return url;
+        }
+        if (host === 'youtu.be') {
+            const id = u.pathname.slice(1);
+            return `https://www.youtube.com/embed/${id}`;
+        }
+        // Vimeo
+        if (host.includes('vimeo.com')) {
+            // https://vimeo.com/ID
+            const parts = u.pathname.split('/').filter(Boolean);
+            const id = parts.pop();
+            if (id) return `https://player.vimeo.com/video/${id}`;
+        }
+    } catch (e) {
+        // fall through
+    }
+    // fallback: return as-is (may already be an embed URL)
+    return url;
 }
 
 const sceneDialogMap = {

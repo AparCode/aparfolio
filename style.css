@@ -248,6 +248,13 @@ dialog {
     background-color: #000;
 }
 
+#padDialogEmbed {
+    width: min(100%, 480px);
+    height: auto;
+    max-height: 60vh;
+    background-color: #000;
+}
+
 #padDialogImage[hidden],
 #padDialogVideo[hidden] {
     display: none !important;
