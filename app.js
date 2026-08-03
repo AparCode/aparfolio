@@ -664,7 +664,10 @@ const sceneDialogMap = {
         title: "OrderUp",
         media: [
             { type: "image", src: "images/logo/orderup-logo.png", alt: "OrderUp logo" },
-            { type: "image", src: "images/orderup_demo.jpg", alt: "OrderUp demo" }
+            { type: "image", src: "images/orderup_demo.jpg", alt: "OrderUp demo" },
+            { type: "image", src: "images/orderup_demo_2.jpg", alt: "Metrics" },
+            { type: "image", src: "images/orderup_demo_3.jpg", alt: "Gemini Output" },
+            { type: "embed", src: "https://www.youtube.com/watch?v=Hfh6DiiAWEU"}
         ],
         message:
             "OrderUp is a restaurant simulator created at WiCHacks '26. Players customize menus, analyze financial metrics, and make business decisions to grow their restaurant. I helped integrate the Gemini API into the Java-based UI.",
@@ -683,7 +686,8 @@ const sceneDialogMap = {
         title: "XRLive: Under the Sea",
         media: [
             { type: "image", src: "images/logo/underthesea-logo.png", alt: "Under the Sea logo" },
-            { type: "image", src: "images/frameless.gif", alt: "Under the Sea frameless GIF" }
+            { type: "image", src: "images/frameless.gif", alt: "Under the Sea frameless GIF" },
+            { type: "embed", src: "https://www.youtube.com/watch?v=8niyMsKDXEo", alt: "My song composition" },
         ],
         message:
             "For XRLive (Fall 2025) our team built an interactive, motion-responsive fabric simulation in TouchDesigner using Azure Kinect body-tracking. I used TouchDesigner’s CV and GPU tools to produce immersive visuals and composed the soundtrack and sound effects in Ableton.",
@@ -708,7 +712,10 @@ const sceneDialogMap = {
     },
     "scene-virtualkaraoke": {
         title: "Virtual Karaoke",
-        image: "images/logo/virtualkaraoke-logo.png",
+        media: [
+            { type: "image", src: "images/logo/virtualkaraoke-logo.png", alt: "Virtual Karaoke logo" },
+            { type: "embed", src: "https://vimeo.com/1084431994", alt: "Virtual Karaoke demo" }
+        ],
         message:
             "At ImagineRIT 2025, my team built a Virtual Karaoke system using real-time motion-capture avatars. I worked on avatar morph targets and motion capture integration with Unreal Engine and RADICAL Motion, fixed facial animation bugs, and modeled the UI to switch between six avatars using the spacebar.",
         skillsSentence: "Skills Used: Unreal Engine, RADICAL Motion",
