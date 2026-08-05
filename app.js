@@ -220,6 +220,26 @@ const PROJECT_PAGE_LOGOS = [
     ]
 ];
 
+const PROJECT_DEMO_URLS = {
+    orderup: "https://github.com/Lilly-Rowland/OrderUp",
+    resopulse: "https://aparcode.github.io/resopulse/",
+    underthesea: "https://github.com/alf9310/XRLive-VIP-Fall-2025",
+    virtualcloset: "https://github.com/ib9168/Virtual_Closet_HACKCOMS-25",
+    visualdove: "https://github.com/AparCode/visual-dove",
+    virtualkaraoke: "https://github.com/AparCode/virtual-karaoke",
+    myergbuddy: "https://github.com/Lilly-Rowland/WiCHacks2025",
+    brickstein: "https://github.com/Gunoo1/BrickStein",
+    securecheckup: "https://github.com/Szheng25/SecureCheckup",
+    acertainconvexhull: "https://github.com/AparCode/acertainconvexhull",
+    echoflower: "https://github.com/jltlm/echo-flower-scene",
+    spotiphy: "https://github.com/BuxoGabriel/Spotiphy",
+    fibonacci: "https://github.com/AparCode/fibonacci",
+    areyousocialdistancing: "https://github.com/AparCode/mask_identifier",
+    maara: "https://github.com/AparCode/maara",
+    moody: "https://github.com/sadhvikoli/voice-mood-music-recommender",
+    frequencyprint: "https://aparcode.github.io/frequency-print/"
+};
+
 // ===================
 // Helper Functions
 // ===================
@@ -343,6 +363,10 @@ function renderProjectPageLogos(pageIndex) {
             pad.appendChild(img);
         });
     });
+}
+
+function getProjectDemoUrl(sceneKey) {
+    return PROJECT_DEMO_URLS[sceneKey] || "";
 }
 
 // =========================
@@ -487,11 +511,14 @@ const padDialogMediaCounter = document.getElementById("padDialogMediaCounter");
 const padDialogMessage = document.getElementById("padDialogMessage");
 const padDialogSkills = document.getElementById("padDialogSkills");
 const padDialogClose = document.getElementById("padDialogClose");
-const padDialogOpen = document.getElementById("padDialogOpen");
+const padDialogProject = document.getElementById("padDialogProject");
+const padDialogRepo = document.getElementById("padDialogRepo");
 const padsContainer = document.querySelector(".led-pads");
 
 let dialogMediaItems = [];
 let dialogMediaIndex = 0;
+let dialogProjectHref = "";
+let dialogRepoHref = "";
 
 function updatePadDialogImageSize() {
     padDialogImage.classList.remove("is-square", "is-rectangle", "is-landscape", "is-portrait");
@@ -658,17 +685,18 @@ function normalizeEmbedUrl(url) {
 }
 
 const sceneDialogMap = {
-    "scene-linkedin": { title: "LinkedIn", message: "Open LinkedIn profile?", href: "https://www.linkedin.com/in/aparnaain/" },
-    "scene-github": { title: "GitHub", message: "Open GitHub profile?", href: "https://github.com/AparCode" },
-    "scene-resume": { title: "Resume", message: "Download resume?", href: "./resume.pdf" },
-    "scene-contact": { title: "Contact", message: "Compose an email?", href: CONTACT_COMPOSE_URL },
+    "scene-linkedin": { title: "LinkedIn", message: "Open LinkedIn profile?", projectHref: "https://www.linkedin.com/in/aparnaain/", repoHref: "" },
+    "scene-github": { title: "GitHub", message: "Open GitHub profile?", projectHref: "https://github.com/AparCode", repoHref: "" },
+    "scene-resume": { title: "Resume", message: "Download resume?", projectHref: "./resume.pdf", repoHref: "" },
+    "scene-contact": { title: "Contact", message: "Compose an email?", projectHref: CONTACT_COMPOSE_URL, repoHref: "" },
     "scene-about": {
         title: "About",
         image: "images/headshot.jpg",
         message:
             "Hello! I'm Aparnaa, a Computer Science BS/MS graduate from the Rochester Institute of Technology, passionate about using creative technology and artificial intelligence to build projects that feel both technical and expressive.\n\n" +
             "Outside of software, I'm enthusiastic about music and have been involved in music production. My work in music can be found on my YouTube channel Illumidove.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-skills": {
         title: "Skills",
@@ -678,7 +706,8 @@ const sceneDialogMap = {
             "AI/ML & Data: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, pandas, NumPy, Model Evaluation\n" +
             "Graphics, Audio & Interactive Systems: Three.js, WebGL, WebGPU, TouchDesigner, Unreal Engine, Ableton\n" +
             "Tools & Platforms: Git/GitHub, Docker, Linux, MySQL/SQLite, Maven, CI/CD workflows",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-kitware": {
         title: "Kitware: Computer Vision Intern",
@@ -688,7 +717,8 @@ const sceneDialogMap = {
             "I helped develop cutting-edge object detection systems for customers in the DoD and IC. I researched " +
             "small object detection and created datasets and validation pipelines to test small object model " +
             "performance. I also trained a SOTA real-time, transformer-based architecture on COCO (RT-DETR).",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-griffiss": {
         title: "Griffiss Institute: Artificial Intelligence Research Intern",
@@ -697,7 +727,8 @@ const sceneDialogMap = {
             "Throughout the majority of the summer and fall of 2023, I did a co-op at the Griffiss Institute RI " +
             "branch where I polished my artificial intelligence skills, developed methods for adversarial attacks, " +
             "and explored vulnerabilities within foundational models.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-northeastern": {
         title: "Northeastern University: Research Student Internship",
@@ -711,7 +742,8 @@ const sceneDialogMap = {
             "a semifinalist in the 2021 Junior Science and Humanities Symposium. I was able to learn a lot of new " +
             "skills in machine learning and research, which helped me understand and know what area of research that " +
             "I want to pursue with my skills.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-mitbeaverworks": {
         title: "MIT Beaver*Works Summer Institute: Cog*Works",
@@ -721,14 +753,16 @@ const sceneDialogMap = {
             "I learned and applied cognitive science skills to machine learning. I also gained a lot of team " +
             "experience as we split up into teams to work on a couple of projects that involves recognition of certain " +
             "items such as songs.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-wic": {
         title: "Women in Computing: Graduate Coordinator",
         image: "images/logo/wic-logo.png",
         message:
             "Women in Computing is an organization that promotes women and gender minorities in technology. I have been active in Women in Computing since starting college. I organized technical and networking events to boost community engagement and membership, and I mentored elementary and middle school students in JavaScript and OOP fundamentals.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-coms": {
         title: "Computing Organization for Multicultural Students: Public Relations Chair",
@@ -737,7 +771,8 @@ const sceneDialogMap = {
             "Over the past two years, I've been involved in the Computing Organization for Multicultural Students. More recently, I was the " +
             "Public Relations Chair, where I led communication and outreach initiatives, coordinating content across cross-functional teams. " +
             "In addition, I translated technical and event-related information into clear, user-friendly messaging for diverse audiences.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-ai": {
         title: "RIT AI Club: Events Coordinator",
@@ -745,25 +780,29 @@ const sceneDialogMap = {
         message:
             "For a year, I coordinated events with the Rochester Institute of Technology's Artificial Intelligence Club as the Events Coordinator. I planned and " +
             "coordinated company visits to expand student exposure to Artificial Intelligence. In addition, I captured photos and videos of events to help create recap posts and reels to support the club.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-sigma": {
         title: "Sigma Sigma Sigma: Alumni Relations Chair",
         image: "images/logo/sigma-logo.png",
         message: "I volunteered at events like Daffodil Day and park clean-ups. As Alumni Relations Chair, I networked with alumni and designed monthly newsletters.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-gso": {
         title: "Game Symphony Orchestra",
         image: "images/logo/gso-logo.png",
         message: "I performed with the Game Symphony Orchestra throughout college, playing piano in every concert and helping bring orchestral arrangements of video-game music to life.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-csh": {
         title: "Computer Science House",
         image: "images/logo/csh-logo.png",
         message: "I was an active member of the Computer Science House (Special Interest House) for my first two years of college. I helped make the organization's very first yearbook as a member of Yearbook Committee, and I've participated in various events that showcase my versatility such as Music Jam.",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-orderup": {
         title: "OrderUp",
@@ -777,7 +816,8 @@ const sceneDialogMap = {
         message:
             "OrderUp is a restaurant simulator created at WiCHacks '26. Players customize menus, analyze financial metrics, and make business decisions to grow their restaurant. I helped integrate the Gemini API into the Java-based UI.",
         skillsSentence: "Skills Used: Java, JavaFX, Maven, Google Gemini API, XML, JSON",
-        href: "https://github.com/Lilly-Rowland/OrderUp"
+        projectHref: getProjectDemoUrl("orderup"),
+        repoHref: "https://github.com/Lilly-Rowland/OrderUp"
     },
     "scene-resopulse": {
         title: "ResoPulse",
@@ -788,7 +828,8 @@ const sceneDialogMap = {
         message:
             "ResoPulse is a Three.js music visualizer built for a Computer Animation course. It reacts to audio peaks with high-intensity effects. I architected the particle system so particles explode from objects at frequency peaks.",
         skillsSentence: "Skills Used: JavaScript, THREE.js, WebGL, Vite, HTML",
-        href: "https://github.com/AparCode/resopulse"
+        projectHref: "https://aparcode.github.io/resopulse/",
+        repoHref: "https://github.com/AparCode/resopulse"
     },
     "scene-underthesea": {
         title: "XRLive: Under the Sea",
@@ -800,7 +841,8 @@ const sceneDialogMap = {
         message:
             "For XRLive (Fall 2025) our team built an interactive, motion-responsive fabric simulation in TouchDesigner using Azure Kinect body-tracking. I used TouchDesigner’s CV and GPU tools to produce immersive visuals and composed the soundtrack and sound effects in Ableton.",
         skillsSentence: "Skills Used: TouchDesigner, MediaPipe, Azure Kinect, Ableton",
-        href: "https://github.com/alf9310/XRLive-VIP-Fall-2025"
+        projectHref: "",
+        repoHref: "https://github.com/alf9310/XRLive-VIP-Fall-2025"
     },
     "scene-virtualcloset": {
         title: "VirtualCloset",
@@ -808,7 +850,8 @@ const sceneDialogMap = {
         message:
             "VirtualCloset is an AI-powered wardrobe assistant built at HACK.COMS '25. It suggests outfits using Gemini, Pandas, JavaFX, and FastAPI. I developed the frontend and integrated it with the backend.",
         skillsSentence: "Skills Used: Java, JavaFX, Python, FastAPI, Google Gemini API, Maven, SQLite, Pandas, Pydantic, SQLAlchemy, Uvicorn, XML",
-        href: "https://github.com/ib9168/Virtual_Closet_HACKCOMS-25"
+        projectHref: "",
+        repoHref: "https://github.com/ib9168/Virtual_Closet_HACKCOMS-25"
     },
     "scene-visualdove": {
         title: "VisualDove",
@@ -816,7 +859,8 @@ const sceneDialogMap = {
         message:
             "For my Global Illumination class final project I built an interactive audio-visual engine in Python. Using Librosa for frequency analysis and PyGame for rendering, the system creates dynamic visuals synchronized to audio.",
         skillsSentence: "Skills Used: Python, Librosa, PyGame, NumPy, PIL",
-        href: "https://github.com/AparCode/visual-dove"
+        projectHref: "",
+        repoHref: "https://github.com/AparCode/visual-dove"
     },
     "scene-virtualkaraoke": {
         title: "Virtual Karaoke",
@@ -827,7 +871,8 @@ const sceneDialogMap = {
         message:
             "At ImagineRIT 2025, my team built a Virtual Karaoke system using real-time motion-capture avatars. I worked on avatar morph targets and motion capture integration with Unreal Engine and RADICAL Motion, fixed facial animation bugs, and modeled the UI to switch between six avatars using the spacebar.",
         skillsSentence: "Skills Used: Unreal Engine, RADICAL Motion",
-        href: ""
+        projectHref: "",
+        repoHref: ""
     },
     "scene-myergbuddy": {
         title: "MyErgBuddy",
@@ -839,7 +884,8 @@ const sceneDialogMap = {
         message:
             "MyErgBuddy (WiCHacks '25) analyzes a rower's posture using computer vision and provides corrective feedback. We built a pose-estimation model to measure landmarks and evaluate form; I implemented the landmark comparison functions and contributed to the OpenCV components.",
         skillsSentence: "Skills Used: Python, OpenCV, Numpy, Streamlit, MediaPipe",
-        href: "https://github.com/Lilly-Rowland/WiCHacks2025"
+        projectHref: "",
+        repoHref: "https://github.com/Lilly-Rowland/WiCHacks2025"
     },
     "scene-brickstein": {
         title: "BrickStein",
@@ -847,7 +893,8 @@ const sceneDialogMap = {
         message:
             "BrickStein is a math-help chatbot built at BrickHack 11. It combines a LangChain GPT agent with tools like OpenCV and Manim to offer visual guidance. Features include screenshot-based suggestions and autogenerated videos with diagrams and audio for explanations.",
         skillsSentence: "Skills Used: Python, LangChain, LangGraph, OpenCV, Manim, Streamlit, Uvicorn",
-        href: "https://github.com/Gunoo1/BrickStein"
+        projectHref: "",
+        repoHref: "https://github.com/Gunoo1/BrickStein"
     },
     "scene-securecheckup": {
         title: "SecureCheckup",
@@ -855,7 +902,8 @@ const sceneDialogMap = {
         message:
             "SecureCheckup (HACK.COMS 2024) is a web app that displays and secures hospital data to better represent underrepresented communities. I worked on connecting the database backend to the Python frontend via REST APIs.",
         skillsSentence: "Skills Used: JavaScript, HTML, CSS, Oracle PL/SQL, Tableau, Python, REST API",
-        href: "https://github.com/Szheng25/SecureCheckup"
+        projectHref: "",
+        repoHref: "https://github.com/Szheng25/SecureCheckup"
     },
     "scene-acertainconvexhull": {
         title: "A Certain Convex Hull",
@@ -863,14 +911,16 @@ const sceneDialogMap = {
         message:
             "A Certain Convex Hull is an interactive site built for a Computational Geometry class. Users add points and manipulate matrices to form convex hulls (e.g., Jarvis’s March). I implemented user-input features and much of the surrounding website.",
         skillsSentence: "Skills Used: JavaScript, HTML, CSS, JSON, p5.js",
-        href: "https://github.com/AparCode/acertainconvexhull"
+        projectHref: "https://aparcode.github.io/acertainconvexhull/",
+        repoHref: "https://github.com/AparCode/acertainconvexhull"
     },
     "scene-echoflower": {
         title: "Undertale Echo Flower Recreation",
         image: "images/logo/echoflower-logo.png",
         message: "For my Computer Graphics final I recreated the Echo Flower scene from Undertale using WebGPU and JavaScript, building the environment, flowers, grass, and player.",
         skillsSentence: "Skills Used: JavaScript, WebGPU, HTML",
-        href: "https://github.com/jltlm/echo-flower-scene"
+        projectHref: "",
+        repoHref: "https://github.com/jltlm/echo-flower-scene"
     },
     "scene-spotiphy": {
         title: "Spotiphy",
@@ -878,7 +928,8 @@ const sceneDialogMap = {
         message:
             "Spotiphy is a database project for Principles of Data Management where I focused on SQL and efficient database design. I wrote and debugged SQL for features like login and top-artist queries.",
         skillsSentence: "Skills Used: Python, SQL, MySQL, ssh",
-        href: "https://github.com/BuxoGabriel/Spotiphy"
+        projectHref: "",
+        repoHref: "https://github.com/BuxoGabriel/Spotiphy"
     },
     "scene-fibonacci": {
         title: "Fibonacci",
@@ -886,7 +937,8 @@ const sceneDialogMap = {
         message:
             "Fibonacci is a watch e-store built for Intro to Software Engineering. I worked on frontend design and backend models for products and their relationships, gaining hands-on experience with JSON, HTML, and Angular.",
         skillsSentence: "Skills Used: Java, Maven, Node.js, Angular, XML",
-        href: "https://github.com/AparCode/fibonacci"
+        projectHref: "",
+        repoHref: "https://github.com/AparCode/fibonacci"
     },
     "scene-areyousocialdistancing": {
         title: "Are You Social Distancing?",
@@ -894,13 +946,15 @@ const sceneDialogMap = {
         message:
             "Are You Social Distancing? is a mask-recognition project from MIT BeaverWorks that uses CNNs to detect faces and masks. I created mask/no-mask datasets and implemented webcam-based identification with Python libraries.",
         skillsSentence: "Skills Used: Python, OpenCV, NumPy, Pyaudio, PyTorch, Noggin",
-        href: "https://github.com/AparCode/mask_identifier"
+        projectHref: "",
+        repoHref: ""
     },
     "scene-music1": {
         title: "Music",
         image: "images/logo/music-logo.png",
         message: "Open my music YouTube channel?",
-        href: "https://www.youtube.com/@illumidove"
+        projectHref: "https://www.youtube.com/@illumidove",
+        repoHref: ""
     },
     "scene-music2": {
         title: "Music",
@@ -909,7 +963,8 @@ const sceneDialogMap = {
             { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", poster: "images/logo/music-logo.png" }
         ],
         message: "Open my music YouTube channel?",
-        href: "https://www.youtube.com/@illumidove"
+        projectHref: "https://www.youtube.com/@illumidove",
+        repoHref: ""
     },
     "scene-maara": {
         title: "MAARA",
@@ -919,7 +974,8 @@ const sceneDialogMap = {
         ],
         message: "MAARA is a locally deployable multi-agent SDE assistant that autonomously plans, validates, generates, and repairs software artifacts using locally hosted LLMs via Ollama. When given a natural language issue description and repository, MAARA automates and repairs the program through five steps: parsing the issue into a structured plan, evaluating the plan (Sentinel gate), retrieving code context from a local vector database, using a code-specified LLM to generate a fix, and finally applying the fix to resolve the issue.",
         skillsSentence: "Skills Used: JavaScript, HTML, CSS, Node.js, Express, MongoDB, Mongoose",
-        href: "https://github.com/AparCode/maara"
+        projectHref: "",
+        repoHref: "https://github.com/AparCode/maara"
     },
     "scene-moody": {
         title: "Mood-y",
@@ -929,7 +985,8 @@ const sceneDialogMap = {
         ],
         message: "Mood-y is a voice-based mood music recommender that suggests songs based on the user's captured emotion. The program captures the user's voice memo, detects the underlying emotion using speech emotion recognition through audio signal and machine learning features, and returns song recommendations.",
         skillsSentence: "Skills Used: Python, FastAPI, uvicorn, React, librosa, soundfile, scikit-learn, joblib, pandas, numpy, matplotlib, seaborn",
-        href: "https://github.com/sadhvikoli/voice-mood-music-recommender"
+        projectHref: "",
+        repoHref: "https://github.com/sadhvikoli/voice-mood-music-recommender"
     },
     "scene-frequencyprint": {
         title: "FrequencyPrint",
@@ -940,13 +997,14 @@ const sceneDialogMap = {
         ],
         message: "FrequencyPrint is an audio classifier program that predicts whether an uploaded audio clip or song is AI/deepfake generated. To do so, the program utilizes convolutional neural networks such as ResNet 18 tailored to scan through spectrograms to detect common sound waves that distinguish a deepfake audio clip. ",
         skillsSentence: "Skills Used: Python, FastAPI, PyTorch, Numpy, Pandas, HTML, CSS, JavaScript",
-        href: "https://github.com/AparCode/frequency-print"
+        projectHref: "https://aparcode.github.io/frequency-print/",
+        repoHref: "https://github.com/AparCode/frequency-print"
     }
 };
 
 let dialogHref = "";
 
-if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDialogClose && padDialogOpen && padsContainer) {
+if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDialogClose && padsContainer) {
     padsContainer.addEventListener("click", (event) => {
         const pad = event.target.closest(".pad");
         if (!pad) return;
@@ -966,13 +1024,15 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDia
             href: ""
         };
 
-        dialogHref = info.href || "";
+        dialogProjectHref = info.projectHref || "";
+        dialogRepoHref = info.repoHref || "";
         padDialogTitle.textContent = info.title;
         renderPadDialogMedia(info);
         padDialogMessage.textContent = info.message;
         padDialogSkills.textContent = info.skillsSentence || "";
         padDialogSkills.hidden = !info.skillsSentence;
-        padDialogOpen.disabled = !dialogHref;
+        padDialogProject.disabled = !dialogProjectHref;
+        padDialogRepo.disabled = !dialogRepoHref;
 
         padDialog.showModal();
     });
@@ -1061,12 +1121,23 @@ if (padDialog && padDialogTitle && padDialogMessage && padDialogSkills && padDia
         padDialog.close();
     });
 
-    padDialogOpen.addEventListener("click", () => {
-        if (dialogHref) {
-            window.open(dialogHref, "_blank", "noopener,noreferrer");
-        }
-        padDialog.close();
-    });
+    if (padDialogProject) {
+        padDialogProject.addEventListener("click", () => {
+            if (dialogProjectHref) {
+                window.open(dialogProjectHref, "_blank", "noopener,noreferrer");
+            }
+            padDialog.close();
+        });
+    }
+
+    if (padDialogRepo) {
+        padDialogRepo.addEventListener("click", () => {
+            if (dialogRepoHref) {
+                window.open(dialogRepoHref, "_blank", "noopener,noreferrer");
+            }
+            padDialog.close();
+        });
+    }
 }
 
 // Standalone upper-right button behavior (not part of the launchpad)
@@ -1081,7 +1152,10 @@ if (upperActionButton && padDialog) {
         "You can also click the top buttons to either view my LinkedIn and GitHub profiles, download my resume, or contact me via email.";
         padDialogSkills.textContent = "";
         padDialogSkills.hidden = true;
-        padDialogOpen.disabled = true;
+        dialogProjectHref = "";
+        dialogRepoHref = "";
+        padDialogProject.disabled = true;
+        padDialogRepo.disabled = true;
         padDialog.showModal();
     });
 }
