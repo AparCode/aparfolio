@@ -624,6 +624,7 @@ function normalizeEmbedUrl(url) {
     try {
         const u = new URL(url, window.location.href);
         const host = u.hostname.toLowerCase();
+        const path = u.pathname || '';
         // YouTube (watch / short / embed)
         if (host.includes('youtube.com')) {
             // watch?v=ID
@@ -642,6 +643,12 @@ function normalizeEmbedUrl(url) {
             const parts = u.pathname.split('/').filter(Boolean);
             const id = parts.pop();
             if (id) return `https://player.vimeo.com/video/${id}`;
+        }
+        // Zoom Clips shared links: /clips/share/<id> -> /clips/embed/<id>
+        if (host.endsWith('zoom.us') && path.includes('/clips/share/')) {
+            return url
+                .replace('/clips/share/', '/clips/embed/')
+                .replace(/\/$/, '');
         }
     } catch (e) {
         // fall through
@@ -774,7 +781,10 @@ const sceneDialogMap = {
     },
     "scene-resopulse": {
         title: "ResoPulse",
-        image: "images/logo/resopulse-logo.png",
+        media: [
+            { type: "image", src: "images/logo/resopulse-logo.png", alt: "ResoPulse logo" },
+            { type: "embed", src: "https://youtu.be/yNfc7ALeUkM", alt: "ResoPulse demo video" }
+        ],
         message:
             "ResoPulse is a Three.js music visualizer built for a Computer Animation course. It reacts to audio peaks with high-intensity effects. I architected the particle system so particles explode from objects at frequency peaks.",
         skillsSentence: "Skills Used: JavaScript, THREE.js, WebGL, Vite, HTML",
@@ -821,7 +831,11 @@ const sceneDialogMap = {
     },
     "scene-myergbuddy": {
         title: "MyErgBuddy",
-        image: "images/logo/myergbuddy-logo.png",
+        media: [
+            { type: "image", src: "images/logo/myergbuddy-logo.png", alt: "MyErgBuddy logo"},
+            { type: "embed", src: "https://rit.zoom.us/clips/share/A2F3MRZPVzdPZTJLSFQ3NlBUd2VETnJxYzJRAQ", alt: "MyErgBuddy demo" }
+
+        ],
         message:
             "MyErgBuddy (WiCHacks '25) analyzes a rower's posture using computer vision and provides corrective feedback. We built a pose-estimation model to measure landmarks and evaluate form; I implemented the landmark comparison functions and contributed to the OpenCV components.",
         skillsSentence: "Skills Used: Python, OpenCV, Numpy, Streamlit, MediaPipe",
