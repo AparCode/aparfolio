@@ -903,7 +903,7 @@ const sceneDialogMap = {
             { type: "image", src: "images/logo/maara-logo.png", alt: "Maara logo" },
             { type: "embed", src: "https://youtu.be/0hhFTL5B0VA", alt: "Maara demo" }
         ],
-        message: "Maara is a web app that helps users track their menstrual cycle and provides personalized health insights.",
+        message: "MAARA is a locally deployable multi-agent SDE assistant that autonomously plans, validates, generates, and repairs software artifacts using locally hosted LLMs via Ollama. When given a natural language issue description and repository, MAARA automates and repairs the program through five steps: parsing the issue into a structured plan, evaluating the plan (Sentinel gate), retrieving code context from a local vector database, using a code-specified LLM to generate a fix, and finally applying the fix to resolve the issue.",
         skillsSentence: "Skills Used: JavaScript, HTML, CSS, Node.js, Express, MongoDB, Mongoose",
         href: "https://github.com/AparCode/maara"
     },
@@ -913,7 +913,7 @@ const sceneDialogMap = {
             { type: "image", src: "images/logo/moody-logo.png", alt: "Moody logo" },
             { type: "embed", src: "https://youtu.be/7eI5m9MXY8E", alt: "Moody demo" }
         ],
-        message: "Moody is an end-to-end ML app (course final) that analyzes voice recordings to detect emotion and recommends songs that match the detected mood.",
+        message: "Mood-y is a voice-based mood music recommender that suggests songs based on the user's captured emotion. The program captures the user's voice memo, detects the underlying emotion using speech emotion recognition through audio signal and machine learning features, and returns song recommendations.",
         skillsSentence: "Skills Used: Python, FastAPI, uvicorn, React, librosa, soundfile, scikit-learn, joblib, pandas, numpy, matplotlib, seaborn",
         href: "https://github.com/sadhvikoli/voice-mood-music-recommender"
     },
@@ -924,7 +924,7 @@ const sceneDialogMap = {
             { type: "embed", src: "https://youtu.be/N6JO_qRjtS8", alt: "FrequencyPrint demo" },
             { type: "image", src: "images/frequencyprint_demo.png", alt: "FrequencyPrint demo screenshot" }
         ],
-        message: "FrequencyPrint (capstone) analyzes audio to detect deepfakes and AI-generated vocals, distinguishing full synthetic audio and AI covers.",
+        message: "FrequencyPrint is an audio classifier program that predicts whether an uploaded audio clip or song is AI/deepfake generated. To do so, the program utilizes convolutional neural networks such as ResNet 18 tailored to scan through spectrograms to detect common sound waves that distinguish a deepfake audio clip. ",
         skillsSentence: "Skills Used: Python, FastAPI, PyTorch, Numpy, Pandas, HTML, CSS, JavaScript",
         href: "https://github.com/AparCode/frequency-print"
     }
