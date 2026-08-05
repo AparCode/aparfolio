@@ -912,10 +912,6 @@ dialog {
     opacity: 0.95;
 }
 
-.pads-scroll-btn.up{ }
-
-.pads-scroll-btn.down{ }
-
 /* When arrows are placed in the side controls, lay them out vertically */
 .side-control-row.arrows-row .side-control-arrows{
     display: flex;

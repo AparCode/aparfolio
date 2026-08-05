@@ -5,7 +5,7 @@ const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","sce
     "scene-kitware", "scene-griffiss", "scene-northeastern", "scene-mitbeaverworks", "scene-wic", "scene-coms", "scene-ai", 
     "scene-sigma", "scene-gso", "scene-csh", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
-    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint"];
+    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint", "scene-maara"];
 
 const CONTACT_COMPOSE_URL =
     "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
@@ -95,84 +95,89 @@ const scenes = {
         indexes: [3]
     },
 
+    maara: {
+        colorClass: "scene-maara",
+        indexes: [0]
+    },
+
     moody: {
         colorClass: "scene-moody",
-        indexes: [0]
+        indexes: [1]
     },
 
     frequencyprint: {
         colorClass: "scene-frequencyprint",
-        indexes: [1]
+        indexes: [2]
     },
 
     orderup: {
         colorClass: "scene-orderup",
-        indexes: [2]
+        indexes: [3]
     },
 
     resopulse: {
         colorClass: "scene-resopulse",
-        indexes: [3]
+        indexes: [4]
     },
 
     underthesea: {
         colorClass: "scene-underthesea",
-        indexes: [4]
+        indexes: [5]
     },
 
     virtualcloset: {
         colorClass: "scene-virtualcloset",
-        indexes: [5]
+        indexes: [6]
     },
 
     visualdove: {
         colorClass: "scene-visualdove",
-        indexes: [6]
+        indexes: [7]
     },
 
     virtualkaraoke: {
         colorClass: "scene-virtualkaraoke",
-        indexes: [7]
+        indexes: [8]
     },
 
     myergbuddy: {
         colorClass: "scene-myergbuddy",
-        indexes: [8]
+        indexes: [9]
     },
 
     brickstein: {
         colorClass: "scene-brickstein",
-        indexes: [9]
+        indexes: [10]
     },
 
     securecheckup: {
         colorClass: "scene-securecheckup",
-        indexes: [10]
+        indexes: [11]
     },
 
     acertainconvexhull: {
         colorClass: "scene-acertainconvexhull",
-        indexes: [11]
+        indexes: [12]
     },
 
     echoflower: {
         colorClass: "scene-echoflower",
-        indexes: [12]
+        indexes: [13]
     },
 
     spotiphy: {
         colorClass: "scene-spotiphy",
-        indexes: [13]
+        indexes: [14]
     },
 
     fibonacci: {
         colorClass: "scene-fibonacci",
-        indexes: [14]
+        indexes: [15]
     },
 
     areyousocialdistancing: {
         colorClass: "scene-areyousocialdistancing",
-        indexes: [15]
+        indexes: [0]
     },
 
     music1: {
@@ -185,6 +190,35 @@ const scenes = {
         indexes: []
     }
 };
+
+const PROJECT_PAGES = [
+    ["maara", "moody", "frequencyprint", "orderup", "resopulse", "underthesea", "virtualcloset", "visualdove", "virtualkaraoke", "myergbuddy", "brickstein", "securecheckup", "acertainconvexhull", "echoflower", "spotiphy", "fibonacci"],
+    ["areyousocialdistancing"]
+];
+
+const PROJECT_PAGE_LOGOS = [
+    [
+        { scene: 'fibonacci', logo: 'images/logo/fibonacci-logo.png', alt: 'Fibonacci logo' },
+        { scene: 'spotiphy', logo: 'images/logo/spotiphy-logo.png', alt: 'Spotiphy logo' },
+        { scene: 'echoflower', logo: 'images/logo/echoflower-logo.png', alt: 'Echo Flower logo' },
+        { scene: 'acertainconvexhull', logo: 'images/logo/acertainconvexhull-logo.png', alt: 'A Certain Convex Hull logo' },
+        { scene: 'securecheckup', logo: 'images/logo/securecheckup-logo.png', alt: 'Secure Check-up logo' },
+        { scene: 'brickstein', logo: 'images/logo/brickstein-logo.png', alt: 'Brickstein logo' },
+        { scene: 'myergbuddy', logo: 'images/logo/myergbuddy-logo.png', alt: 'MyERGBuddy logo' },
+        { scene: 'virtualkaraoke', logo: 'images/logo/virtualkaraoke-logo.png', alt: 'Virtual Karaoke logo' },
+        { scene: 'visualdove', logo: 'images/logo/visualdove-logo.png', alt: 'Visual Dove logo' },
+        { scene: 'virtualcloset', logo: 'images/logo/virtualcloset-logo.png', alt: 'Virtual Closet logo' },
+        { scene: 'underthesea', logo: 'images/logo/underthesea-logo.png', alt: 'Under the Sea logo' },
+        { scene: 'resopulse', logo: 'images/logo/resopulse-logo.png', alt: 'Reso Pulse logo' },
+        { scene: 'orderup', logo: 'images/logo/orderup-logo.png', alt: 'OrderUp logo' },
+        { scene: 'frequencyprint', logo: 'images/logo/frequencyprint-logo.png', alt: 'FrequencyPrint logo' },
+        { scene: 'moody', logo: 'images/logo/moody-logo.png', alt: 'Moody logo' },
+        { scene: 'maara', logo: 'images/logo/maara-logo.png', alt: 'Maara logo' },
+    ],
+    [
+        { scene: 'areyousocialdistancing', logo: 'images/logo/areyousocialdistancing-logo.png', alt: 'Are You Social Distancing logo' }
+    ]
+];
 
 // ===================
 // Helper Functions
@@ -213,6 +247,8 @@ function clearAllPadLogos() {
 }
 
 let activeLogoGroup = null;
+let currentSceneGroup = null;
+let currentProjectPage = 0;
 
 function startLogoGroup(groupName) {
     if (activeLogoGroup === groupName) {
@@ -255,6 +291,60 @@ function applyScene(sceneName, options) {
     applyScenes([sceneName], options);
 }
 
+function showProjectPage(pageIndex) {
+    if (pageIndex < 0 || pageIndex >= PROJECT_PAGES.length) return;
+    currentProjectPage = pageIndex;
+    currentSceneGroup = "projects";
+    applyScenes(PROJECT_PAGES[pageIndex]);
+    renderProjectPageLogos(pageIndex);
+}
+
+function showAreYouSocialDistancingProject() {
+    currentProjectPage = 1;
+    currentSceneGroup = "projects";
+    applyScenes(["areyousocialdistancing"]);
+    renderProjectPageLogos(1);
+}
+
+function isProjectsShowing() {
+    return currentSceneGroup === "projects";
+}
+
+function renderProjectPageLogos(pageIndex) {
+    const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
+    const logos = PROJECT_PAGE_LOGOS[pageIndex] || [];
+
+    activeLogoGroup = 'projects';
+    clearAllPadLogos();
+
+    logos.forEach((meta) => {
+        const sceneObj = scenes[meta.scene];
+        let indexes = [];
+
+        if (sceneObj) {
+            indexes = resolveIndexes(sceneObj, pads);
+        } else {
+            const padByClass = document.querySelector(`.led-pads .pad.scene-${meta.scene}`);
+            if (padByClass) indexes = [pads.indexOf(padByClass)];
+        }
+
+        indexes.forEach((i) => {
+            const pad = pads[i];
+            if (!pad) return;
+            if (pad.querySelector('.pad-logo')) return;
+            const img = document.createElement('img');
+            img.className = 'pad-logo';
+            img.src = meta.logo;
+            if (meta.srcset) img.srcset = meta.srcset;
+            img.sizes = '(max-width:400px) 60px, 120px';
+            img.alt = meta.alt || '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            pad.appendChild(img);
+        });
+    });
+}
+
 // =========================
 // Button Event Listeners
 // =========================
@@ -272,18 +362,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (linkedinButton) {
         linkedinButton.addEventListener("click", () => {
             applyScene("linkedin");
+            currentSceneGroup = "linkedin";
         });
     }
 
     if (githubButton) {
         githubButton.addEventListener("click", () => {
             applyScene("github");
+            currentSceneGroup = "github";
         });
     }
 
     if (resumeButton) {
         resumeButton.addEventListener("click", () => {
             applyScene("resume");
+            currentSceneGroup = "resume";
         });
     }
 
@@ -291,32 +384,34 @@ document.addEventListener("DOMContentLoaded", () => {
         contactButton.href = CONTACT_COMPOSE_URL;
         contactButton.addEventListener("click", () => {
             applyScene("contact");
+            currentSceneGroup = "contact";
         });
     }
 
     if (aboutButton) {
         aboutButton.addEventListener("click", () => {
             applyScenes(["about", "skills"]);
+            currentSceneGroup = "about";
         });
     }
 
     if(experienceButton) {
         experienceButton.addEventListener("click", () => {
             applyScenes(["kitware", "griffiss", "northeastern", "mitbeaverworks", "wic", "coms", "ai", "sigma", "gso", "csh"]);
+            currentSceneGroup = "experience";
         });
     }
     
     if(projectsButton) {
         projectsButton.addEventListener("click", () => {
-            applyScenes(["moody","frequencyprint", "orderup", "resopulse", "underthesea", "virtualcloset", "visualdove", "virtualkaraoke", 
-                "myergbuddy", "brickstein", "securecheckup", "acertainconvexhull", "echoflower", "spotiphy", 
-                "fibonacci", "areyousocialdistancing"]);
+            showProjectPage(0);
         });
     }
 
     if(musicButton){
         musicButton.addEventListener("click", () => {
             applyScenes(["music1", "music2"]);
+            currentSceneGroup = "music";
         });
     }
 
@@ -324,6 +419,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clearButton.addEventListener("click", () => {
             const pads = Array.from(document.querySelectorAll(".pad"));
             activeLogoGroup = null;
+            currentSceneGroup = null;
+            currentProjectPage = 0;
             clearAllPadLogos();
             clearPads(pads);
         });
@@ -334,17 +431,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const padsScrollUp = document.querySelector('.pads-scroll-btn.up');
     const padsScrollDown = document.querySelector('.pads-scroll-btn.down');
 
+
     if (padsScrollUp && padsScrollWrapper) {
         padsScrollUp.addEventListener('click', () => {
-            const scrollAmount = Math.max(padsScrollWrapper.clientHeight * 0.5, 120);
-            padsScrollWrapper.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+            if (!isProjectsShowing() || currentProjectPage === 0) return;
+            showProjectPage(currentProjectPage - 1);
         });
     }
 
     if (padsScrollDown && padsScrollWrapper) {
         padsScrollDown.addEventListener('click', () => {
-            const scrollAmount = Math.max(padsScrollWrapper.clientHeight * 0.5, 120);
-            padsScrollWrapper.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            if (!isProjectsShowing() || currentProjectPage >= PROJECT_PAGES.length - 1) return;
+            showAreYouSocialDistancingProject();
         });
     }
 });
@@ -799,9 +897,22 @@ const sceneDialogMap = {
         message: "Open my music YouTube channel?",
         href: "https://www.youtube.com/@illumidove"
     },
+    "scene-maara": {
+        title: "MAARA",
+        media: [
+            { type: "image", src: "images/logo/maara-logo.png", alt: "Maara logo" },
+            { type: "embed", src: "https://youtu.be/0hhFTL5B0VA", alt: "Maara demo" }
+        ],
+        message: "Maara is a web app that helps users track their menstrual cycle and provides personalized health insights.",
+        skillsSentence: "Skills Used: JavaScript, HTML, CSS, Node.js, Express, MongoDB, Mongoose",
+        href: "https://github.com/AparCode/maara"
+    },
     "scene-moody": {
-        title: "Moody",
-        image: "images/logo/moody-logo.png",
+        title: "Mood-y",
+        media: [
+            { type: "image", src: "images/logo/moody-logo.png", alt: "Moody logo" },
+            { type: "embed", src: "https://youtu.be/7eI5m9MXY8E", alt: "Moody demo" }
+        ],
         message: "Moody is an end-to-end ML app (course final) that analyzes voice recordings to detect emotion and recommends songs that match the detected mood.",
         skillsSentence: "Skills Used: Python, FastAPI, uvicorn, React, librosa, soundfile, scikit-learn, joblib, pandas, numpy, matplotlib, seaborn",
         href: "https://github.com/sadhvikoli/voice-mood-music-recommender"
@@ -810,7 +921,8 @@ const sceneDialogMap = {
         title: "FrequencyPrint",
         media: [
             { type: "image", src: "images/logo/frequencyprint-logo.png", alt: "FrequencyPrint logo" },
-            { type: "image", src: "images/frequencyprint_demo.png", alt: "FrequencyPrint demo" }
+            { type: "embed", src: "https://youtu.be/N6JO_qRjtS8", alt: "FrequencyPrint demo" },
+            { type: "image", src: "images/frequencyprint_demo.png", alt: "FrequencyPrint demo screenshot" }
         ],
         message: "FrequencyPrint (capstone) analyzes audio to detect deepfakes and AI-generated vocals, distinguishing full synthetic audio and AI covers.",
         skillsSentence: "Skills Used: Python, FastAPI, PyTorch, Numpy, Pandas, HTML, CSS, JavaScript",
@@ -1081,70 +1193,14 @@ if (upperActionButton && padDialog) {
 // Projects
 (function () {
     const projectsBtn = document.querySelector('button[aria-label="Projects"]');
-    // if another button is selected the images go away
     if (!projectsBtn) return;
-    const proj_targets = [
-        { scene: 'areyousocialdistancing', logo: 'images/logo/areyousocialdistancing-logo.png', alt: 'Are You Social Distancing logo' },
-        { scene: 'fibonacci', logo: 'images/logo/fibonacci-logo.png', alt: 'Fibonacci logo' },
-        { scene: 'spotiphy', logo: 'images/logo/spotiphy-logo.png', alt: 'Spotiphy logo' },
-        { scene: 'echoflower', logo: 'images/logo/echoflower-logo.png', alt: 'Echo Flower logo' },
-        { scene: 'acertainconvexhull', logo: 'images/logo/acertainconvexhull-logo.png', alt: 'A Certain Convex Hull logo' },
-        { scene: 'securecheckup', logo: 'images/logo/securecheckup-logo.png', alt: 'Secure Check-up logo' },
-        { scene: 'brickstein', logo: 'images/logo/brickstein-logo.png', alt: 'Brickstein logo' },
-        { scene: 'myergbuddy', logo: 'images/logo/myergbuddy-logo.png', alt: 'MyERGBuddy logo' },
-        { scene: 'virtualkaraoke', logo: 'images/logo/virtualkaraoke-logo.png', alt: 'Virtual Karaoke logo' },
-        { scene: 'visualdove', logo: 'images/logo/visualdove-logo.png', alt: 'Visual Dove logo' },
-        { scene: 'virtualcloset', logo: 'images/logo/virtualcloset-logo.png', alt: 'Virtual Closet logo' },
-        { scene: 'underthesea', logo: 'images/logo/underthesea-logo.png', alt: 'Under the Sea logo' },
-        { scene: 'resopulse', logo: 'images/logo/resopulse-logo.png', alt: 'Reso Pulse logo' },
-        { scene: 'orderup', logo: 'images/logo/orderup-logo.png', alt: 'OrderUp logo' },
-        { scene: 'frequencyprint', logo: 'images/logo/frequencyprint-logo.png', alt: 'FrequencyPrint logo' },
-        { scene: 'moody', logo: 'images/logo/moody-logo.png', alt: 'Moody logo' },
-    ];
-
-    function addLogoToPad(pad, meta) {
-        if (!pad || pad.querySelector('.pad-logo')) return;
-        const img = document.createElement('img');
-        img.className = 'pad-logo';
-        img.src = meta.logo;
-        if (meta.srcset) img.srcset = meta.srcset;
-        img.sizes = '(max-width:400px) 60px, 120px';
-        img.alt = meta.alt || '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        pad.appendChild(img);
-    }
-
-    function removeLogoFromPad(pad) {
-        const el = pad && pad.querySelector('.pad-logo');
-        if (el) el.remove();
-    }
 
     projectsBtn.addEventListener('click', () => {
-        if (!startLogoGroup("projects")) return;
-        const pads = Array.from(document.querySelectorAll('.led-pads .pad'));
-
-        proj_targets.forEach((t) => {
-            const sceneKey = t.scene;
-            const sceneObj = scenes[sceneKey];
-            let indexes = [];
-
-            if (sceneObj) {
-                indexes = resolveIndexes(sceneObj, pads);
-            } else {
-                // fallback: find pad by class name
-                const padByClass = document.querySelector(`.led-pads .pad.scene-${sceneKey}`);
-                if (padByClass) indexes = [pads.indexOf(padByClass)];
-            }
-
-            indexes.forEach((i) => {
-                const pad = pads[i];
-                if (!pad) return;
-                addLogoToPad(pad, t);
-            });
-        });
+        showProjectPage(0);
     });
 })();
+
+
 
 // Music
 (function () {
