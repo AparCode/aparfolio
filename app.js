@@ -947,7 +947,7 @@ const sceneDialogMap = {
             "Are You Social Distancing? is a mask-recognition project from MIT BeaverWorks that uses CNNs to detect faces and masks. I created mask/no-mask datasets and implemented webcam-based identification with Python libraries.",
         skillsSentence: "Skills Used: Python, OpenCV, NumPy, Pyaudio, PyTorch, Noggin",
         projectHref: "",
-        repoHref: ""
+        repoHref: "https://github.com/armaan-v924/are-you-social-distancing"
     },
     "scene-music1": {
         title: "Music",
