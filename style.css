@@ -46,6 +46,14 @@ body{
     text-align: center;
     padding: 2rem;
     transition: opacity 400ms ease, transform 400ms ease;
+    cursor: pointer;
+}
+
+.title-card .enter-hint {
+    margin-top: 1rem;
+    opacity: 0.65;
+    font-size: clamp(0.78rem, 1.8vmin, 0.95rem);
+    letter-spacing: 0.04em;
 }
 
 .title-card-content h1{
@@ -596,6 +604,24 @@ dialog {
     5px 5px 10px #800040,
     inset -5px -5px 10px #ff4da6,
     inset 5px 5px 10px #ffd6ec;
+}
+
+.pad.scene-artsonna{
+    background-color: #f28db8;
+    box-shadow:
+    -5px -5px 10px #5a2740,
+    5px 5px 10px #7c2f54,
+    inset -5px -5px 10px #ffc0dc,
+    inset 5px 5px 10px #ffe3ef;
+}
+
+.pad.scene-musictheoryagent{
+    background-color: #8d75f7;
+    box-shadow:
+    -5px -5px 10px #30245f,
+    5px 5px 10px #493493,
+    inset -5px -5px 10px #b9aaff,
+    inset 5px 5px 10px #ddd5ff;
 }
 
 .pad.scene-maara{

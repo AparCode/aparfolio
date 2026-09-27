@@ -5,7 +5,7 @@ const PAD_COLOR_CLASSES = ["scene-linkedin", "scene-github", "scene-resume","sce
     "scene-kitware", "scene-griffiss", "scene-northeastern", "scene-mitbeaverworks", "scene-wic", "scene-coms", "scene-ai", 
     "scene-sigma", "scene-gso", "scene-csh", "scene-orderup", "scene-resopulse", "scene-underthesea", "scene-virtualcloset", "scene-visualdove", 
     "scene-virtualkaraoke", "scene-myergbuddy", "scene-brickstein", "scene-securecheckup", "scene-acertainconvexhull", 
-    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint", "scene-maara"];
+    "scene-echoflower", "scene-spotiphy", "scene-fibonacci", "scene-areyousocialdistancing", "scene-music1", "scene-music2", "scene-moody", "scene-frequencyprint", "scene-maara", "scene-musictheoryagent", "scene-artsonna"];
 
 const CONTACT_COMPOSE_URL =
     "https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com&su=Portfolio%20Inquiry" +
@@ -95,89 +95,99 @@ const scenes = {
         indexes: [3]
     },
 
+    artsonna: {
+        colorClass: "scene-artsonna",
+        indexes: [0]
+    },
+
+    musictheoryagent: {
+        colorClass: "scene-musictheoryagent",
+        indexes: [1]
+    },
+
     maara: {
         colorClass: "scene-maara",
-        indexes: [0]
+        indexes: [2]
     },
 
     moody: {
         colorClass: "scene-moody",
-        indexes: [1]
+        indexes: [3]
     },
 
     frequencyprint: {
         colorClass: "scene-frequencyprint",
-        indexes: [2]
+        indexes: [4]
     },
 
     orderup: {
         colorClass: "scene-orderup",
-        indexes: [3]
-    },
-
-    resopulse: {
-        colorClass: "scene-resopulse",
-        indexes: [4]
+        indexes: [5]
     },
 
     underthesea: {
         colorClass: "scene-underthesea",
-        indexes: [5]
+        indexes: [6]
     },
 
     virtualcloset: {
         colorClass: "scene-virtualcloset",
-        indexes: [6]
+        indexes: [7]
+    },
+
+    resopulse: {
+        colorClass: "scene-resopulse",
+        indexes: [8]
     },
 
     visualdove: {
         colorClass: "scene-visualdove",
-        indexes: [7]
+        indexes: [9]
     },
 
     virtualkaraoke: {
         colorClass: "scene-virtualkaraoke",
-        indexes: [8]
+        indexes: [10]
     },
 
     myergbuddy: {
         colorClass: "scene-myergbuddy",
-        indexes: [9]
+        indexes: [11]
     },
 
     brickstein: {
         colorClass: "scene-brickstein",
-        indexes: [10]
+        indexes: [12]
     },
 
     securecheckup: {
         colorClass: "scene-securecheckup",
-        indexes: [11]
+        indexes: [13]
     },
 
     acertainconvexhull: {
         colorClass: "scene-acertainconvexhull",
-        indexes: [12]
+        indexes: [14]
     },
 
     echoflower: {
         colorClass: "scene-echoflower",
-        indexes: [13]
+        indexes: [15]
     },
 
     spotiphy: {
         colorClass: "scene-spotiphy",
-        indexes: [14]
+        indexes: [0]
     },
 
     fibonacci: {
         colorClass: "scene-fibonacci",
-        indexes: [15]
+        indexes: [1]
     },
 
     areyousocialdistancing: {
         colorClass: "scene-areyousocialdistancing",
-        indexes: [0]
+        indexes: [2]
     },
 
     music1: {
@@ -192,35 +202,39 @@ const scenes = {
 };
 
 const PROJECT_PAGES = [
-    ["maara", "moody", "frequencyprint", "orderup", "resopulse", "underthesea", "virtualcloset", "visualdove", "virtualkaraoke", "myergbuddy", "brickstein", "securecheckup", "acertainconvexhull", "echoflower", "spotiphy", "fibonacci"],
-    ["areyousocialdistancing"]
+    ["artsonna", "musictheoryagent", "maara", "moody", "frequencyprint", "orderup", "underthesea", "virtualcloset", "resopulse", "visualdove", "virtualkaraoke", "myergbuddy", "brickstein", "securecheckup", "acertainconvexhull", "echoflower"],
+    ["spotiphy", "fibonacci", "areyousocialdistancing"]
 ];
 
 const PROJECT_PAGE_LOGOS = [
     [
-        { scene: 'fibonacci', logo: 'images/logo/fibonacci-logo.png', alt: 'Fibonacci logo' },
-        { scene: 'spotiphy', logo: 'images/logo/spotiphy-logo.png', alt: 'Spotiphy logo' },
-        { scene: 'echoflower', logo: 'images/logo/echoflower-logo.png', alt: 'Echo Flower logo' },
-        { scene: 'acertainconvexhull', logo: 'images/logo/acertainconvexhull-logo.png', alt: 'A Certain Convex Hull logo' },
-        { scene: 'securecheckup', logo: 'images/logo/securecheckup-logo.png', alt: 'Secure Check-up logo' },
-        { scene: 'brickstein', logo: 'images/logo/brickstein-logo.png', alt: 'Brickstein logo' },
-        { scene: 'myergbuddy', logo: 'images/logo/myergbuddy-logo.png', alt: 'MyERGBuddy logo' },
-        { scene: 'virtualkaraoke', logo: 'images/logo/virtualkaraoke-logo.png', alt: 'Virtual Karaoke logo' },
-        { scene: 'visualdove', logo: 'images/logo/visualdove-logo.png', alt: 'Visual Dove logo' },
-        { scene: 'virtualcloset', logo: 'images/logo/virtualcloset-logo.png', alt: 'Virtual Closet logo' },
-        { scene: 'underthesea', logo: 'images/logo/underthesea-logo.png', alt: 'Under the Sea logo' },
-        { scene: 'resopulse', logo: 'images/logo/resopulse-logo.png', alt: 'Reso Pulse logo' },
-        { scene: 'orderup', logo: 'images/logo/orderup-logo.png', alt: 'OrderUp logo' },
+        { scene: 'artsonna', logo: 'images/logo/artsonna-logo.png', alt: 'Artsonna logo' },
+        { scene: 'musictheoryagent', logo: 'images/logo/music-theory-agent-logo.png', alt: 'Music Theory Agent logo' },
+        { scene: 'maara', logo: 'images/logo/maara-logo.png', alt: 'MAARA logo' },
+        { scene: 'moody', logo: 'images/logo/moody-logo.png', alt: 'Mood-y logo' },
         { scene: 'frequencyprint', logo: 'images/logo/frequencyprint-logo.png', alt: 'FrequencyPrint logo' },
-        { scene: 'moody', logo: 'images/logo/moody-logo.png', alt: 'Moody logo' },
-        { scene: 'maara', logo: 'images/logo/maara-logo.png', alt: 'Maara logo' },
+        { scene: 'orderup', logo: 'images/logo/orderup-logo.png', alt: 'OrderUp logo' },
+        { scene: 'underthesea', logo: 'images/logo/underthesea-logo.png', alt: 'Under the Sea logo' },
+        { scene: 'virtualcloset', logo: 'images/logo/virtualcloset-logo.png', alt: 'VirtualCloset logo' },
+        { scene: 'resopulse', logo: 'images/logo/resopulse-logo.png', alt: 'ResoPulse logo' },
+        { scene: 'visualdove', logo: 'images/logo/visualdove-logo.png', alt: 'VisualDove logo' },
+        { scene: 'virtualkaraoke', logo: 'images/logo/virtualkaraoke-logo.png', alt: 'Virtual Karaoke logo' },
+        { scene: 'myergbuddy', logo: 'images/logo/myergbuddy-logo.png', alt: 'MyErgBuddy logo' },
+        { scene: 'brickstein', logo: 'images/logo/brickstein-logo.png', alt: 'BrickStein logo' },
+        { scene: 'securecheckup', logo: 'images/logo/securecheckup-logo.png', alt: 'Secure Checkup logo' },
+        { scene: 'acertainconvexhull', logo: 'images/logo/acertainconvexhull-logo.png', alt: 'A Certain Convex Hull logo' },
+        { scene: 'echoflower', logo: 'images/logo/echoflower-logo.png', alt: 'Echo Flower logo' }
     ],
     [
+        { scene: 'spotiphy', logo: 'images/logo/spotiphy-logo.png', alt: 'Spotiphy logo' },
+        { scene: 'fibonacci', logo: 'images/logo/fibonacci-logo.png', alt: 'Fibonacci logo' },
         { scene: 'areyousocialdistancing', logo: 'images/logo/areyousocialdistancing-logo.png', alt: 'Are You Social Distancing logo' }
     ]
 ];
 
 const PROJECT_DEMO_URLS = {
+    artsonna: "https://artsonna.base44.app/",
+    musictheoryagent: "https://github.com/AparCode/music-theory-assistant",
     orderup: "https://github.com/Lilly-Rowland/OrderUp",
     resopulse: "https://aparcode.github.io/resopulse/",
     underthesea: "https://github.com/alf9310/XRLive-VIP-Fall-2025",
@@ -317,13 +331,6 @@ function showProjectPage(pageIndex) {
     currentSceneGroup = "projects";
     applyScenes(PROJECT_PAGES[pageIndex]);
     renderProjectPageLogos(pageIndex);
-}
-
-function showAreYouSocialDistancingProject() {
-    currentProjectPage = 1;
-    currentSceneGroup = "projects";
-    applyScenes(["areyousocialdistancing"]);
-    renderProjectPageLogos(1);
 }
 
 function isProjectsShowing() {
@@ -466,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (padsScrollDown && padsScrollWrapper) {
         padsScrollDown.addEventListener('click', () => {
             if (!isProjectsShowing() || currentProjectPage >= PROJECT_PAGES.length - 1) return;
-            showAreYouSocialDistancingProject();
+            showProjectPage(currentProjectPage + 1);
         });
     }
 });
@@ -480,16 +487,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide main from assistive tech while the title card is shown
     if (main) main.setAttribute('aria-hidden', 'true');
 
-    // Duration the title card remains visible before starting fade (ms)
-    const visibleDuration = 6000;
+    // Keep the intro brief, and let visitors skip it immediately.
+    const visibleDuration = 1800;
+    let dismissed = false;
 
-    // Start fade after the visible duration
-    setTimeout(() => {
+    const dismissTitleCard = () => {
+        if (dismissed) return;
+        dismissed = true;
         titleCard.classList.add('fade-out');
-    }, visibleDuration);
+    };
+
+    const timer = setTimeout(dismissTitleCard, visibleDuration);
+
+    titleCard.addEventListener('click', dismissTitleCard);
+    document.addEventListener('keydown', (event) => {
+        if (["Enter", " ", "Escape"].includes(event.key)) dismissTitleCard();
+    }, { once: true });
 
     // Remove the element after animation completes and restore main
     titleCard.addEventListener('animationend', () => {
+        clearTimeout(timer);
         try { titleCard.remove(); } catch (e) { titleCard.style.display = 'none'; }
         if (main) main.removeAttribute('aria-hidden');
     });
@@ -693,8 +710,9 @@ const sceneDialogMap = {
         title: "About",
         image: "images/headshot.jpg",
         message:
-            "Hello! I'm Aparnaa, a Computer Science BS/MS graduate from the Rochester Institute of Technology, passionate about using creative technology and artificial intelligence to build projects that feel both technical and expressive.\n\n" +
-            "Outside of software, I'm enthusiastic about music and have been involved in music production. My work in music can be found on my YouTube channel Illumidove.",
+            "Hi! I’m Aparnaa, a software engineer who recently graduated from RIT with both a B.S. and M.S. in Computer Science. I’m interested in applied AI, machine learning, and full-stack development. I’ve also worked professionally in computer vision and ML evaluation through internships and research, with experience in debugging, model evaluation, and software testing.\n\n" +
+            "Some of my core tools include Python, JavaScript, PyTorch, FastAPI, and NumPy. Outside of tech, I’m a musician and music producer, and I enjoy exploring different forms of music and art in my free time.\n\n" +
+            "I’m currently looking for early-career, full-time opportunities in AI and software engineering where I can continue growing my skills and build useful, well-designed software.",
         projectHref: "",
         repoHref: ""
     },
@@ -702,10 +720,10 @@ const sceneDialogMap = {
         title: "Skills",
         message:
             "Languages: Python, Java, JavaScript/TypeScript, SQL, HTML, CSS\n" +
-            "Web & App Development: FastAPI, React, Node.js, JavaFX, Streamlit, REST API\n" +
-            "AI/ML & Data: PyTorch, TensorFlow, scikit-learn, OpenCV, Librosa, pandas, NumPy, Model Evaluation\n" +
-            "Graphics, Audio & Interactive Systems: Three.js, WebGL, WebGPU, TouchDesigner, Unreal Engine, Ableton\n" +
-            "Tools & Platforms: Git/GitHub, Docker, Linux, MySQL/SQLite, Maven, CI/CD workflows",
+            "Web & App Development: FastAPI, React, Node.js, Spring, JavaFX, Streamlit, REST APIs\n" +
+            "AI/ML: PyTorch, scikit-learn, OpenCV, Librosa, RAG/LLM Agents, NumPy, Model Evaluation\n" +
+            "Data & Tools: PostgreSQL, MySQL, SQLite, ChromaDB/Qdrant, Docker, Linux, Slurm, Git/GitHub, Maven, CI/CD\n" +
+            "Graphics, Audio & Interactive Systems: Three.js, WebGL, WebGPU, TouchDesigner, Unreal Engine, Ableton",
         projectHref: "",
         repoHref: ""
     },
@@ -836,11 +854,10 @@ const sceneDialogMap = {
         media: [
             { type: "image", src: "images/logo/underthesea-logo.png", alt: "Under the Sea logo" },
             { type: "image", src: "images/frameless.gif", alt: "Under the Sea frameless GIF" },
-            { type: "embed", src: "https://www.youtube.com/watch?v=8niyMsKDXEo", alt: "My song composition" },
+            { type: "embed", src: "https://www.youtube.com/watch?v=8niyMsKDXEo", alt: "My song composition" }
         ],
-        message:
-            "For XRLive (Fall 2025) our team built an interactive, motion-responsive fabric simulation in TouchDesigner using Azure Kinect body-tracking. I used TouchDesigner’s CV and GPU tools to produce immersive visuals and composed the soundtrack and sound effects in Ableton.",
-        skillsSentence: "Skills Used: TouchDesigner, MediaPipe, Azure Kinect, Ableton",
+        message: "XRLive: Under the Sea was a team project for RIT’s Frameless Symposium that created underwater-themed interactive visuals using motion tracking and projected effects. My main contribution was a resizable fabric-movement effect in TouchDesigner using its MediaPipe extension; I tested the effect on the Wegmans Theater projector and also composed music and sound effects for the experience.",
+        skillsSentence: "Skills Used: TouchDesigner, MediaPipe, Azure Kinect, Real-Time Projection, Ableton",
         projectHref: "",
         repoHref: "https://github.com/alf9310/XRLive-VIP-Fall-2025"
     },
@@ -868,9 +885,8 @@ const sceneDialogMap = {
             { type: "image", src: "images/logo/virtualkaraoke-logo.png", alt: "Virtual Karaoke logo" },
             { type: "embed", src: "https://vimeo.com/1084431994", alt: "Virtual Karaoke demo" }
         ],
-        message:
-            "At ImagineRIT 2025, my team built a Virtual Karaoke system using real-time motion-capture avatars. I worked on avatar morph targets and motion capture integration with Unreal Engine and RADICAL Motion, fixed facial animation bugs, and modeled the UI to switch between six avatars using the spacebar.",
-        skillsSentence: "Skills Used: Unreal Engine, RADICAL Motion",
+        message: "Virtual Karaoke was a team XR project presented at Imagine RIT 2025, where avatars mirrored live performers through motion capture. I worked on the motion-capture sub-team by testing RADICAL Motion with Unreal Engine, creating and importing ReadyPlayerMe avatars, investigating facial morph-target and audio-motion synchronization issues, exploring Blueprint-based avatar switching, and helping test and present the exhibit.",
+        skillsSentence: "Skills Used: Unreal Engine, RADICAL Motion, ReadyPlayerMe, Perforce, Blueprints, Motion Capture",
         projectHref: "",
         repoHref: ""
     },
@@ -879,29 +895,25 @@ const sceneDialogMap = {
         media: [
             { type: "image", src: "images/logo/myergbuddy-logo.png", alt: "MyErgBuddy logo"},
             { type: "embed", src: "https://rit.zoom.us/clips/share/A2F3MRZPVzdPZTJLSFQ3NlBUd2VETnJxYzJRAQ", alt: "MyErgBuddy demo" }
-
         ],
-        message:
-            "MyErgBuddy (WiCHacks '25) analyzes a rower's posture using computer vision and provides corrective feedback. We built a pose-estimation model to measure landmarks and evaluate form; I implemented the landmark comparison functions and contributed to the OpenCV components.",
-        skillsSentence: "Skills Used: Python, OpenCV, Numpy, Streamlit, MediaPipe",
+        message: "MyErgBuddy is a real-time rowing-posture coaching prototype built at WiCHacks 2025. I co-developed the computer-vision pipeline using MediaPipe pose landmarks, calculated joint angles and positions, defined catch/finish posture checks, and helped integrate calibration, timing, sequence logic, and feedback into Streamlit.",
+        skillsSentence: "Skills Used: Python, MediaPipe, OpenCV, Pose Estimation, Joint-Angle Analysis, Streamlit",
         projectHref: "",
         repoHref: "https://github.com/Lilly-Rowland/WiCHacks2025"
     },
     "scene-brickstein": {
         title: "BrickStein",
         image: "images/logo/brickstein-logo.png",
-        message:
-            "BrickStein is a math-help chatbot built at BrickHack 11. It combines a LangChain GPT agent with tools like OpenCV and Manim to offer visual guidance. Features include screenshot-based suggestions and autogenerated videos with diagrams and audio for explanations.",
-        skillsSentence: "Skills Used: Python, LangChain, LangGraph, OpenCV, Manim, Streamlit, Uvicorn",
+        message: "BrickStein is a multimodal AI math-tutor prototype built at BrickHack 11. The team created a workflow that accepted voice or chat input, captured and auto-cropped highlighted screen regions, checked math reasoning, and generated visual explanation videos.",
+        skillsSentence: "Skills Used: Google Chirp, OpenCV, GPT Models, Manim, Multimodal AI",
         projectHref: "",
         repoHref: "https://github.com/Gunoo1/BrickStein"
     },
     "scene-securecheckup": {
-        title: "SecureCheckup",
+        title: "Secure Checkup",
         image: "images/logo/securecheckup-logo.png",
-        message:
-            "SecureCheckup (HACK.COMS 2024) is a web app that displays and secures hospital data to better represent underrepresented communities. I worked on connecting the database backend to the Python frontend via REST APIs.",
-        skillsSentence: "Skills Used: JavaScript, HTML, CSS, Oracle PL/SQL, Tableau, Python, REST API",
+        message: "Secure Checkup is a healthcare data-equity platform built at HACK.COMS 2024 to help users inspect demographic representation disparities in healthcare datasets. I co-developed the platform and worked across the Oracle PL/SQL database, Python REST/JSON API, JavaScript frontend, and Tableau visualizations.",
+        skillsSentence: "Skills Used: Oracle PL/SQL, Python, REST API, JSON, JavaScript, HTML/CSS, Tableau",
         projectHref: "",
         repoHref: "https://github.com/Szheng25/SecureCheckup"
     },
@@ -925,18 +937,16 @@ const sceneDialogMap = {
     "scene-spotiphy": {
         title: "Spotiphy",
         image: "images/logo/spotiphy-logo.png",
-        message:
-            "Spotiphy is a database project for Principles of Data Management where I focused on SQL and efficient database design. I wrote and debugged SQL for features like login and top-artist queries.",
-        skillsSentence: "Skills Used: Python, SQL, MySQL, ssh",
+        message: "Spotiphy is a database-backed music application built for Principles of Data Management. I worked with a relational PostgreSQL database and Python/psycopg2, writing and debugging SQL for account, playlist, listening-history, search, social, and discovery features including top-artist and top-genre queries.",
+        skillsSentence: "Skills Used: Python, PostgreSQL, SQL, psycopg2, SSH",
         projectHref: "",
         repoHref: "https://github.com/BuxoGabriel/Spotiphy"
     },
     "scene-fibonacci": {
-        title: "Fibonacci",
+        title: "Fibonacci Watch Store",
         image: "images/logo/fibonacci-logo.png",
-        message:
-            "Fibonacci is a watch e-store built for Intro to Software Engineering. I worked on frontend design and backend models for products and their relationships, gaining hands-on experience with JSON, HTML, and Angular.",
-        skillsSentence: "Skills Used: Java, Maven, Node.js, Angular, XML",
+        message: "Fibonacci is a team-built watch e-commerce application. I implemented update-product functionality and the user-registration class, and formatted website elements including the navigation bar. The project used a Java/Spring backend with REST APIs and an Angular/TypeScript frontend.",
+        skillsSentence: "Skills Used: Java, Spring, REST APIs, Maven, Angular, TypeScript, HTML/CSS",
         projectHref: "",
         repoHref: "https://github.com/AparCode/fibonacci"
     },
@@ -969,22 +979,22 @@ const sceneDialogMap = {
     "scene-maara": {
         title: "MAARA",
         media: [
-            { type: "image", src: "images/logo/maara-logo.png", alt: "Maara logo" },
-            { type: "embed", src: "https://youtu.be/0hhFTL5B0VA", alt: "Maara demo" }
+            { type: "image", src: "images/logo/maara-logo.png", alt: "MAARA logo" },
+            { type: "embed", src: "https://youtu.be/0hhFTL5B0VA", alt: "MAARA demo" }
         ],
-        message: "MAARA is a locally deployable multi-agent SDE assistant that autonomously plans, validates, generates, and repairs software artifacts using locally hosted LLMs via Ollama. When given a natural language issue description and repository, MAARA automates and repairs the program through five steps: parsing the issue into a structured plan, evaluating the plan (Sentinel gate), retrieving code context from a local vector database, using a code-specified LLM to generate a fix, and finally applying the fix to resolve the issue.",
-        skillsSentence: "Skills Used: JavaScript, HTML, CSS, Node.js, Express, MongoDB, Mongoose",
+        message: "MAARA is a multi-agent software-repair assistant that uses locally served LLMs to plan, validate, retrieve code context, generate fixes, critique results, and iteratively repair failures. I co-developed the five-agent pipeline and worked with its RAG-backed retrieval architecture and evaluation. In the project’s strongest reported few-shot setup, the system reached 100% pass@1 with a 13-point gain associated with the strategy/evaluator gate.",
+        skillsSentence: "Skills Used: Python, Ollama, LangChain, RAG, ChromaDB, Qdrant, LLM Agents, Evaluation",
         projectHref: "",
         repoHref: "https://github.com/AparCode/maara"
     },
     "scene-moody": {
         title: "Mood-y",
         media: [
-            { type: "image", src: "images/logo/moody-logo.png", alt: "Moody logo" },
-            { type: "embed", src: "https://youtu.be/7eI5m9MXY8E", alt: "Moody demo" }
+            { type: "image", src: "images/logo/moody-logo.png", alt: "Mood-y logo" },
+            { type: "embed", src: "https://youtu.be/7eI5m9MXY8E", alt: "Mood-y demo" }
         ],
-        message: "Mood-y is a voice-based mood music recommender that suggests songs based on the user's captured emotion. The program captures the user's voice memo, detects the underlying emotion using speech emotion recognition through audio signal and machine learning features, and returns song recommendations.",
-        skillsSentence: "Skills Used: Python, FastAPI, uvicorn, React, librosa, soundfile, scikit-learn, joblib, pandas, numpy, matplotlib, seaborn",
+        message: "Mood-y is a voice-based mood music recommender that turns a voice recording into personalized music recommendations. I co-developed the end-to-end system, extracted 112-dimensional acoustic features with Librosa, compared emotion classifiers across eight emotions, and connected the model to a FastAPI/React application. The best SVM configuration achieved 91.7% accuracy and 0.916 F1 on the project evaluation.",
+        skillsSentence: "Skills Used: Python, Librosa, scikit-learn, SVM, RAVDESS, FastAPI, React, Audio ML",
         projectHref: "",
         repoHref: "https://github.com/sadhvikoli/voice-mood-music-recommender"
     },
@@ -995,11 +1005,32 @@ const sceneDialogMap = {
             { type: "embed", src: "https://youtu.be/N6JO_qRjtS8", alt: "FrequencyPrint demo" },
             { type: "image", src: "images/frequencyprint_demo.png", alt: "FrequencyPrint demo screenshot" }
         ],
-        message: "FrequencyPrint is an audio classifier program that predicts whether an uploaded audio clip or song is AI/deepfake generated. To do so, the program utilizes convolutional neural networks such as ResNet 18 tailored to scan through spectrograms to detect common sound waves that distinguish a deepfake audio clip. ",
-        skillsSentence: "Skills Used: Python, FastAPI, PyTorch, Numpy, Pandas, HTML, CSS, JavaScript",
+        message: "FrequencyPrint is my capstone project exploring whether CNN-based audio models can distinguish real music from AI-generated or deepfake music. I compared SimpleCNN, ResNet18, and ResNet34 on spectrogram inputs, then diagnosed why initially near-perfect metrics failed on realistic AI covers. After redesigning the evaluation with real and AI-cover data, the best realistic accuracy was 61.5%.",
+        skillsSentence: "Skills Used: Python, PyTorch, Librosa, Spectrograms, CNNs, ResNet18, ResNet34, Model Evaluation",
         projectHref: "https://aparcode.github.io/frequency-print/",
         repoHref: "https://github.com/AparCode/frequency-print"
-    }
+    },
+    "scene-musictheoryagent": {
+        title: "Music Theory Agent",
+        media: [
+            { type: "image", src: "images/logo/music-theory-agent-logo.png", alt: "Music Theory Agent logo" }
+        ],
+        message: "Music Theory Agent is a conversational voice assistant designed to help musicians craft, improve, or finish songs with music-theory suggestions. I built and shipped a working prototype in one hour during AssemblyAI’s Voice AI Meetup at NY Tech Week, using Claude Code and connecting AssemblyAI’s Voice Agent API to a FastAPI application.",
+        skillsSentence: "Skills Used: Claude Code, AssemblyAI Voice Agent API, FastAPI, Voice AI",
+        projectHref: "",
+        repoHref: "https://github.com/AparCode/music-theory-assistant"
+    },
+    "scene-artsonna":{
+        title: "Artsonna",
+        media: [
+            { type: "image", src: "images/logo/artsonna-logo.png", alt: "Artsonna logo" }
+        ],
+        message: "Artsonna is a creative-platform prototype designed to help creators build portfolios and discover community. I co-built the live hackathon prototype and iterated on the product experience from an initial concept into a usable demo.",
+        skillsSentence: "Skills Used: Base44, Prompt Engineering, Rapid Prototyping",
+        projectHref: "https://artsonna.base44.app/",
+        repoHref: "https://github.com/Likhithaa-Guntaka/artsonna"
+    },
+
 };
 
 let dialogHref = "";
