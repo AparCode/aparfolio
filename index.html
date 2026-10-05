@@ -1,173 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aparfolio — Aparnaa's Portfolio</title>
-    <link rel="icon" href ="./images/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aparnaa Senthilnathan — Software Engineer · Applied AI · Music Producer</title>
+  <meta name="description" content="Aparnaa Senthilnathan is a software engineer (B.S./M.S. Computer Science, RIT) building applied AI, audio ML and full-stack software, and a music producer. Projects, experience and music.">
+  <meta property="og:title" content="Aparnaa Senthilnathan — Software Engineer & Music Producer">
+  <meta property="og:description" content="Applied AI, audio ML and full-stack software, plus original music. Explore the projects, experience and music.">
+  <meta property="og:image" content="images/headshot-600.jpg">
+  <meta name="theme-color" content="#0d0d14">
+  <link rel="icon" href="./images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="upper-right-control">
-        <button id="upperActionButton" 
-        class="button upper-right-button" 
-        aria-label="Instructions" 
-        title="Instructions"></button>
-        <span class="top-label">Instructions</span>
-    </div>
-    <!-- Title card shown on first load, removed after fade -->
-    <div id="titleCard" class="title-card" role="dialog" aria-hidden="false">
-        <div class="title-card-content">
-            <img src="./images/favicon-96x96.png" alt="Aparfolio Logo" class="title-card-logo" width="100" height="100">
-            <h1>Welcome to Aparfolio!</h1>
-            <p class="subtitle">A music-production-launchpad-inspired portfolio of my work across software engineering, applied AI, computer vision, and creative technology. — Aparnaa Senthilnathan</p>
-            <p class="enter-hint">Click anywhere to enter</p>
-        </div>
-    </div>
-    <main>
-        <div class="container-frame">
-            <div class="container">
+  <a class="skip" href="#main">Skip to content</a>
 
-                <!-- ============ -->
-                <!-- Top Controls -->
-                <!-- ============ -->
-                <div class="top-controls-wrap">
-                    <div class="top-controls">
-                        <div class="top-control-item">
-                            <a
-                                href="./resume.pdf"
-                                download="Aparnaa_Senthilnathan_Resume.pdf"
-                                class="button"
-                                aria-label="Download Resume"
-                                title="Download Resume"
-                            ></a>
-                            <span class="top-label">Resume</span>
-                        </div>
-                        <div class="top-control-item">
-                            <a
-                                href="https://github.com/AparCode"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="button"
-                                aria-label="GitHub"
-                            ></a>
-                            <span class="top-label">GitHub</span>
-                        </div>
-                        <div class="top-control-item">
-                            <a
-                                href="https://www.linkedin.com/in/aparnaain/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="button"
-                                aria-label="LinkedIn"
-                            ></a>
-                            <span class="top-label">LinkedIn</span>
-                        </div>
-                        <div class="top-control-item">
-                            <a
-                                href="https://mail.google.com/mail/?view=cm&fs=1&to=apar2003@gmail.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="button"
-                                aria-label="Contact"
-                            ></a>
-                            <span class="top-label">Contact</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============= -->
-                <!-- Clear Control -->
-                <!-- ============= -->
-                <div class="clear-control">
-                    <div class="top-control-item">
-                        <button class="button" aria-label="Clear"></button>
-                        <span class="top-label">Clear</span>
-                    </div>
-                </div>
-                <!-- ============= -->
-                <!-- Side Controls -->
-                <!-- ============= -->
-                <div class="side-controls">
-                    <div class="side-control-row">
-                        <button class="button" aria-label="About"></button>
-                        <span class="side-label">About</span>
-                    </div>
-                    <div class="side-control-row">
-                        <button class="button" aria-label="Experience"></button>
-                        <span class="side-label">Experience</span>
-                    </div>
-                    <div class="side-control-row arrows-row">
-                        <div class="side-control-arrows">
-                            <button class="pads-scroll-btn up button" aria-label="Scroll Up" title="Scroll Up">▲</button>
-                            <button class="pads-scroll-btn down button" aria-label="Scroll Down" title="Scroll Down">▼</button>
-                        </div>
-                        <span class="side-label">Pages</span>
-                    </div>
-                    <div class="side-control-row">
-                        <button class="button" aria-label="Projects"></button>
-                        <span class="side-label">Projects</span>
-                    </div>
-                    <div class="side-control-row">
-                        <button class="button" aria-label="Music"></button>
-                        <span class="side-label">Music</span>
-                    </div>
-                </div>
-                <!-- ============ -->
-                <!-- LED Pad Grid (with scroll controls) -->
-                <!-- ============ -->
-                <div class="pads-area">
-                    <div class="pads-scroll-wrapper">
-                        <div class="led-pads">
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                            <div class="pad"></div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+  <!-- ============ Header ============ -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Aparnaa Senthilnathan, back to top">
+        <img src="images/favicon-96x96.png" alt="" width="28" height="28">
+        <span>Aparnaa Senthilnathan</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#tech" data-nav="tech"><span class="dot dot-tech"></span>Tech</a>
+        <a href="#music" data-nav="music"><span class="dot dot-music"></span>Music</a>
+        <a href="#experience" data-nav="experience">Experience</a>
+        <a href="#contact" data-nav="contact">Contact</a>
+      </nav>
+      <a class="btn btn-small btn-solid header-resume" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Software engineer · Applied AI · Music producer</p>
+        <h1>I build software that <span class="grad">listens, sees and plays.</span></h1>
+        <p class="lead">
+          Hi, I’m Aparnaa. I just finished my B.S. and M.S. in Computer Science at RIT, with internships in
+          computer vision and AI research. I make AI systems, audio ML tools and full-stack apps, and I produce
+          music. My favorite projects are where those two worlds meet.
+        </p>
+        <p class="status"><span class="pulse" aria-hidden="true"></span>Open to early-career, full-time roles in AI and software engineering</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a>
+          <a class="btn" id="emailBtn" href="mailto:apar2003@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aparnaain/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="https://github.com/AparCode" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
-    </main>
-    <!-- ========== -->
-    <!-- Pad Dialog  -->
-    <!-- ========== -->
-    <dialog id="padDialog" aria-labelledby="padDialogTitle">
-        <h2 id="padDialogTitle">Pad</h2>
-        <div id="padDialogMedia" class="pad-dialog-media">
-            <img id="padDialogImage" src="" alt="Pad Image" hidden sizes="(max-width:800px) 60px, 120px">
-            <video id="padDialogVideo" controls playsinline preload="metadata" hidden></video>
-            <iframe id="padDialogEmbed" src="" hidden frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="hero-visual">
+        <div class="portrait">
+          <img src="images/headshot-600.jpg" alt="Portrait of Aparnaa Senthilnathan" width="600" height="575" fetchpriority="high">
         </div>
-        <div id="padDialogMediaControls" class="pad-dialog-media-controls" hidden>
-            <button id="padDialogPrevMedia" type="button">← Prev</button>
-            <span id="padDialogMediaCounter">1 / 1</span>
-            <button id="padDialogNextMedia" type="button">Next →</button>
+        <!-- Decorative pad grid (a nod to the original Launchpad design) -->
+        <div class="pads" id="heroPads" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ Two paths ============ -->
+    <section class="paths wrap" aria-label="Choose where to start">
+      <a class="path path-tech" href="#tech">
+        <span class="path-kicker">Path 1</span>
+        <span class="path-title">Tech</span>
+        <span class="path-desc">Projects, results and skills. Start with three highlights, then browse all <span data-count="projects">19</span> projects.</span>
+        <span class="path-go">Explore the tech →</span>
+      </a>
+      <a class="path path-music" href="#music">
+        <span class="path-kicker">Path 2</span>
+        <span class="path-title">Music</span>
+        <span class="path-desc">Remixes, originals and orchestra. Plus the music-tech projects where code and sound combine.</span>
+        <span class="path-go">Explore the music →</span>
+      </a>
+    </section>
+
+    <!-- ============ Tech ============ -->
+    <section class="section wrap" id="tech" aria-labelledby="techTitle">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-tech">Tech</p>
+        <h2 id="techTitle">Applied AI, audio ML and full-stack software</h2>
+        <p class="section-lead">Three projects to start with, each with a result you can check. Open any card for the demo, code and what I personally built.</p>
+      </div>
+
+      <div class="featured" id="featured"></div>
+
+      <div class="subhead">
+        <h3>All projects</h3>
+        <div class="chips" id="projectFilters" role="group" aria-label="Filter projects"></div>
+      </div>
+      <p class="filter-note" id="filterNote" aria-live="polite"></p>
+      <div class="grid" id="projectGrid"></div>
+
+      <div class="subhead subhead-skills"><h3>Skills</h3></div>
+      <div class="skills" id="skills"></div>
+    </section>
+
+    <!-- ============ Music ============ -->
+    <section class="section section-music" id="music" aria-labelledby="musicTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow eyebrow-music">Music</p>
+          <h2 id="musicTitle">Pianist, producer, and a coder who scores her own projects</h2>
+          <p class="section-lead">I’m a musician who loves to produce: remixes, mashups and original compositions, plus years of piano in an orchestra.</p>
         </div>
-        <p id="padDialogMessage"></p>
-        <p id="padDialogSkills"></p>
-        <div class="dialog-actions">
-            <button id="padDialogClose" type="button">Close</button>
-            <button id="padDialogProject" type="button">Project Link</button>
-            <button id="padDialogRepo" type="button">View Repo</button>
+
+        <div class="music-grid">
+          <div class="listen">
+            <h3>Listen</h3>
+            <div id="musicPlayer"></div>
+            <p class="listen-cap" id="musicCaption"></p>
+            <a class="btn btn-music" href="https://www.youtube.com/@illumidove" target="_blank" rel="noopener noreferrer">More on my YouTube channel, illumidove ↗</a>
+          </div>
+
+          <div class="music-facts">
+            <h3>What I do</h3>
+            <ul class="facts">
+              <li><strong>Produce.</strong> Remixes, mashups and original compositions in Ableton.</li>
+              <li><strong>Perform.</strong> Piano in every concert with the Game Symphony Orchestra at RIT, playing orchestral arrangements of video-game music.</li>
+              <li><strong>Compose for projects.</strong> I wrote the music and sound effects for XRLive: Under the Sea, an interactive projection experience.</li>
+              <li><strong>Jam.</strong> Took part in Music Jam events at Computer Science House.</li>
+            </ul>
+          </div>
         </div>
-    </dialog>
-    <!-- ======= -->
-    <!-- Scripts -->
-    <!-- ======= -->
-    <script src="./app.js" defer></script>
+
+        <div class="subhead subhead-tight">
+          <h3>Where music meets code</h3>
+          <button class="link-btn" id="seeAllMusicTech" type="button">See these in the project grid →</button>
+        </div>
+        <div class="cross" id="musicTech"></div>
+      </div>
+    </section>
+
+    <!-- ============ Experience ============ -->
+    <section class="section wrap" id="experience" aria-labelledby="expTitle">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2 id="expTitle">Industry, research and leadership</h2>
+      </div>
+
+      <div class="edu">
+        <div class="edu-main">
+          <div>
+            <h3>Rochester Institute of Technology</h3>
+            <p>B.S. &amp; M.S. in Computer Science · Presidential Scholar · Aug 2021 – May 2026</p>
+          </div>
+        </div>
+        <p class="certs">Certifications: IBM SkillsBuild Data Analytics (2026) · Google AI Essentials (2025)</p>
+      </div>
+
+      <div id="timeline"></div>
+    </section>
+  </main>
+
+  <!-- ============ Footer / contact ============ -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div>
+        <h2>Let’s talk</h2>
+        <p>I’m looking for early-career, full-time opportunities in AI and software engineering.</p>
+      </div>
+      <div class="footer-links">
+        <a class="btn btn-solid" href="mailto:apar2003@gmail.com">apar2003@gmail.com</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/aparnaain/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/AparCode" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@illumidove" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ Project detail dialog ============ -->
+  <dialog id="detail" aria-labelledby="detailTitle">
+    <div class="detail-bar">
+      <div class="detail-nav">
+        <button type="button" id="detailPrev" aria-label="Previous project">←</button>
+        <button type="button" id="detailNext" aria-label="Next project">→</button>
+      </div>
+      <button type="button" id="detailClose" class="detail-close" aria-label="Close">✕</button>
+    </div>
+    <div class="detail-body">
+      <p class="detail-context" id="detailContext"></p>
+      <h2 id="detailTitle"></h2>
+      <div class="detail-tags" id="detailTags"></div>
+      <p class="detail-desc" id="detailDesc"></p>
+      <h4>Tools</h4>
+      <div class="skill-chips" id="detailSkills"></div>
+      <div class="detail-media" id="detailMedia"></div>
+      <div class="detail-actions" id="detailActions"></div>
+    </div>
+  </dialog>
+
+  <noscript>
+    <p style="padding:24px;text-align:center">This portfolio needs JavaScript for the project browser. Resume: <a href="resume.pdf">resume.pdf</a> · <a href="https://github.com/AparCode">GitHub</a> · <a href="https://www.linkedin.com/in/aparnaain/">LinkedIn</a></p>
+  </noscript>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
