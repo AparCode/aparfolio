@@ -91,7 +91,7 @@
     visibleIds = list.map((p) => p.id);
     $("#projectGrid").replaceChildren(...list.map(projectCard));
     const notes = {
-      all: "Newest and most substantial first.",
+      all: "In the order of my project masterlist.",
       ai: "Machine learning, computer vision, LLM agents and evaluation.",
       music: "Projects that analyze, visualize, recommend or make music.",
       gfx: "Real-time graphics, projection mapping and motion capture.",
@@ -170,6 +170,8 @@
     $("#detailTitle").textContent = p.title;
     $("#detailTags").replaceChildren(...tagPills(p));
     $("#detailDesc").textContent = p.description;
+    $("#detailMetrics").replaceChildren(...(p.metrics || []).map((metric) => h("li", { text: metric })));
+    $("#detailResults").hidden = !(p.metrics || []).length;
     $("#detailSkills").replaceChildren(...p.skills.map((s) => h("span", { class: "skill", text: s })));
     $("#detailMedia").replaceChildren(...renderMedia(p.media));
     $("#detailMedia").hidden = !p.media.length;
@@ -211,19 +213,34 @@
   function renderMusic() {
     const root = $("#musicPlayer");
     const cap = $("#musicCaption");
-    function load(i) {
+    const library = $("#musicLibrary");
+    let selectedTrack = 0;
+    function load(i, scroll = false) {
+      selectedTrack = i;
       const t = MUSIC_TRACKS[i];
       root.replaceChildren(videoFacade({ type: t.type, id: t.id, label: t.title }));
       root.querySelector("figcaption").remove();
+      $("#musicNowPlaying").textContent = t.title;
       cap.textContent = t.note;
+      $("#musicWatch").href = watchUrl(t);
+      library.querySelectorAll("button").forEach((button, index) => {
+        button.classList.toggle("is-on", index === selectedTrack);
+        button.setAttribute("aria-pressed", String(index === selectedTrack));
+      });
+      if (scroll) {
+        root.scrollIntoView({ behavior: "smooth", block: "center" });
+        root.querySelector("button").focus({ preventScroll: true });
+      }
     }
     if (!MUSIC_TRACKS.length) { root.parentElement.hidden = true; return; }
+    library.replaceChildren(...MUSIC_TRACKS.map((t, i) =>
+      h("button", { class: "track", type: "button", "aria-pressed": "false", onclick: () => load(i, true) },
+        h("span", { class: "track-number", "aria-hidden": "true", text: String(i + 1).padStart(2, "0") }),
+        h("span", { class: "track-title", text: t.title }),
+        h("span", { class: "track-action", text: "Load track ↑" })
+      )
+    ));
     load(0);
-    if (MUSIC_TRACKS.length > 1) {
-      const picker = h("div", { class: "chips track-picker" },
-        MUSIC_TRACKS.map((t, i) => h("button", { class: "chip", type: "button", onclick: () => load(i), text: t.title })));
-      root.parentElement.insertBefore(picker, root);
-    }
 
     const cross = PROJECTS.filter((p) => p.cats.includes("music"));
     $("#musicTech").replaceChildren(...cross.map((p) =>

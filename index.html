@@ -41,11 +41,12 @@
     <section class="hero wrap">
       <div class="hero-copy">
         <p class="eyebrow">Software engineer · Applied AI · Music producer</p>
-        <h1>I build software that <span class="grad">listens, sees and plays.</span></h1>
+        <h1>Hello! I’m Aparnaa.<br><span class="grad">I build software and make music.</span></h1>
         <p class="lead">
-          Hi, I’m Aparnaa. I just finished my B.S. and M.S. in Computer Science at RIT, with internships in
-          computer vision and AI research. I make AI systems, audio ML tools and full-stack apps, and I produce
-          music. My favorite projects are where those two worlds meet.
+          I’m a Computer Science B.S./M.S. graduate from RIT, with internship experience in computer vision
+          and AI research. I enjoy taking an idea, figuring out how to build it, and refining it through trial
+          and error. So far, that’s led me to voice agents, music recommendation tools, interactive visuals,
+          and a capstone on AI-generated music. I also produce music as Illumidove!
         </p>
         <p class="status"><span class="pulse" aria-hidden="true"></span>Open to early-career, full-time roles in AI and software engineering</p>
         <div class="cta-row">
@@ -67,15 +68,15 @@
     <!-- ============ Two paths ============ -->
     <section class="paths wrap" aria-label="Choose where to start">
       <a class="path path-tech" href="#tech">
-        <span class="path-kicker">Path 1</span>
+        <span class="path-kicker">What I build</span>
         <span class="path-title">Tech</span>
-        <span class="path-desc">Projects, results and skills. Start with three highlights, then browse all <span data-count="projects">19</span> projects.</span>
+        <span class="path-desc">From a one-hour voice agent to a semester of audio ML experiments. Explore all <span data-count="projects">19</span> projects and what I contributed.</span>
         <span class="path-go">Explore the tech →</span>
       </a>
       <a class="path path-music" href="#music">
-        <span class="path-kicker">Path 2</span>
+        <span class="path-kicker">What I make</span>
         <span class="path-title">Music</span>
-        <span class="path-desc">Remixes, originals and orchestra. Plus the music-tech projects where code and sound combine.</span>
+        <span class="path-desc">I remix songs I love, make mashups, and compose my own pieces. Listen to my work as Illumidove.</span>
         <span class="path-go">Explore the music →</span>
       </a>
     </section>
@@ -84,8 +85,8 @@
     <section class="section wrap" id="tech" aria-labelledby="techTitle">
       <div class="section-head">
         <p class="eyebrow eyebrow-tech">Tech</p>
-        <h2 id="techTitle">Applied AI, audio ML and full-stack software</h2>
-        <p class="section-lead">Three projects to start with, each with a result you can check. Open any card for the demo, code and what I personally built.</p>
+        <h2 id="techTitle">What I’ve been building</h2>
+        <p class="section-lead">I’ve worked on AI agents, audio models, computer vision, and full-stack apps. These three projects show some of the problems I explored and what I learned along the way. Open a project for my contribution, results, and code.</p>
       </div>
 
       <div class="featured" id="featured"></div>
@@ -106,31 +107,37 @@
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow eyebrow-music">Music</p>
-          <h2 id="musicTitle">Pianist, producer, and a coder who scores her own projects</h2>
-          <p class="section-lead">I’m a musician who loves to produce: remixes, mashups and original compositions, plus years of piano in an orchestra.</p>
+          <h2 id="musicTitle">Hi, I’m Illumidove!</h2>
+          <p class="section-lead">I love producing music, whether I’m remixing a favorite song, trying a mashup, or creating a piece of my own. I share those experiments on YouTube. I also played piano with RIT’s Game Symphony Orchestra and composed the music for our XRLive demo.</p>
         </div>
 
         <div class="music-grid">
           <div class="listen">
             <h3>Listen</h3>
             <div id="musicPlayer"></div>
+            <p class="now-playing" id="musicNowPlaying" aria-live="polite"></p>
             <p class="listen-cap" id="musicCaption"></p>
+            <a class="music-watch" id="musicWatch" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
             <a class="btn btn-music" href="https://www.youtube.com/@illumidove" target="_blank" rel="noopener noreferrer">More on my YouTube channel, illumidove ↗</a>
           </div>
 
           <div class="music-facts">
             <h3>What I do</h3>
             <ul class="facts">
-              <li><strong>Produce.</strong> Remixes, mashups and original compositions in Ableton.</li>
-              <li><strong>Perform.</strong> Piano in every concert with the Game Symphony Orchestra at RIT, playing orchestral arrangements of video-game music.</li>
-              <li><strong>Compose for projects.</strong> I wrote the music and sound effects for XRLive: Under the Sea, an interactive projection experience.</li>
-              <li><strong>Jam.</strong> Took part in Music Jam events at Computer Science House.</li>
+              <li><strong>Remix and experiment.</strong> I rework songs by artists like EXO and XLOV, and try ideas such as remaking a highlight medley before hearing it.</li>
+              <li><strong>Perform.</strong> I played piano with the Game Symphony Orchestra at RIT, performing orchestral arrangements of video-game music.</li>
+              <li><strong>Compose.</strong> For XRLive: Under the Sea, I created the music and sound effects in Ableton. You can hear that work in Mystical Ocean.</li>
+              <li><strong>Make something of my own.</strong> My channel also includes pieces such as CPU and Dub-Dummy.</li>
             </ul>
           </div>
         </div>
 
+        <div class="subhead subhead-tight"><h3>From my channel</h3></div>
+        <p class="section-lead library-intro">Pick a track to load it in the player above, then press play.</p>
+        <div class="music-library" id="musicLibrary" role="group" aria-label="Choose a music video"></div>
+
         <div class="subhead subhead-tight">
-          <h3>Where music meets code</h3>
+          <h3>Music projects I’ve built with code</h3>
           <button class="link-btn" id="seeAllMusicTech" type="button">See these in the project grid →</button>
         </div>
         <div class="cross" id="musicTech"></div>
@@ -141,7 +148,7 @@
     <section class="section wrap" id="experience" aria-labelledby="expTitle">
       <div class="section-head">
         <p class="eyebrow">Experience</p>
-        <h2 id="expTitle">Industry, research and leadership</h2>
+        <h2 id="expTitle">Where I’ve worked and contributed</h2>
       </div>
 
       <div class="edu">
@@ -162,8 +169,8 @@
   <footer class="site-footer" id="contact">
     <div class="wrap footer-inner">
       <div>
-        <h2>Let’s talk</h2>
-        <p>I’m looking for early-career, full-time opportunities in AI and software engineering.</p>
+        <h2>Feel free to reach out!</h2>
+        <p>I’m looking for early-career, full-time roles in AI and software engineering. I’d love to hear about what your team is building.</p>
       </div>
       <div class="footer-links">
         <a class="btn btn-solid" href="mailto:apar2003@gmail.com">apar2003@gmail.com</a>
@@ -189,7 +196,11 @@
       <h2 id="detailTitle"></h2>
       <div class="detail-tags" id="detailTags"></div>
       <p class="detail-desc" id="detailDesc"></p>
-      <h4>Tools</h4>
+      <section class="detail-results" id="detailResults" aria-labelledby="detailResultsTitle" hidden>
+        <h3 id="detailResultsTitle">Evaluation results</h3>
+        <ul id="detailMetrics"></ul>
+      </section>
+      <h3 class="detail-tools-title">Tools</h3>
       <div class="skill-chips" id="detailSkills"></div>
       <div class="detail-media" id="detailMedia"></div>
       <div class="detail-actions" id="detailActions"></div>
