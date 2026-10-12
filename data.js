@@ -795,6 +795,12 @@ const EXPERIENCE_GROUPS = [
 const MUSIC_TRACKS = [
   {
     "type": "youtube",
+    "id": "PUztTsoHwys",
+    "title": "I Remade XLOV's [i=!] Highlight Medley Without Hearing It",
+    "note": "A remake challenge: XLOV’s [i=!] highlight medley without hearing it."
+  },
+  {
+    "type": "youtube",
     "id": "Osx9m8qw5WM",
     "title": "XLOV (Hyun & Haru) - HIPS (Illumidove Remix)",
     "note": "My remix of HIPS by XLOV’s Hyun and Haru."
