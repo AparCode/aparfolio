@@ -1,22 +1,34 @@
 # Aparfolio
 
-Static portfolio site. Open `index.html` or host on GitHub Pages; no build step.
+A two-mode static portfolio. No package installation or build step is needed.
 
-- `data.js`: all content (projects, experience, skills, music tracks). Edit this to update the site.
-- `app.js` / `style.css`: rendering and styling.
-- To add music: add entries to `MUSIC_TRACKS` in `data.js` (YouTube video IDs, titles and notes); the music library updates automatically.
+## Preview
 
-October 5, 2026 content update:
+Run `python -m http.server 4173 --bind 127.0.0.1` from this directory, then open http://127.0.0.1:4173. You can also open index.html directly.
 
-- Rewrote the introduction, section text and project descriptions in a direct, first-person voice informed by Aparnaa's LinkedIn posts.
-- Restored all 19 projects to the supplied masterlist order. Featured work remains a separate selection.
-- Preserved the masterlist's supported contributions, tools, links and evaluation caveats. Removed the unsupported Virtual Karaoke repository link.
-- Added project evaluation results in the detail dialog, including MAARA retrieval benchmarks, Mood-y's best SVM results, and FrequencyPrint's realistic evaluation.
-- Added 14 verified public Illumidove uploads with track selection, click-to-play video and direct YouTube links. No video auto-loads on page arrival.
-- Corrected the Women in Computing, COMS, RIT AI Club and Game Symphony Orchestra dates using the supplied LinkedIn profile. Other experience entries are retained from the existing site.
+## Update content
 
-Sources: supplied `Aparnaa_Codex_Portfolio_Handoff.zip`, [existing portfolio source](https://github.com/AparCode/aparfolio), [LinkedIn](https://www.linkedin.com/in/aparnaain/) and [Illumidove videos](https://www.youtube.com/@illumidove/videos).
+- `data.js`: existing project descriptions, links, skills, experience, and music tracks.
+- `app.js`: shared renderers, mode introductions, and music skill groups.
+- `style.css`: centralized color tokens, responsive layout, and reduced-motion rules.
+- `images/`: supplied branding, optimized portrait, and project artwork.
+- `resume.pdf`: supplied resume. Replace this file to update it.
 
-Checked: JavaScript syntax, all project dialogs and source links, masterlist order, filters, keyboard navigation, music selection and video cleanup, local image paths, and page widths of 390, 680, 768, 1024 and 1440 pixels. Desktop and mobile screenshots were reviewed. Actual YouTube playback depends on YouTube's embedding availability; direct watch links are provided.
+Tech is the default on every page load. The navigation switch changes all five sections, supports native button keyboard/touch behavior, and reports its state to assistive technology. No audio or video loads automatically. Music links open YouTube.
 
-The updated files are prepared locally. Publishing these files to the existing GitHub Pages repository is a separate step.
+## Design and sources
+
+The two supplied Figma PDF exports guide the divided navigation, handwritten display typography, left introduction, rounded right portrait, and blue/plum themes. Comic Neue approximates the mockup lettering; an exact font specification was not supplied. The existing purple A icon is retained.
+
+Reviewed all three supplied archives: the legacy HTML site, the basic HTML/CSS/JS site, and the launchpad prototype. The current workspace is an expanded basic implementation, so its centralized content remains intact. Source descriptions and dates are retained without adding achievements. References and a pre-edit backup are in `reference/redesign/` (ignored by Git).
+
+The PDFs contain homepage designs only. Below-the-fold sections and mobile adaptation extend that design. No music CV or separate music portrait was supplied; the same portrait is used and resume access belongs to Tech mode. External destinations are retained from the supplied content; their live availability is not guaranteed.
+
+This is a local review version; it has not been deployed. Upload the root HTML/CSS/JS, images directory, and resume.pdf to any static host. Do not deploy the reference directory.
+
+## Validation
+JavaScript syntax checks passed. Browser review covered desktop (1440px) and mobile (390px), keyboard mode switching, fresh-load Tech default, project expansion, image loading, section targets, and console errors. No external link availability audit was performed.
+
+
+Music catalog refreshed from the public Illumidove Videos page on October 22, 2026: 16 uploads, newest first. This is a curated static list; new YouTube uploads must be added to MUSIC_TRACKS in data.js.
+

@@ -797,7 +797,7 @@ const MUSIC_TRACKS = [
     "type": "youtube",
     "id": "kmszaR_KIxs",
     "title": "I Remade NMIXX's \"Strange Muse\" Highlight Medley Without Hearing It",
-    "note": "A remake challenge: NMIXX's \"Strange Muse\" highlight medley without hearing it."
+    "note": "A remake challenge: NMIXX’s Strange Muse highlight medley without hearing it."
   },
   {
     "type": "youtube",

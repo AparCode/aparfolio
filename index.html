@@ -1,217 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-mode="tech">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aparnaa Senthilnathan — Software Engineer · Applied AI · Music Producer</title>
-  <meta name="description" content="Aparnaa Senthilnathan is a software engineer (B.S./M.S. Computer Science, RIT) building applied AI, audio ML and full-stack software, and a music producer. Projects, experience and music.">
-  <meta property="og:title" content="Aparnaa Senthilnathan — Software Engineer & Music Producer">
-  <meta property="og:description" content="Applied AI, audio ML and full-stack software, plus original music. Explore the projects, experience and music.">
-  <meta property="og:image" content="images/headshot-600.jpg">
-  <meta name="theme-color" content="#0d0d14">
-  <link rel="icon" href="./images/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aparfolio — Aparnaa Senthilnathan</title>
+<meta name="description" content="Aparnaa Senthilnathan’s portfolio: software engineering, applied AI, and music as Illumidove.">
+<meta name="theme-color" content="#091722">
+<link rel="icon" href="images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <!-- ============ Header ============ -->
-  <header class="site-header" id="top">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Aparnaa Senthilnathan, back to top">
-        <img src="images/favicon-96x96.png" alt="" width="28" height="28">
-        <span>Aparnaa Senthilnathan</span>
-      </a>
-      <nav class="nav" aria-label="Sections">
-        <a href="#tech" data-nav="tech"><span class="dot dot-tech"></span>Tech</a>
-        <a href="#music" data-nav="music"><span class="dot dot-music"></span>Music</a>
-        <a href="#experience" data-nav="experience">Experience</a>
-        <a href="#contact" data-nav="contact">Contact</a>
-      </nav>
-      <a class="btn btn-small btn-solid header-resume" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- ============ Hero ============ -->
-    <section class="hero wrap">
-      <div class="hero-copy">
-        <p class="eyebrow">Software engineer · Applied AI · Music producer</p>
-        <h1>Hello! I’m Aparnaa.<br><span class="grad">I build software and make music.</span></h1>
-        <p class="lead">
-          I’m a Computer Science B.S./M.S. graduate from RIT, with internship experience in computer vision
-          and AI research. I enjoy taking an idea, figuring out how to build it, and refining it through trial
-          and error. So far, that’s led me to voice agents, music recommendation tools, interactive visuals,
-          and a capstone on AI-generated music. I also produce music as Illumidove!
-        </p>
-        <p class="status"><span class="pulse" aria-hidden="true"></span>Open to early-career, full-time roles in AI and software engineering</p>
-        <div class="cta-row">
-          <a class="btn btn-solid" href="resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a>
-          <a class="btn" id="emailBtn" href="mailto:apar2003@gmail.com">Email me</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aparnaain/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a class="btn btn-ghost" href="https://github.com/AparCode" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="portrait">
-          <img src="images/headshot-600.jpg" alt="Portrait of Aparnaa Senthilnathan" width="600" height="575" fetchpriority="high">
-        </div>
-        <!-- Decorative pad grid (a nod to the original Launchpad design) -->
-        <div class="pads" id="heroPads" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- ============ Two paths ============ -->
-    <section class="paths wrap" aria-label="Choose where to start">
-      <a class="path path-tech" href="#tech">
-        <span class="path-kicker">What I build</span>
-        <span class="path-title">Tech</span>
-        <span class="path-desc">From a one-hour voice agent to a semester of audio ML experiments. Explore all <span data-count="projects">19</span> projects and what I contributed.</span>
-        <span class="path-go">Explore the tech →</span>
-      </a>
-      <a class="path path-music" href="#music">
-        <span class="path-kicker">What I make</span>
-        <span class="path-title">Music</span>
-        <span class="path-desc">I remix songs I love, make mashups, and compose my own pieces. Listen to my work as Illumidove.</span>
-        <span class="path-go">Explore the music →</span>
-      </a>
-    </section>
-
-    <!-- ============ Tech ============ -->
-    <section class="section wrap" id="tech" aria-labelledby="techTitle">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-tech">Tech</p>
-        <h2 id="techTitle">What I’ve been building</h2>
-        <p class="section-lead">I’ve worked on AI agents, audio models, computer vision, and full-stack apps. These three projects show some of the problems I explored and what I learned along the way. Open a project for my contribution, results, and code.</p>
-      </div>
-
-      <div class="featured" id="featured"></div>
-
-      <div class="subhead">
-        <h3>All projects</h3>
-        <div class="chips" id="projectFilters" role="group" aria-label="Filter projects"></div>
-      </div>
-      <p class="filter-note" id="filterNote" aria-live="polite"></p>
-      <div class="grid" id="projectGrid"></div>
-
-      <div class="subhead subhead-skills"><h3>Skills</h3></div>
-      <div class="skills" id="skills"></div>
-    </section>
-
-    <!-- ============ Music ============ -->
-    <section class="section section-music" id="music" aria-labelledby="musicTitle">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow eyebrow-music">Music</p>
-          <h2 id="musicTitle">Hi, I’m Illumidove!</h2>
-          <p class="section-lead">I love producing music, whether I’m remixing a favorite song, trying a mashup, or creating a piece of my own. I share those experiments on YouTube. I also played piano with RIT’s Game Symphony Orchestra and composed the music for our XRLive demo.</p>
-        </div>
-
-        <div class="music-grid">
-          <div class="listen">
-            <h3>Listen</h3>
-            <div id="musicPlayer"></div>
-            <p class="now-playing" id="musicNowPlaying" aria-live="polite"></p>
-            <p class="listen-cap" id="musicCaption"></p>
-            <a class="music-watch" id="musicWatch" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
-            <a class="btn btn-music" href="https://www.youtube.com/@illumidove" target="_blank" rel="noopener noreferrer">More on my YouTube channel, illumidove ↗</a>
-          </div>
-
-          <div class="music-facts">
-            <h3>What I do</h3>
-            <ul class="facts">
-              <li><strong>Remix and experiment.</strong> I rework songs by artists like EXO and XLOV, and try ideas such as remaking a highlight medley before hearing it.</li>
-              <li><strong>Perform.</strong> I played piano with the Game Symphony Orchestra at RIT, performing orchestral arrangements of video-game music.</li>
-              <li><strong>Compose.</strong> For XRLive: Under the Sea, I created the music and sound effects in Ableton. You can hear that work in Mystical Ocean.</li>
-              <li><strong>Make something of my own.</strong> My channel also includes pieces such as CPU and Dub-Dummy.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="subhead subhead-tight"><h3>From my channel</h3></div>
-        <p class="section-lead library-intro">Pick a track to load it in the player above, then press play.</p>
-        <div class="music-library" id="musicLibrary" role="group" aria-label="Choose a music video"></div>
-
-        <div class="subhead subhead-tight">
-          <h3>Music projects I’ve built with code</h3>
-          <button class="link-btn" id="seeAllMusicTech" type="button">See these in the project grid →</button>
-        </div>
-        <div class="cross" id="musicTech"></div>
-      </div>
-    </section>
-
-    <!-- ============ Experience ============ -->
-    <section class="section wrap" id="experience" aria-labelledby="expTitle">
-      <div class="section-head">
-        <p class="eyebrow">Experience</p>
-        <h2 id="expTitle">Where I’ve worked and contributed</h2>
-      </div>
-
-      <div class="edu">
-        <div class="edu-main">
-          <div>
-            <h3>Rochester Institute of Technology</h3>
-            <p>B.S. &amp; M.S. in Computer Science · Presidential Scholar · Aug 2021 – May 2026</p>
-          </div>
-        </div>
-        <p class="certs">Certifications: IBM SkillsBuild Data Analytics (2026) · Google AI Essentials (2025)</p>
-      </div>
-
-      <div id="timeline"></div>
-    </section>
-  </main>
-
-  <!-- ============ Footer / contact ============ -->
-  <footer class="site-footer" id="contact">
-    <div class="wrap footer-inner">
-      <div>
-        <h2>Feel free to reach out!</h2>
-        <p>I’m looking for early-career, full-time roles in AI and software engineering. I’d love to hear about what your team is building.</p>
-      </div>
-      <div class="footer-links">
-        <a class="btn btn-solid" href="mailto:apar2003@gmail.com">apar2003@gmail.com</a>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/aparnaain/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a class="btn btn-ghost" href="https://github.com/AparCode" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a class="btn btn-ghost" href="https://www.youtube.com/@illumidove" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ============ Project detail dialog ============ -->
-  <dialog id="detail" aria-labelledby="detailTitle">
-    <div class="detail-bar">
-      <div class="detail-nav">
-        <button type="button" id="detailPrev" aria-label="Previous project">←</button>
-        <button type="button" id="detailNext" aria-label="Next project">→</button>
-      </div>
-      <button type="button" id="detailClose" class="detail-close" aria-label="Close">✕</button>
-    </div>
-    <div class="detail-body">
-      <p class="detail-context" id="detailContext"></p>
-      <h2 id="detailTitle"></h2>
-      <div class="detail-tags" id="detailTags"></div>
-      <p class="detail-desc" id="detailDesc"></p>
-      <section class="detail-results" id="detailResults" aria-labelledby="detailResultsTitle" hidden>
-        <h3 id="detailResultsTitle">Evaluation results</h3>
-        <ul id="detailMetrics"></ul>
-      </section>
-      <h3 class="detail-tools-title">Tools</h3>
-      <div class="skill-chips" id="detailSkills"></div>
-      <div class="detail-media" id="detailMedia"></div>
-      <div class="detail-actions" id="detailActions"></div>
-    </div>
-  </dialog>
-
-  <noscript>
-    <p style="padding:24px;text-align:center">This portfolio needs JavaScript for the project browser. Resume: <a href="resume.pdf">resume.pdf</a> · <a href="https://github.com/AparCode">GitHub</a> · <a href="https://www.linkedin.com/in/aparnaain/">LinkedIn</a></p>
-  </noscript>
-
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<a class="skip" href="#about">Skip to content</a>
+<header class="site-header">
+<a class="brand" href="#about" aria-label="Aparfolio home"><img src="images/favicon-96x96.png" width="60" height="60" alt=""><span>Aparfolio</span></a>
+<nav aria-label="Main navigation"><a href="#about" aria-current="location">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+<button class="mode-switch" id="modeSwitch" type="button" role="switch" aria-checked="false" aria-label="Music mode" aria-describedby="switchHelp"><span class="mode-label tech-label">Tech</span><span class="switch-housing" aria-hidden="true"><span class="switch-thumb"><i></i><i></i><i></i></span></span><span class="mode-label music-label">Music</span></button>
+<span id="switchHelp" class="sr-only">Switch between the Tech and Music portfolios.</span>
+</header>
+<main>
+<section class="hero wrap" id="about" aria-labelledby="greeting">
+<div class="hero-copy"><h1 id="greeting">Hello! I’m Aparnaa.</h1><p class="role" id="heroRole">I’m an AI &amp; software engineer.</p><p class="intro" id="heroIntro">I’m a Computer Science B.S./M.S. graduate from RIT. I build software, explore applied AI, and enjoy figuring out how an idea becomes something people can use.</p><div class="actions" id="heroActions"><a class="button primary" href="resume.pdf">View resume ↗</a><a class="text-link" href="#projects">Explore my projects ↓</a></div><p class="personal-note" id="heroNote">Curious about my creative side? Try the Music switch.</p></div>
+<div class="portrait"><img src="images/headshot-600.jpg" width="600" height="575" alt="Aparnaa smiling, with purple light across her face" fetchpriority="high"></div>
+</section>
+<section class="section wrap" id="projects" aria-labelledby="projectsTitle"><div class="section-heading"><p class="eyebrow" id="projectsEyebrow">Tech / Projects</p><h2 id="projectsTitle">Things I’ve built</h2><p id="projectsIntro">A selection of my work in AI, software, and interactive experiences.</p></div><div id="projectContent"></div></section>
+<section class="section wrap" id="skills" aria-labelledby="skillsTitle"><div class="section-heading"><p class="eyebrow">Skills</p><h2 id="skillsTitle">What I work with</h2></div><div class="skills-grid" id="skillsContent"></div></section>
+<section class="section wrap" id="experience" aria-labelledby="experienceTitle"><div class="section-heading"><p class="eyebrow">Experience</p><h2 id="experienceTitle">Where I’ve contributed</h2></div><div id="experienceContent"></div></section>
+<section class="section wrap contact" id="contact" aria-labelledby="contactTitle"><p class="eyebrow">Contact</p><h2 id="contactTitle">Let’s get in touch.</h2><p id="contactIntro">I’m interested in early-career opportunities in AI and software engineering.</p><a class="email" href="mailto:apar2003@gmail.com">apar2003@gmail.com ↗</a><div class="actions" id="contactLinks"></div></section>
+</main>
+<footer class="wrap"><span>Aparfolio · Aparnaa Senthilnathan</span><a href="#about">Back to top ↑</a></footer>
+<p id="modeStatus" class="sr-only" role="status"></p>
+<noscript><p class="wrap">Read my <a href="resume.pdf">resume</a> or visit <a href="https://github.com/AparCode">GitHub</a>. Enable JavaScript to explore the project collection and Music mode.</p></noscript>
+</body></html>
