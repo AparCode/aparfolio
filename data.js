@@ -797,96 +797,96 @@ const MUSIC_TRACKS = [
     "type": "youtube",
     "id": "kmszaR_KIxs",
     "title": "I Remade NMIXX's \"Strange Muse\" Highlight Medley Without Hearing It",
-    "note": "A remake challenge: NMIXX’s Strange Muse highlight medley without hearing it."
+    "note": "Another highlight medley challenge, this time with one of my favorite K-pop groups, NMIXX! I focused on making the instrumentals sound fuller and used their acapella medley to figure out the chords. These took forever, but I finished just in time for the album release!"
   },
   {
     "type": "youtube",
     "id": "PUztTsoHwys",
     "title": "I Remade XLOV's [i=!] Highlight Medley Without Hearing It",
-    "note": "A remake challenge: XLOV’s [i=!] highlight medley without hearing it."
+    "note": "Spent an entire weekend making instrumentals for five XLOV track snippets without hearing the originals! Since the album was coming out around Halloween, I gave most of them a spooky twist. Overall, I’m proud of how they turned out."
   },
   {
     "type": "youtube",
     "id": "Osx9m8qw5WM",
     "title": "XLOV (Hyun & Haru) - HIPS (Illumidove Remix)",
-    "note": "My remix of HIPS by XLOV’s Hyun and Haru."
+    "note": "Tried a fun Miami bass (well, kinda) take on HIPS! This started as one of the instrumentals from my XLOV highlight medley challenge. After sharing that first version, I finally got around to finishing it as a full remix."
   },
   {
     "type": "youtube",
     "id": "w5kdshXFYUc",
     "title": "Illumidove - Dub-Dummy",
-    "note": "Dub-Dummy, released on my Illumidove channel."
+    "note": "Here’s an older dubstep attempt I made for a production challenge!"
   },
   {
     "type": "youtube",
     "id": "vo5q7d_7uNA",
     "title": "CHEN (EXO) - I Don't Even Mind (Illumidove Remix)",
-    "note": "My remix of CHEN’s I Don’t Even Mind."
+    "note": "A short remix of my favorite song from Chen’s Last Scene album, made back in late 2022! I was still figuring out how to mix and master instruments, so the mixing is a little rough in places."
   },
   {
     "type": "youtube",
     "id": "FP6aoIGNwDU",
     "title": "Illumidove - CPU",
-    "note": "CPU, released on my Illumidove channel."
+    "note": "An original rock instrumental I made for a music competition back in college. It’s a simple piece, but stick around until the end for a twist!"
   },
   {
     "type": "youtube",
     "id": "yRPwJDyoVQs",
     "title": "Illumidove - Dark Sea (Frozen II OST Recomposition)",
-    "note": "My recomposition of Dark Sea from the Frozen II soundtrack."
+    "note": "The first song I produced on my own, back in early 2022! We had just 72 hours to compose a piece for a school event, so I tried recomposing Dark Sea from Frozen II. I didn’t finish the whole thing in time, but I’m proud of what I made."
   },
   {
     "type": "youtube",
     "id": "QS2Q3e6uC1Q",
     "title": "CHANYEOL (EXO) - I'm on your side too (Revamped)",
-    "note": "My revamped version of CHANYEOL’s I’m on your side too."
+    "note": "One of my older college projects! I took one of my favorite Chanyeol songs and added instruments to make it sound fuller."
   },
   {
     "type": "youtube",
     "id": "LTf-Illc0-c",
     "title": "I Remade XLOV's \"I,God\" Highlight Medley Without Hearing It",
-    "note": "A remake challenge: XLOV’s I,God highlight medley without hearing it."
+    "note": "I kept seeing this challenge on YouTube and wanted to try it with XLOV! I made instrumentals using only the acapellas, then listened to the originals afterward. Theirs were better haha, but I was happy that I’d captured a similar vibe for most of the tracks!"
   },
   {
     "type": "youtube",
     "id": "8niyMsKDXEo",
     "title": "Illumidove - Mystical Ocean",
-    "note": "Music I composed for XRLive: Under the Sea, the interactive projection experience at RIT."
+    "note": "An original song I made for our XRLive: Under the Sea team project! I took inspiration from Waterfall from Undertale, Harvestella’s main theme, and a little bit of Dion Timmer’s Arcane."
   },
   {
     "type": "youtube",
     "id": "flLbu3QOog4",
     "title": "BAEKHYUN (EXO) - Elevator (Illumidove Remix) [Instrumental]",
-    "note": "The instrumental version of my BAEKHYUN Elevator remix."
+    "note": "The instrumental version of my dreampop/rock take on Elevator! And if you’re wondering why one of the elevators in the artwork has a cowboy hat… just cause."
   },
   {
     "type": "youtube",
     "id": "HnWhDStoVg4",
     "title": "BAEKHYUN (EXO) - Elevator (Illumidove Remix)",
-    "note": "My remix of BAEKHYUN’s Elevator."
+    "note": "I have a soft spot for Baekhyun’s brighter songs, so I wanted to try a dreampop/rock take on Elevator for fun! It was nice hearing him return to that brighter sound on the album."
   },
   {
     "type": "youtube",
     "id": "eoNdr-9P3PE",
     "title": "What's Up Danger (Spider-Verse) (Illumidove Remake)",
-    "note": "My remake of What’s Up Danger from Spider-Verse."
+    "note": "This started as part of a scene re-score for my media composition final. I was proud of it, so I finished the remake for Into the Spider-Verse’s sixth anniversary — a little late, but better late than never! That original scene still gives me chills."
   },
   {
     "type": "youtube",
     "id": "iBb1N8qx750",
     "title": "Baekhyun (EXO) x Porter Robinson x Madeon - Woo, a Shelter (Mashup)",
-    "note": "A mashup of Baekhyun, Porter Robinson, and Madeon."
+    "note": "When I first heard Woo, its chords reminded me of Porter Robinson and Madeon’s Shelter, so I had to try putting them together! Both artists were a huge part of my EDM phase growing up. Making this felt like my childhood and current music tastes meeting."
   },
   {
     "type": "youtube",
     "id": "ctavdGMzwH0",
     "title": "EXO - Sweet Lies (Illumidove Remix)",
-    "note": "My remix of EXO’s Sweet Lies."
+    "note": "Sweet Lies is one of my favorite EXO songs, so I wanted to try a different take on it for fun! I made it a little more upbeat while keeping the eerie, emotional feel I love about the original."
   },
   {
     "type": "youtube",
     "id": "JCC64BSihFs",
     "title": "EXO - Sweet Lies (Illumidove Remix) [Instrumental]",
-    "note": "The instrumental version of my EXO Sweet Lies remix."
+    "note": "Here’s the instrumental version of my Sweet Lies remix! A little more upbeat, with that same eerie, emotional feel from one of my favorite EXO songs."
   }
 ];
