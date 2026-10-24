@@ -10,15 +10,45 @@
   }
   const link = (label, href, className = '') => h('a', {href, class: className}, label);
   const external = (label, href) => h('a', {href, target: '_blank', rel: 'noopener noreferrer'}, label);
-  function project(p) {
-    return h('article', {class:'project'},
-      h('div', {class:'project-top'}, h('img', {src:p.thumb, alt:'', width:55, height:55, loading:'lazy'}),
-        h('div', {}, h('p', {class:'context'}, p.context), h('h3', {}, p.title))),
-      h('p', {}, p.summary),
-      h('details', {}, h('summary', {}, 'About this project'), h('p', {}, p.description),
-        h('p', {}, 'Tools: ' + p.skills.join(', ')),
-        ...(p.metrics?.length ? [h('ul', {}, p.metrics.map(metric => h('li', {}, typeof metric === 'string' ? metric : JSON.stringify(metric))))] : [])),
+  let activeCategory = 'all';
+  const categoryLabel = id => id === 'gfx' ? 'Graphics' : id === 'music' ? 'Music Tech' : id === 'apps' ? 'Apps & Data' : CATEGORIES.find(c => c.id === id)?.label || id;
+  function openProject(p) {
+    $('projectDetailTitle').textContent = p.title;
+    $('projectDetailBody').replaceChildren(
+      h('p', {class:'context'}, p.context), h('p', {}, p.description),
+      h('h3', {}, 'Tools'), h('p', {}, p.skills.join(' · ')),
+      ...(p.metrics?.length ? [h('h3', {}, 'Evaluation'), h('ul', {}, p.metrics.map(metric => h('li', {}, metric)))] : []),
       h('div', {class:'project-links'}, p.repo ? external('Code ↗', p.repo) : null, p.demo ? external('View project ↗', p.demo) : null));
+    $('projectDetail').showModal();
+  }
+  function project(p) {
+    const card = h('button', {class:'project-card', type:'button', 'aria-haspopup':'dialog', 'aria-label':`Read about ${p.title}`},
+      h('img', {src:p.thumb, alt:'', width:60, height:60, loading:'lazy'}),
+      h('span', {class:'project-card-copy'},
+        h('span', {class:'project-type'}, p.context),
+        h('span', {class:'project-name'}, p.title),
+        h('span', {class:'project-summary'}, p.summary)),
+      h('span', {class:'project-tags'}, p.cats.map(c => h('span', {class:'project-tag'}, categoryLabel(c)))));
+    card.addEventListener('click', () => openProject(p));
+    return card;
+  }
+  function renderProjectGrid() {
+    const visible = PROJECTS.filter(p => activeCategory === 'all' || p.cats.includes(activeCategory));
+    $('techProjectGrid').replaceChildren(...visible.map(project));
+    document.querySelectorAll('.project-filter').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.category === activeCategory)));
+    $('projectCount').textContent = `${visible.length} projects shown`;
+  }
+  function renderTechProjects() {
+    const filters = h('div', {class:'project-filters', role:'group', 'aria-label':'Filter projects'});
+    CATEGORIES.forEach(category => {
+      const count = PROJECTS.filter(p => category.id === 'all' || p.cats.includes(category.id)).length;
+      const button = h('button', {class:'project-filter', type:'button', 'data-category':category.id, 'aria-pressed':String(category.id === activeCategory), 'aria-controls':'techProjectGrid'},
+        category.id === 'all' ? 'All Projects' : categoryLabel(category.id), h('span', {class:'category-count'}, String(count)));
+      button.addEventListener('click', () => {activeCategory = category.id; renderProjectGrid();});
+      filters.append(button);
+    });
+    $('projectContent').replaceChildren(filters, h('p', {id:'projectCount',class:'sr-only',role:'status'}), h('div', {id:'techProjectGrid',class:'tech-project-grid'}));
+    renderProjectGrid();
   }
   function experience(entry) {
     return h('article', {class:'experience'}, h('div', {}, h('h3', {}, entry.org), h('p', {class:'when'}, entry.when)),
@@ -41,17 +71,14 @@
     $('heroActions').replaceChildren(music ? link('Listen on YouTube ↗', PROFILE.youtube, 'button primary') : link('View resume ↗', PROFILE.resume, 'button primary'),link(music ? 'Explore my music ↓' : 'Explore my projects ↓', '#projects', 'text-link'));
     $('heroNote').textContent = music ? 'My engineering work is one switch away.' : 'Curious about my creative side? Try the Music switch.';
     $('projectsEyebrow').textContent = music ? 'Music / Projects' : 'Tech / Projects';
-    $('projectsTitle').textContent = music ? 'Compositions, remixes & experiments' : 'Things I’ve built';
-    $('projectsIntro').textContent = music ? 'From my Illumidove channel. Choose a track to listen on YouTube.' : 'A selection of my work in AI, software, and interactive experiences.';
+    $('projectsTitle').textContent = music ? 'Compositions, remixes & experiments' : 'Projects';
+    $('projectsIntro').textContent = music ? 'From my Illumidove channel. Choose a track to listen on YouTube.' : 'Here are all of the projects I’ve worked on!';
     if (music) {
       $('projectContent').replaceChildren(...MUSIC_TRACKS.map((track, i) => h('article', {class:'track'},
         h('span', {class:'track-number','aria-hidden':'true'},String(i+1).padStart(2,'0')),
         h('div', {}, h('h3', {}, track.title), h('p', {}, track.note)),external('Listen ↗','https://www.youtube.com/watch?v='+track.id))));
     } else {
-      const featured = FEATURED.map(f => PROJECTS.find(p => p.id === f.id)).filter(Boolean);
-      const rest = PROJECTS.filter(p => !featured.includes(p));
-      $('projectContent').replaceChildren(h('div', {class:'project-grid'}, featured.map(project)),
-        h('details', {class:'all-projects'}, h('summary', {}, `More projects (${rest.length})`), h('div', {class:'project-grid'}, rest.map(project))));
+      renderTechProjects();
     }
     $('skillsTitle').textContent = music ? 'How I make music' : 'What I work with';
     $('skillsContent').replaceChildren(...(music ? musicSkills : SKILLS).map(s => h('div', {class:'skill-group'},h('h3', {}, s.group),h('p', {}, s.items.join(' · ')))));
@@ -64,6 +91,7 @@
     if (announce) $('modeStatus').textContent = `${music ? 'Music' : 'Tech'} mode selected. Portfolio content updated.`;
   }
   // Every fresh visit starts in Tech. Do not persist the selected mode.
+  $('projectDetailClose').addEventListener('click', () => $('projectDetail').close());
   render('tech');
   $('modeSwitch').addEventListener('click', () => render(document.documentElement.dataset.mode === 'tech' ? 'music' : 'tech', true));
   const navLinks = [...document.querySelectorAll('nav a')];

@@ -18,7 +18,7 @@ Tech is the default on every page load. The navigation switch changes all five s
 
 ## Design and sources
 
-The two supplied Figma PDF exports guide the divided navigation, handwritten display typography, left introduction, rounded right portrait, and blue/plum themes. Comic Neue approximates the mockup lettering; an exact font specification was not supplied. The existing purple A icon is retained.
+The two supplied Figma PDF exports guide the divided navigation, Tilt Neon display typography, left introduction, rounded right portrait, and blue/plum themes. Tilt Neon matches the font specified by the creator for the Figma mockups, using its regular weight for branding, navigation, and display headings. The existing purple A icon is retained.
 
 Reviewed all three supplied archives: the legacy HTML site, the basic HTML/CSS/JS site, and the launchpad prototype. The current workspace is an expanded basic implementation, so its centralized content remains intact. Source descriptions and dates are retained without adding achievements. References and a pre-edit backup are in `reference/redesign/` (ignored by Git).
 
@@ -32,3 +32,11 @@ JavaScript syntax checks passed. Browser review covered desktop (1440px) and mob
 
 Music catalog refreshed from the public Illumidove Videos page on October 22, 2026: 16 uploads, newest first. This is a curated static list; new YouTube uploads must be added to MUSIC_TRACKS in data.js.
 
+Video captions adapted from the creator-written YouTube descriptions on October 22, 2026. Captions retain first-person production stories and are shortened for the portfolio; source descriptions are saved locally in reference/redesign/youtube-descriptions.json.
+
+Tech projects now follow Tech-Projects-Page.pdf: all 19 projects, five category filters with computed counts, rounded outlined cards, and keyboard-accessible detail dialogs. Verified all filters, Enter/Escape dialog behavior, 390px mobile layout, and preservation of all 16 Music entries. Assets use a version query to refresh older browser caches.
+
+
+## Tech projects layout
+
+The Tech collection follows Tech-Projects-Page.pdf: a large Tilt Neon heading, counted category filters, and three columns of rounded blue-outline cards. Cards open a keyboard-accessible detail dialog. The grid becomes two columns on tablet and one on mobile. All 19 projects remain available; Music mode keeps its 16 tracks. Verified all five filter counts, keyboard dialog opening and Escape/focus return, mode switching, and desktop/mobile layout (1440px and 390px).
